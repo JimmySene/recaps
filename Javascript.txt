@@ -1,0 +1,197 @@
+Javascript -> JS -> Langage de script (programmation) créé en 1995 par Brendan Eich.
+C'est un langage ORIENTE OBJET PAR PROTOTYPE.
+
+- Langage interpreté par un interpreteur, généralement situé sur le navigateur web
+
+	Interpreteurs JS : 
+		-Firefox : SpiderMonkey
+		-IE : Chakra / Jscript pour IE < 9
+		-Chrome : V8
+	
+- Client-side
+
+Sert à :
+	- Dynamiser les pages web HTML
+	- Faire des extensions pour les navigateurs
+	- Faire des applications
+	
+Standard EcmaScript. Javascript en est une implémentation.
+
+Doc : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference
+
+Tester le JS sur le web : JSFiddle
+
+F12 pour utiliser le kit de développement du navigateur pour le débogage.
+
+-----------------------------------------------------------------------------------------
+
+Les ; en fin d'instruction sont recommandés mais ne sont pas obligatoires (sauf si plusieurs instructions sur même ligne).
+
+Non sensible aux espaces et indentations.
+
+Commentaires // et /* */
+
+Ecrire le code JS dans des fichiers externes en .js que l'on inclut dans une balise <script></script> au sein d'une page HTML.
+Utiliser l'attribut src pour intégrer le fichier js.
+
+Ecrire le type MIME si HTML < à 5 sous la forme suivante type="text/javascript" dans la balise script.
+Dans ce cas, échapper le code JS avec les balises d'encadrement pour éviter l'erreur W3C. <!--     //-->
+
+Mettre les balises script de préférence avant la fin de la balise <body>, voir dans <head>.
+
+---------------------------
+
+DECLARATION DE VARIABLES : var ma_variable;
+Le nom des variables ne peuvent comporter que des caractères alphanumériques, $ et _ sont autorisés. Pas de chiffre au début.
+Sensible à la casse.
+
+AFFECTATION DE VALEUR : ma_variable = valeur;
+
+MULTIPLES DECLARATIONS : var ma_variable, ma_variable2, ma_variable3;
+......... AFFECTATIONS : ma_variable = ma_variable2 = ma_variable3 = valeur;
+
+Les variables sont TYPES DYNAMIQUEMENT, pas besoin de préciser le type et on peut stocker n'importe quoi dedans.
+
+Trois types principaux : Number, String, Boolean.
+type of permet de tester le type d'une variable. Elle renvoie undefined si variable vide ou inexistante.
+
+Pour les string, utiliser les '' de préférence aux "". Utiliser des \ pour échapper les '' au sein d'un texte.
+
+Opérateurs arhitmétiques : +, -, *, / et %
+
+Possibilité d'utiliser les +=, -=, *=, /= et %=
+
+Concaténation : +
+
+Fonctions basiques : 
+	- alert('message') : affiche un message
+	- prompt('message') : affiche un message et enregistre la saisie clavier sous forme de String
+	- parseInt(variable) : convertie variable en Number
+	- confirm('message') : Affiche un message et demande une confirmation. Renvoie true ou false.
+	- console.log('message') : Affiche un message dans la console. Pratique pour le débogage.
+	- isNaN(variable) : Teste si variable n'est pas un nombre. Renvoie true ou false.
+	
+---------------------------
+	
+Opérateurs de comparaison : ==, !=, === (valeur + type), !== (valeur + type), >, >=, <, <=
+Opérateurs de logique : && (ET), || (OU), ! (NON)
+
+CONDITIONS : Tests
+
+if(condition) { // SI
+	instructions si true;
+} else if(condition) { // SINON SI
+	instructions si true
+} else { // SINON
+	instructions si false;
+}
+
+switch(variable) {
+	case 1:
+		instructions;
+	break;
+	case 2:
+		instructions;
+	break;
+	...
+	default:
+		instructions;
+}
+
+ternaires : variable = condition ? valeurTrue : valeurFalse;
+
+---------------------------
+
+BOUCLES : Répéter X fois les même instructions
+
+Inscrémentation : variable++ (affecte et incrémente) ou ++variable (incrémente et affecte)
+Décrémentation : variable-- ou --variable
+
+while(condition) {
+	instructions à répéter si true;
+	iteration;
+}
+
+On peut utiliser le "break" ou une variable de boucle à false pour sortir de la boucle.
+Le "continue" met fin au tour du boucle et passe directement au tour suivant.
+
+do {
+	instructions à rep;
+	iteration;
+} while(condition);
+
+for(initialisation;condition;iteration) {
+	instructions à rep;
+} // L'itération se fait en fin de chaque tour de boucle
+
+Les variables faites dans les boucles sont disponibles partout !
+
+---------------------------
+
+FONCTIONS : éviter la répétition d'un code
+
+Créer : function nomFonction(arguments) {
+	instructions;
+}
+
+Appeler : nomFonction(arguments);
+
+Les variables déclarées au sein d'une fonction sont LOCALES et ne peuvent pas être utilisées en dehors.
+On dit alors qu'elles se trouvent dans un SCOPE. Contrairement aux variables GLOBALES accessibles partout.
+
+Pour faire des arguments facultatifs, il faut mettre une condition au sein de la fonction pour tester leur existence.
+
+Utiliser "return" pour renvoyer une valeur et mettre fin à la fonction.
+
+Fonction anonyme : var maFonction = function() { }; Utilisation maFonction();
+IIFE : (function() { })(); Fonction anonyme executée directement.
+
+---------------------------
+
+TABLEAUX et OBJETS :
+
+Un objet comporte 3 choses :
+	- Constructeur -> code executé quand on utilise un nouvel objet	
+	- Propriétés -> variables d'un objet
+	- Méthodes -> fonctions d'un objet
+	
+TOUTES LES VARIABLES CONTIENNES DES OBJETS.
+
+L'accès aux propriétés et méthodes se font avec le point (objet.nomPropriété ou objet.nomMethode())
+
+Type ARRAY -> Contient plusieurs valeurs appelés "items", accessibles à partir d'indices (index) commencant à 0.
+
+Initialisation : var my_array = [valeur1, 'valeur2', valeur3...];
+Accéder à une valeur : alert(my_array[indice]); // affiche la valeur liée à l'indice renseigné
+
+Méthodes : 
+	-push() ajouter une entrée dans un array à la fin
+	-unshift() .......................... au début
+	-shift() retirer une entrée dans un array au début
+	-pop() ................................. à la fin
+	
+	-split(separateur) divise un String par séparateur en plusieurs items pour ARRAY
+	-join(separateur) regroupe les items d'un array en String par séparateur
+	-length() récupère le nombre d'items dans un Array ou le nombre de caractères dans un String
+	
+Parcourir un tableau :
+	for (var i = 0, c = myArray.length; i < c; i++) { 
+		alert(myArray[i]);
+	}
+	
+Déclarer objet littéral : var variable = {
+	nom: valeur,
+	nom2: valeur,
+	nom3: valeur
+}; // LES NOMS SONT DES PROPRIETES
+
+Accéder aux valeurs d'un objet littéral :
+	variable.propriété OU variable['propriété']
+
+Ajout d'une valeur :
+	variable.newPropriete = valeur; OU variable['newPropriete'] = valeur;
+	
+Parcourir un objet littéral : for (var i in objetLitteral) {
+	alert(objetLitteral.i);
+}
+
