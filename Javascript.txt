@@ -1,4 +1,4 @@
-Javascript -> JS -> Langage de script (programmation) créé en 1995 par Brendan Eich.
+﻿Javascript -> JS -> Langage de script (programmation) créé en 1995 par Brendan Eich.
 C'est un langage ORIENTE OBJET PAR PROTOTYPE.
 
 - Langage interpreté par un interpreteur, généralement situé sur le navigateur web
@@ -23,6 +23,8 @@ Tester le JS sur le web : JSFiddle
 
 F12 pour utiliser le kit de développement du navigateur pour le débogage.
 
+-----------------------------------------------------------------------------------------
+					BASES
 -----------------------------------------------------------------------------------------
 
 Les ; en fin d'instruction sont recommandés mais ne sont pas obligatoires (sauf si plusieurs instructions sur même ligne).
@@ -194,4 +196,78 @@ Ajout d'une valeur :
 Parcourir un objet littéral : for (var i in objetLitteral) {
 	alert(objetLitteral.i);
 }
+
+-----------------------------------------------------------------------------------------
+				MANIPULATION DU DOM
+-----------------------------------------------------------------------------------------
+
+Le DOM (Document Object Model) est une API (Interface de programmation) pour les documents XML et HTML.
+Il nous permet, grâce à JS, de manipuler les éléments HTML au sein d'une page WEB. La version actuelle du DOM est DOM-2.
+
+C'est à partir de l'objet window que le JavaScript est executé. Cet objet représente la fenêtre du navigateur. La méthode alert() vient de là.
+C'est un objet implicite. Il n'est pas nécessaire de le mentionner pour utiliser ses méthodes.
+
+Toutes variables non déclarées mais dont est affecté une valeur est rattachée à l'objet windows, en GLOBAL.
+
+La page web est représentée par l'élément html appelé "document". C'est à partir de cet élément que l'on navigue et modifie le DOM.
+
+Les éléments sont classés de manière hiérarchique. Ils sont appelés "noeuds" (objet Node) et peuvent avoir des noeuds enfants (en dessous) et parents (au dessus).
+Les noeuds sont de deux types : HTML ou Text. Un principe d'héritage des propriétés et méthodes s'appliquent dans tout le DOM.
+
+Méthodes pour ACCEDER A DES ELEMENTS : 
+	-document.getElementById('test'); -> accéder à l'élément portant l'ID test
+	-document.getElementsByTagName('balise html'); -> accéder aux éléments dont la balise est renseigné ; renvoie un Array
+	-document.querySelector('css'); -> Accéder à un élément via une requete CSS
+	-document.querySelectorAll('css'); -> Accéder à tous les éléments via une requete CSS ; renvoie un Array
+
+Méthodes pour ACCEDER ET MODIFIER DES ATTRIBUTS :
+	-element.getAttribute('nomAttribut');
+	-element.setAttribute('nomAttribut', 'valeur');
+
+Certains attributs comme href et value sont accessibles directement avec les propriétés du même nom sur les éléments. Ex : element.href ou element.value
+
+Pour modifier une class, il faut utiliser la propriété className. Ex : element.className = valeur;
+............. un for ................................. htmlFor.
+
+Utiliser la propriété innerHTML pour récupérer le code HTML sous forme de texte ou le modifier.
+Utiliser la propriété textContent pour récupérer ou modifier le texte. innerText pour IE < 9.
+
+Ne pas utiliser ces propriétés dans une boucle afin de ne pas ralentir le code. Préférer la concaténation dans une variable.
+
+Propriétés d'accès : 
+	- parentNode -> atteint l'élément parent
+	- firstChild / firstElementChild-> atteint le premier élément enfant / premier élément HTML
+	- lastChild / lastElementChild -> atteint le dernier élément enfant / dernier élément HTML
+	- childNodes -> retourne un Array des éléments enfants
+	- previousSibling / previousElementSibling -> Accède à l'élément précédent / élément HTML précédent
+	- nextSibling / nextElementSibling -> Accède à l'élément suivant / élément HTML suivant
+
+Autres propriétés du DOM :
+	- nodeType -> retourne un nombre précisant le type de noeud
+	- nodeName -> retourne le nom du noeud (utiliser les méthodes toLowerCase() ou toUpperCase() dessus pour + de clarté)
+	- nodeValue / data -> retourne le contenu d'un noeud
+
+CREATION D'UN ELEMENT HTML : createElement('balise');
+CREATION D'UN ELEMENT TEXT : createTextNode('texte');
+PLACER UN ELEMENT HTML OU TEXT : appendChild(element/texte);
+
+Toutes les propriétés et méthodes d'accès vers des éléments RETOURNENT UNE REFERENCE et non pas une simple valeur.
+On ne peut pas copier un élément d'une variable dans une autre de façon normale.
+
+CLONER UN ELEMENT : On utilise la méthode cloneNode(true/false); le boléen indique si on veut cloner les éléments enfants.
+PS : Ne clone pas les évènements attachés.
+
+REMPLACER UN ELEMENT : méthode replaceChild(élément à ajouter, élément à remplacer);
+
+SUPPRIMER UN ELEMENT : removeChild(element);
+
+Quelques méthodes :
+	- hasChildNodes(); -> renvoie true si l'élément a des enfants
+	- insertBefore(élément à insérer, élément position);-> insert un élément avant un autre élément
+
+---------------------------
+
+
+
+
 
