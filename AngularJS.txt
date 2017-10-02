@@ -1,0 +1,51 @@
+AngularJS est un framework Javascript principalement utilisé pour faire des SPA (Single Page Application).
+C'est un ensemble de bonnes pratiques permettant de raccourcir le code JS.
+
+C'est un framework basé sur le design pattern MVC, plus précisemment sur le MVVM (Model View View-Model).
+
+Il est doté du data-binding, permettant de synchroniser le modèle et la vue sans recharger la page HTML.
+
+Pour déclarer une application Angular, il faut indiquer la directive ng-app dans un élément HTML principal, comme <html> ou <body>.
+C'est là où est défini le root scope. Tout ce qu'il y a à l'intérieur dans l'arborescence HTML pourra être utilisé avec Angular.
+
+Directives : 
+	ng-model -> place la valeur d'un input dans le modèle
+	ng-bind -> attache la valeur d'un modèle à une balise HTML
+	ng-repeat -> répète un code HTML selon le nombre d'entrée dans l'array
+
+Expressions : similaire à ng-bind -> {{ }} 
+Utilisation des filtres avec | uppercase, lowercase, filter, orderBy, currency
+
+	ng-view -> affiche la vue 
+	ng-controller -> utilise un controller
+	ng-click -> évènement click
+
+Création d'un module : angular.module('nomModule', [dépendances modules]);
+
+Création d'un controller : module.controller('nomController', fonction($scope) { });
+
+Création d'un component : module.component('nomComponent', {
+	template: ,
+	controller: fonction() {
+	}
+});
+
+Il est recommandé de ne pas utiliser le $scope directement à l'intérieur des controllers mais d'utiliser leurs instances 
+avec le mot clef this. Utiliser un alias $ctrl pour y accéder dans un template.
+
+Le component créé une balise nomComponent à ajouter dans le template. De préférence dans le routing (mettre ng-view dans le template).
+
+Créer un service avec une factory :
+
+module('nom').factory('nomFactory', function() {
+	return { propriete1 : function() { },
+	propriete2 : function() {  }
+	}
+ });
+
+avec la méthode service :
+
+module('nom').service('nomService, function() { 
+	this.propriete1 = function() { };
+	this.propriete2 = function() { };
+});

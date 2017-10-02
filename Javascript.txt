@@ -229,7 +229,7 @@ Certains attributs comme href et value sont accessibles directement avec les pro
 Pour modifier une class, il faut utiliser la propriété className. Ex : element.className = valeur;
 ............. un for ................................. htmlFor.
 
-Utiliser la propriété innerHTML pour récupérer le code HTML sous forme de texte ou le modifier.
+Utiliser la propriété innerHTML pour récupérer le code HTML sous forme de texte ou le modifier. (ne peut pas mettre de balises <script>)
 Utiliser la propriété textContent pour récupérer ou modifier le texte. innerText pour IE < 9.
 
 Ne pas utiliser ces propriétés dans une boucle afin de ne pas ralentir le code. Préférer la concaténation dans une variable.
@@ -267,6 +267,41 @@ Quelques méthodes :
 
 ---------------------------
 
+Les évènements permettent de déclencher une fonction selon qu'une action s'est produite ou non.
+
+PRINCIPAUX EVENEMENTS : click, dblclick, mouseover, mouseout, mousedown, mouseup, mousemove, keydown, keyup, keypress, focus, blur, change, input, select, submit, reset
+
+Les évènements se déclenchent sur un élément dès que celui-ci possède le FOCUS.
+
+3 façons d'ajouter un évènement à un élément :
+	- Sans le DOM : onévènement = fonction au sein d'une balise HTML
+	- DOM-0 : définition d'une fonction anonyme dans la propriété onévènement d'un élément
+	- DOM-2 : Utiliser la méthode addEventListener('évènement', fonction anonyme, true/false); sur un élément // le true signifie phase de capture et false phase de bouillonement
+
+SUPPRIMER UN EVENEMENT : element.removeElementListener('evenement', fonction);
+
+L'objet Event est un objet passé en paramètres aux fonctions d'évènements récupérant divers infos. Il faut le passer en argument de fonction des évènements DOM-0 ou DOM-2 pour le récupérer.
+
+Récupérer l'élément où est situé l'évènement : e.target ou e.currentTarget
+Récupérer la position du curseur de la souris : e.clientX et e.clientY
+Bloquer l'action par défaut : preventDefault();
+
+-----------------------------------------------------------------------------------------
+				LA POO EN JS
+-----------------------------------------------------------------------------------------
+
+DEFINIR UN CONSTRUCTEUR : function MonObjet(argument1, argument2...) {  // On met une majuscule comme Array, String et Number.
+	this.propriete1 = argument1;
+	this.prorpiete2 = argument2...
+	this.methode = function() {}
+
+}
+
+INSTANCIER UN OBJET : var truc = new MonObjet(arguments);
+
+UTILISATION DES METHODES ET PROPRIETES : truc.propriete = valeur; / truc.methode();
+
+TESTER SI INSTANCE D'OBJET -> instance instanceof objet : renvoie true ou false
 
 
 

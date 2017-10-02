@@ -1,0 +1,16 @@
+Elasticsearch est un moteur d'indexation et d'analyse textuelle de données opensource.
+Il permet d'analyser, rechercher et stocker des gros volumes de données en très peu de temps.
+
+NTR = Near realtime -> Le temps entre l'indexation d'un doc et sa recherche est extremement court
+Cluster = Collection de nodes (servers) qui contient l'ensemble des données et fournis des fonctions d'indexation 
+et de recherches. Identifiée par un nom unique. Par défaut "elasticsearch".
+Node = Serveur qui stock les données, faisant parti d'un cluster. Identifiable par un nom. Par défaut rattaché au cluster "elasticsearch".
+Index = Ensemble de documents ayant des caractéristiques similaires. Doit avoir un nom en minuscule. Une sorte de BDD micro service.
+Type = Equivalent des tables en SQL.
+Document = Equivalent des champs en SQL. Ce sont les données. Format JSON.
+Shard : Divise un index en plusieurs parties. C'est un Lucene Index.
+Replicas : copie des shards.
+
+Utilise le port 9200. 192.168.8.112
+
+Commande pour initialiser un cluster et un node : -Ecluster.name = 'name' -Enode.name = 'name'
