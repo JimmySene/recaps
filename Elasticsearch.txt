@@ -14,3 +14,16 @@ Replicas : copie des shards.
 Utilise le port 9200. 192.168.8.112
 
 Commande pour initialiser un cluster et un node : -Ecluster.name = 'name' -Enode.name = 'name'
+
+Fournit une puissante API Rest permettant de faire ce qu'on a besoin avec nos données et d'intéragir avec les clusters.
+
+Voir les index : GET /_cat/indices?v
+Créer un index : PUT /nomIndex
+
+Envoyer un document : PUT /nomIndex/nomType/id
+
+Supprimer un index : DELETE /nomIndex
+
+Le pattern REST utilisé : RestVerb/Index/Type/ID
+
+Supprimer un document : DELETE nomIndex/Type/id
