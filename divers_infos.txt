@@ -24,3 +24,10 @@ Attention cependant, le https ne chiffre pas les données envoyées à la BDD car l
 -Documentation ultime : RFC du W3C
 
 -3 types de stockage : fichiers, blocs et objets
+
+Codes HTTP :
+
+200 ... : SUCCES
+300 ... : REDIRECTION
+400 ... : ERREUR CLIENT
+500 ... : ERREUR SERVEUR
