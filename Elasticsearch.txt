@@ -11,7 +11,9 @@ Document = Equivalent des champs en SQL. Ce sont les données. Format JSON.
 Shard : Divise un index en plusieurs parties. C'est un Lucene Index.
 Replicas : copie des shards.
 
-Utilise le port 9200. 192.168.8.112
+Utilise le port 9200 pour atteindre elasticsearch. : localhost:9200
+
+ 192.168.8.112
 
 Commande pour initialiser un cluster et un node : -Ecluster.name = 'name' -Enode.name = 'name'
 
@@ -27,3 +29,40 @@ Supprimer un index : DELETE /nomIndex
 Le pattern REST utilisé : RestVerb/Index/Type/ID
 
 Supprimer un document : DELETE nomIndex/Type/id
+
+API REST pour communiquer avec Elasticsearch -> Ecrire des URL pour obtenir des résultats
+
+Insérer des données : 
+
+POST /index/type
+{
+	DOCUMENT JSON
+}
+
+Récupérer des données :
+
+GET /index/type/Id -> Retourne le document JSON
+
+Supprimer des données :
+
+DELETE /index/type/Id
+
+Recherche de données :
+
+POST index/type/_search
+{
+	"query": {
+		"match_all" : { }, // SELECTIONNE TOUT
+		"match" : { "title": "test" } // CLAUSE WHERE
+		"query_string" : {
+			"query": "Test",
+			"fields": ["champs"]
+		}
+	}
+}
+
+EQUIVALENCES :
+
+Index : BDD
+Type = Table
+PhpMyAdmin = Elastic-head accessible à _plugin/head
