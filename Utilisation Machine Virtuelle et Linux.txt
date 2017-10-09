@@ -1,0 +1,49 @@
+VMware :
+
+login : root
+password : admredhat
+
+Arrêter le serveur : halt
+
+CTRL + ALT : revenir sur le PC
+
+Récupérer l'adresse IP (10.213.93.75) puis la mettre dans putty.exe
+Réduire VMware et laisser la machine tournée.
+
+Putty.exe -> c'est un client SSH, émulateur de terminal
+SSH (Secure shell) : Pouvoir travailler sur un serveur de façon sécurisé (chyffré) via un terminal. 
+Protocole de transfert sécurisé.
+
+Selection avec clic gauche : copie le texte dans le presse papier
+Clic droit = coller
+
+Utilisation de WinSCP (Service SCP -> fichier over ssh et SFTP -> SCP + prendre la main sur la gestion des controles)
+
+Explications sur le tar.gz
+.tar est un type de fichier comprenant une liste de fichiers non compressés. 
+.gz est un format compressé.
+
+Commande linux pour extraire un tar.gz : tar xzf nomDuFichier
+
+En réalité, les formats visibles sur Windows ne sont pas forcémment le réel type de fichier en question.
+
+Quelques infos en réseau :
+
+Socket = IP + port
+Port = service / processus (route pour atteindre le logiciel qui tourne)
+
+Le serveur DHCP fournit les adresses IP aux machines sur le réseau avec une table sous forme : MAC / IP
+
+Le FTP est un protocole vieux qui ne sécurise pas les données transmises et nécessite l'utilisation de deux ports (20 et 21)
+Le protocole SSH (SCP et SFTP) est à privilégier car il utilise un seul port (22) et sécurise les données envoyées et reçues.
+
+Commandes Linux :
+
+-history : historique de commandes
+-vi / vim : éditeur de texte
+-rm : supprime un fichier
+-grep : filtre avec le nom donné en argument
+
+| = entrée / sortie pour plusieurs commandes
+
+Utiliser Wireshark (anciennement Ethereal) pour voir ce qui se passe sur la carte réseau
