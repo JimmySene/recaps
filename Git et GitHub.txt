@@ -21,7 +21,7 @@ Si ça va mal, choisir quelles versions garder. Si tout va bien :
 
 Pusher ses commits sur un remote : git push
 
-AUTRES COMMANDES :
+===== AUTRES COMMANDES =====
 
 Voir le log des commits effectués dans le repo : git log
 -p en option pour voir ce qui a été modifié
@@ -47,4 +47,12 @@ Annuler le dernier commit : git reset HEAD^
 Annuler le dernier commit et les changements dans le fichier : git reset --hard HEAD^
 
 Anuler les modifications d'un fichier : git checkout nomFichier
+
+===== INFOS GITHUB =====
+
+Publier ses codes sources sur GitHub est gratuit si on les met en opensource.
+Pour copier un repo d'un projet externe sur son propre GitHub, il faut le "Fork" via la plateform et le cloner en local.
+Pour proposer des modifs sur un projet externe, il faut faire une "Pull request" via la plateform.
+
+PS : J'entends par projet externe tout projet qui ne nous appartient pas mais qui est mis en opensource par un tiers.
 
