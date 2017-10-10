@@ -1,4 +1,5 @@
-VMware :
+VMware : Outil pour créer des machines virtuelles. Simuler une machine avec ou sans OS via un disque virtuel sur son ordinateur.
+Fichier .vmdk : Virtual Machine Disk -> Disque émulant une machine
 
 login : root
 password : admredhat
@@ -10,18 +11,21 @@ CTRL + ALT : revenir sur le PC
 Récupérer l'adresse IP (10.213.93.75) puis la mettre dans putty.exe
 Réduire VMware et laisser la machine tournée.
 
-Putty.exe -> c'est un client SSH, émulateur de terminal
+Putty.exe -> c'est un client SSH, émulateur de terminal. Logiciel libre et en version portable.
 SSH (Secure shell) : Pouvoir travailler sur un serveur de façon sécurisé (chyffré) via un terminal. 
 Protocole de transfert sécurisé.
 
 Selection avec clic gauche : copie le texte dans le presse papier
 Clic droit = coller
 
-Utilisation de WinSCP (Service SCP -> fichier over ssh et SFTP -> SCP + prendre la main sur la gestion des controles)
+Utilisation de WinSCP (Service SCP -> fichier over ssh et SFTP -> SCP + prendre la main sur la gestion des controles de fichiers)
+C'est un client SFTP open source. Le but étant de sécuriser le transfert de fichiers entre un ordinateur local et distant.
 
 Explications sur le tar.gz
-.tar est un type de fichier comprenant une liste de fichiers non compressés. 
+.tar est un type de fichier d'archive comprenant une liste de fichiers non compressés. 
 .gz est un format compressé.
+
+Il est important de faire la distinction entre fichier d'archive et de compression car ce n'est pas la même chose.
 
 Commande linux pour extraire un tar.gz : tar xzf nomDuFichier
 
@@ -30,6 +34,7 @@ En réalité, les formats visibles sur Windows ne sont pas forcémment le réel type
 Quelques infos en réseau :
 
 Socket = IP + port
+
 Port = service / processus (route pour atteindre le logiciel qui tourne)
 
 Le serveur DHCP fournit les adresses IP aux machines sur le réseau avec une table sous forme : MAC / IP
@@ -43,6 +48,7 @@ Commandes Linux :
 -vi / vim : éditeur de texte
 -rm : supprime un fichier
 -grep : filtre avec le nom donné en argument
+-ifconfig : infos réseau
 
 | = entrée / sortie pour plusieurs commandes
 

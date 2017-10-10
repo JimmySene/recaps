@@ -1,0 +1,50 @@
+Utiliser Git Bash pour use les commandes GIT (clic droit sur le dossier d'appli -> Git Bash)
+
+Deux façons de procéder pour créer un nouveau dossier GIT (appelé "Repository") en local :
+
+1) Initialiser un dossier déjà existant : git init nomDossier
+2) Cloner un repository qui existe déjà sur un serveur distant (appelé "Remote") : git clone lienDuRepo
+
+A partir de là, modifier les fichiers du repo en local puis :
+
+Ajouter un fichier créé ou modifié à l'index : git add "nomFichier"
+OU Ajouter tous les fichiers à l'index : git add .
+
+Faire un commit : git commit -m "message"
+
+Puis continuer à faire des modifications en local jusqu'à ce que la journée se termine (cas général), pour enfin :
+
+Télécharger les derniers commits d'un remote : git pull
+
+Vérifier que le travail des collègues n'entre pas en conflit avec nos modifications effectuées via nos précédents commits.
+Si ça va mal, choisir quelles versions garder. Si tout va bien :
+
+Pusher ses commits sur un remote : git push
+
+AUTRES COMMANDES :
+
+Voir le log des commits effectués dans le repo : git log
+-p en option pour voir ce qui a été modifié
+
+Voir le statut du repo (dernières modifs) : git status
+Voir le statut d'un fichier précis : git diff nomFichier
+
+Créer une branche : git branch nomBranche
+
+Voir les branches : git branch
+
+Intégrer (fusion) une branche dans une autre : git merge nomBranche (faire la commande dans la branche master)
+
+Se déplacer vers une branche : git checkout nomBranche
+
+Revenir au dernier commit et à la branche principale : git checkout master
+
+Supprimer une branche  : git branch -d nomBranche
+
+Changer le message du dernier commit : git commit --amend
+
+Annuler le dernier commit : git reset HEAD^
+Annuler le dernier commit et les changements dans le fichier : git reset --hard HEAD^
+
+Anuler les modifications d'un fichier : git checkout nomFichier
+
