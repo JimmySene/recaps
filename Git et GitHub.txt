@@ -26,6 +26,7 @@ Pusher ses commits sur un remote : git push
 
 Voir le log des commits effectués dans le repo : git log
 -p en option pour voir ce qui a été modifié
+Quitter le log en faisant "q"
 
 Voir le statut du repo (dernières modifs) : git status
 Voir le statut d'un fichier précis : git diff nomFichier
