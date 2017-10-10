@@ -12,7 +12,8 @@ OU Ajouter tous les fichiers à l'index : git add .
 
 Faire un commit : git commit -m "message"
 
-Puis continuer à faire des modifications en local jusqu'à ce que la journée se termine (cas général), pour enfin :
+Puis continuer à faire des modifications en local : modification fichier(s) -> git add nomDuFichier(s) -> git commit -m ""
+Répéter cette boucle jusqu'à ce que la journée se termine (cas général). Puis :
 
 Télécharger les derniers commits d'un remote : git pull
 
