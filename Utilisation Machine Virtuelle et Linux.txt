@@ -18,6 +18,8 @@ Protocole de transfert sécurisé.
 Selection avec clic gauche : copie le texte dans le presse papier
 Clic droit = coller
 
+Utiliser du http : curl -Xrequete
+
 Utilisation de WinSCP (Service SCP -> fichier over ssh et SFTP -> SCP + prendre la main sur la gestion des controles de fichiers)
 C'est un client SFTP open source. Le but étant de sécuriser le transfert de fichiers entre un ordinateur local et distant.
 
@@ -53,3 +55,10 @@ Commandes Linux :
 | = entrée / sortie pour plusieurs commandes
 
 Utiliser Wireshark (anciennement Ethereal) pour voir ce qui se passe sur la carte réseau
+
+Commandes sous redhat :
+
+-yum install : Installer un logiciel
+-yum search nomLogiciel : Cherche un logiciel
+
+Utiliser une commande propre au dossier actuel : ./nomDeLaCommande

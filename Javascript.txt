@@ -132,6 +132,10 @@ Les variables faites dans les boucles sont disponibles partout !
 
 FONCTIONS : éviter la répétition d'un code
 
+En JS, on distingue la procédure de la fonction :
+-Procédure : Fonction qui ne renvoie pas de valeur
+-Fonction : Fonction qui renvoie une valeur
+
 Créer : function nomFonction(arguments) {
 	instructions;
 }
@@ -197,6 +201,47 @@ Parcourir un objet littéral : for (var i in objetLitteral) {
 	alert(objetLitteral.i);
 }
 
+Déclarer un objet via constructeur : var obj = function() {
+	propriete : valeur,
+	methode : function() {
+	}, 
+	...
+}
+
+Les proprietes sont accessibles via le mot clef this au sein du constructeur. Elles pourront être accessibles ailleurs
+après instanciation de l'objet. Pour rendre privé une propriété, il faut déclarer une variable au sein du constructeur
+avec var.
+
+Instancier un objet : var monObj = new monObj();
+Les méthodes sont déclarées après chaque instanciation. D'où l'intérêt d'utiliser des prototypes pour ne pas surcharger 
+le code.
+
+Un prototype est un ensemble d'élément qui va être associé à un constructeur en tant que liste complémentaire.
+Si une propriété ou méthode est appelée sur une instance d'objet et que celle-ci n'est pas située dans le constructeur,
+alors elle sera appelée par le prototype.
+
+Déclarer un prototype (l'objet doit avoir été déclaré au préalable) : Obj.prototype.nom = function() {
+};
+
+Il est possible de faire une extension de prototype en ajoutant des méthodes après avoir instancié des objets l'utilisant.
+
+Appliquer une extension de prototype : obj.prototype.newMethode = function() { ... }; 
+
+Une surcharge appliquée sur une instance d'objet consiste à modifier une méthode de cet objet en particulier.
+
+Appliquer une surcharge : obj.methode = function() { ... };
+
+L'héritage POO en JS se fait par extension de prototype via une boucle :
+
+for(cle in obj.prototype)
+{
+	newObj.prototype[cle] = obj.prototype[cle];
+}
+
+Cela a pour effet de transmettre les méthodes et propriétés au nouvel objet.
+
+Toutes nouvelles méthodes appliquées à l'élément parent ne sera pas copié dans le nouvel objet suite à l'extension.
+C'est une limite de l'héritage en JS.
 -----------------------------------------------------------------------------------------
 				MANIPULATION DU DOM
 -----------------------------------------------------------------------------------------

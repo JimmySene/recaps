@@ -66,3 +66,6 @@ EQUIVALENCES :
 Index : BDD
 Type = Table
 PhpMyAdmin = Elastic-head accessible à _plugin/head
+
+Utiliser la commande curl -X pour utiliser elasticsearch en ligne de commande
+-d pour préciser le body
