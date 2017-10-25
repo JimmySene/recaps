@@ -69,3 +69,9 @@ PhpMyAdmin = Elastic-head accessible à _plugin/head
 
 Utiliser la commande curl -X pour utiliser elasticsearch en ligne de commande
 -d pour préciser le body
+ctrl + c pour sortir d'un requete
+?pretty pour afficher les résultats de façon claire
+
+Dans le plugin HEAD :
+
+Aller dans Navigateur -> Index pour voir les données poussées dans l'index

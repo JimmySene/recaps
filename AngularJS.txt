@@ -1,5 +1,6 @@
 AngularJS est un framework Javascript principalement utilisé pour faire des SPA (Single Page Application).
 C'est un ensemble de bonnes pratiques permettant de raccourcir le code JS.
+Pratique pour développer des RICH internet applications (applis web qui possède les mêmes caractèristiques que les logiciels traditionnels).
 
 C'est un framework basé sur le design pattern MVC, plus précisemment sur le MVVM (Model View View-Model).
 
