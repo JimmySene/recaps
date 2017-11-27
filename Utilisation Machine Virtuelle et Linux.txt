@@ -1,8 +1,7 @@
 VMware : Outil pour créer des machines virtuelles. Simuler une machine avec ou sans OS via un disque virtuel sur son ordinateur.
 Fichier .vmdk : Virtual Machine Disk -> Disque émulant une machine
 
-login : root
-password : admredhat
+Se loguer avec login + password.
 
 Arrêter le serveur : halt
 

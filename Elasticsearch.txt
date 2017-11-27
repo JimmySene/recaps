@@ -6,9 +6,9 @@ Cluster = Collection de nodes (servers) qui contient l'ensemble des données et f
 et de recherches. Identifiée par un nom unique. Par défaut "elasticsearch".
 Node = Serveur qui stock les données, faisant parti d'un cluster. Identifiable par un nom. Par défaut rattaché au cluster "elasticsearch".
 Index = Ensemble de documents ayant des caractéristiques similaires. Doit avoir un nom en minuscule. Une sorte de BDD micro service.
-Type = Equivalent des tables en SQL.
+Type = Equivalent des tables en SQL. Catégorie appartenant à un index.
 Document = Equivalent des champs en SQL. Ce sont les données. Format JSON.
-Shard : Divise un index en plusieurs parties. C'est un Lucene Index.
+Shard : Divise un index en plusieurs parties de façon arbitraire et aléatoire de manière homogène (à partir d'un hash de l'ID de l'objet). C'est un Lucene Index.
 Replicas : copie des shards.
 
 Utilise le port 9200 pour atteindre elasticsearch. : localhost:9200
@@ -75,3 +75,11 @@ ctrl + c pour sortir d'un requete
 Dans le plugin HEAD :
 
 Aller dans Navigateur -> Index pour voir les données poussées dans l'index
+
+Index inversé = C'est à partir des valeurs qu'on retrouve les documents.
+
+CAP : théorème qui prouve qu'il est impossible pour une base de donnée d'avoir les trois caractéristiques en même temps : partionnement, disponibilité et intégrité.*
+Intégrité + disponibilité = SGBDR
+Partionnement + intégrité = Elasticsearch
+
+Sur Putty utiliser la commande bg pour mettre elasticsearch en fond et continuer à taper des commandes.

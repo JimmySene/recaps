@@ -1,0 +1,28 @@
+TypeScript est un langage qui étend le Javascript en orienté objet avec des class, des interfaces et du typage manuel.
+Angular 2.0 a été programmé en TypeScript. Anders Hejlsberg (designer du C#) a inventé le langage.
+Cross browser et cross platform.
+
+Fichier TypeScript : .ts
+On peut convertir les fichiers .js en .ts simplement en les renommant.
+
+Du code TS a besoin d'un compiler pour être converti en Javascript et pouvoir être lu. 
+Ce compiler est appelé TSC et est un fichier TS a implementé. 
+
+Création de variable :
+
+var message:string = "Hello world"
+
+Création d'une classe et utilisation d'un objet :
+
+class nomClasse {
+	greet():void {
+		// INSTRUCTIONS DE LA PROCEDURE
+	}
+}
+
+var obj = new nomClasse();
+obj.greet();
+
+Types :
+
+Number, String, Boolean, Void

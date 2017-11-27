@@ -1,0 +1,2 @@
+Multiplexage :
+	-Faire passer plusieurs informations à travers un seul support de transmission.

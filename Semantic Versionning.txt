@@ -1,0 +1,20 @@
+La gestion sémantique de versions est une façon de versionner son développement sous un format conventionel :
+
+Version avec des numéros : X.Y.Z
+
+X = Majeur (Ajout ou modification importante non rétrocompatible)
+Y = Mineur (Ajout ou modification rétrocompatible)
+Z = Correctif (Correction d'un bug rétrocompatible)
+ 
+Incrémententer les numéros en fonction des modifications effectuées.
+Incrémenter le numéro majeur remet à 0 le numéro mineur et le numéro de correctif.
+
+On doit déclarer une API publique précisée dans le code ou dans un document et faire commencer la version de l'appli
+à 1.0.0 une fois l'API conçue. Le développement de l'appli commence en 0.1.0.
+
+Toute modification d'une appli doit être renseignée dans une NOUVELLE VERSION. 
+Impossible d'éditer une version déjà publiée.
+
+Lien utile : https://semver.org/lang/fr/
+
+

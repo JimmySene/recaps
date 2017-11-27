@@ -1,0 +1,59 @@
+Framework TypeScript utilisé pour crééer des SPA et raccourcir drastiquement le code JS. 
+Créé en 2016. Evolution de AngularJS.0
+
+Dans Angular, tout est COMPONENT. Un component ne gère que sa vue et ses données, a son propre cycle de vie et communique
+avec d'autres components uniquement via les évènements.
+
+Déclaration d'un component :
+
+import { Component } from '@angular/core';
+
+@Component({
+	selector: 'mon-premier-component',
+	template: '
+		<h1>Mon premier component</h1>
+		// autre code HTML
+	',
+	styleUrls: ['']
+})
+
+export class MonPremierComponent {
+}
+
+
+Infos : @angular/core est le module coeur de Angular qui contient la classe "Component" à importée à chaque création.
+@Component est un décorateur, issu du langage TypeScript. Il permet de modifier une class pour la "transformer"
+en web component Angular.
+Il y a deux MetaDatas : "selector" est le Custom Element W3C (Balise HTML 5 perso) et "template" est l'import HTML W3C (intégation de document HTML 5).
+Utiliser "templateUrl" à la place de "template" pour renseigner une url menant vers un fichier de template.
+styleUrls mentionne dans un array les fichiers CSS.
+
+"export" pour exporter le component dans toute l'application.
+
+Un component est en soit une class avec un décorateur @Component.
+
+Avec Angular, on peut utiliser un CLI pour générer le squelette de son application avec une simple commande.
+Il faut avoir installé une version de node JS et de NPM pour pouvoir l'utiliser.
+
+Installer Angular-cli : npm install -g angular-cli
+
+Créer un projet : ng new nom-projet
+
+Se placer dans le dossier de projet et lancer le serveur en lancant la commande ng serve.
+Si VM : ng serve --host 0.0.0.0 --port 4200
+
+Accéder à l'appli grâce au navigateur à l'adresse : IP:port
+
+Liste de commandes :
+
+-component : ng g component nom-component
+-directive : ng g directive nom-directive
+-pipe : ng g pipe nom-pipe
+-class : ng g class nom-class
+-service : ng g service nom-service
+-interface : ng g interface nom-interface
+-enum : ng g enum nom-enum
+-module : ng g module nom-module
+
+
+

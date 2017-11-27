@@ -1,4 +1,4 @@
-AngularJS est un framework Javascript principalement utilisé pour faire des SPA (Single Page Application).
+AngularJS est un framework Javascript principalement utilisé pour faire des SPA (Single Page Application). Créé en 2009 par Google.
 C'est un ensemble de bonnes pratiques permettant de raccourcir le code JS.
 Pratique pour développer des RICH internet applications (applis web qui possède les mêmes caractèristiques que les logiciels traditionnels).
 
