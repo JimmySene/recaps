@@ -58,3 +58,16 @@ Pour proposer des modifs sur un projet externe, il faut faire une "Pull request"
 
 PS : J'entends par projet externe tout projet qui ne nous appartient pas mais qui est mis en opensource par un tiers.
 
+Pour synchroniser son fork au repo principal, il faut :
+	-> Configuration (ajouter l'upstream) : git remote add upstream lienDuRepoPrincipal
+Puis
+	-> Chercher les modifs : git fetch upstream
+	-> Se déplacer dans la branche locale : git checkout master
+	-> Fusionner les modifs dans la branche master : git merge upstream/master
+
+Voir où est synchroniser le repo : git remote -v
+
+Liens : 
+-https://help.github.com/articles/fork-a-repo/
+-https://help.github.com/articles/syncing-a-fork/
+

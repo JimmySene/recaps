@@ -26,3 +26,5 @@ obj.greet();
 Types :
 
 Number, String, Boolean, Void
+
+Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.

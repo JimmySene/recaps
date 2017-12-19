@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
 		<h1>Mon premier component</h1>
 		// autre code HTML
 	',
-	styleUrls: ['']
+	styles: ['']
 })
 
 export class MonPremierComponent {
@@ -26,7 +26,7 @@ Infos : @angular/core est le module coeur de Angular qui contient la classe "Com
 en web component Angular.
 Il y a deux MetaDatas : "selector" est le Custom Element W3C (Balise HTML 5 perso) et "template" est l'import HTML W3C (intégation de document HTML 5).
 Utiliser "templateUrl" à la place de "template" pour renseigner une url menant vers un fichier de template.
-styleUrls mentionne dans un array les fichiers CSS.
+styles permet d'entrer le code CSS. styleUrls mentionne dans un array les fichiers CSS.
 
 "export" pour exporter le component dans toute l'application.
 
@@ -54,6 +54,17 @@ Liste de commandes :
 -interface : ng g interface nom-interface
 -enum : ng g enum nom-enum
 -module : ng g module nom-module
+
+Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.
+Il y a deux sortes de directives : 
+-Directives structurelles (ajoute, modifie ou supprime un élément du DOM) ex : *ngIf="", *ngFor="", *ngSwitchCase="...
+-Attribute directive (modifier l'apparence ou le comportement d'un élément du DOM) ex : [ngStyle]="{}"
+
+Ajouter des listeners dans une directive :
+
+@HostListener('event') onEvent() { }
+
+Equivalent de ng-click="" : (click)=""
 
 
 

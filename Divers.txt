@@ -1,2 +1,8 @@
 Multiplexage :
 	-Faire passer plusieurs informations à travers un seul support de transmission.
+Shadow DOM : 
+	-Permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component
+	-Séparation du DOM principal
+	-Utilisable seul en dehors du component
+	Utiliser la méthode .attachShadow({mode: "open"}) sur un élément pour appliquer le SHADOW DOM dessus.
+	Accessible via le noeud racine ShadowRoot.
