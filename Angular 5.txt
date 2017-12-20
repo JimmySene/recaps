@@ -1,5 +1,5 @@
 Framework TypeScript utilisé pour crééer des SPA et raccourcir drastiquement le code JS. 
-Créé en 2016. Evolution de AngularJS.0
+Créé en 2016. Evolution de AngularJS.
 
 Dans Angular, tout est COMPONENT. Un component ne gère que sa vue et ses données, a son propre cycle de vie et communique
 avec d'autres components uniquement via les évènements.
@@ -24,7 +24,7 @@ export class MonPremierComponent {
 Infos : @angular/core est le module coeur de Angular qui contient la classe "Component" à importée à chaque création.
 @Component est un décorateur, issu du langage TypeScript. Il permet de modifier une class pour la "transformer"
 en web component Angular.
-Il y a deux MetaDatas : "selector" est le Custom Element W3C (Balise HTML 5 perso) et "template" est l'import HTML W3C (intégation de document HTML 5).
+Il y a trois MetaDatas : "selector" est le Custom Element W3C (Balise HTML 5 perso) et "template" est l'import HTML W3C (intégation de document HTML 5).
 Utiliser "templateUrl" à la place de "template" pour renseigner une url menant vers un fichier de template.
 styles permet d'entrer le code CSS. styleUrls mentionne dans un array les fichiers CSS.
 
@@ -44,7 +44,7 @@ Si VM : ng serve --host 0.0.0.0 --port 4200
 
 Accéder à l'appli grâce au navigateur à l'adresse : IP:port
 
-Liste de commandes :
+Liste de commandes de création :
 
 -component : ng g component nom-component
 -directive : ng g directive nom-directive
@@ -55,6 +55,35 @@ Liste de commandes :
 -enum : ng g enum nom-enum
 -module : ng g module nom-module
 
+Evènement click (Equivalent de ng-click = "") : (click) = ""
+Input Data-binding (Equivalent de ng-model = "") : [(ngModel)] = ""
+
+Structure d'un projet :
+
+Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
+-nom.component.html -> template HTML
+-nom.component.ts -> fichier TypeScript principal
+-nom.component.spec.ts -> fichier d'injection de dépendances
+
+Il y a un component principal du nom de app directement dans le dossier.
+
+Lorsque le développement est fini et que l'on souhaite mettre l'application sur un serveur, il faut le compiler
+avec la commande ng build et transférer sur le serveur l'ensemble des fichiers se situant dans le dossier "dist".
+
+=== Création d'une class externe ===
+
+Créer un fichier .ts portant le nom de la class et y intégrer :
+
+export class nomClass {
+	propriete:type;
+	methode():type;
+	...
+}
+
+L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location';
+
+
+
 Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.
 Il y a deux sortes de directives : 
 -Directives structurelles (ajoute, modifie ou supprime un élément du DOM) ex : *ngIf="", *ngFor="", *ngSwitchCase="...
@@ -63,8 +92,6 @@ Il y a deux sortes de directives :
 Ajouter des listeners dans une directive :
 
 @HostListener('event') onEvent() { }
-
-Equivalent de ng-click="" : (click)=""
 
 
 
