@@ -63,7 +63,7 @@ Structure d'un projet :
 Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
 -nom.component.html -> template HTML
 -nom.component.ts -> fichier TypeScript principal
--nom.component.spec.ts -> fichier d'injection de dépendances
+-nom.component.spec.ts -> fichier pour les tests (optionnel)
 
 Il y a un component principal du nom de app directement dans le dossier.
 
@@ -72,21 +72,15 @@ avec la commande ng build et transférer sur le serveur l'ensemble des fichiers s
 
 === Création d'une class externe ===
 
-Créer un fichier .ts portant le nom de la class et y intégrer :
+Utiliser la commande ng g class nomClass pour créer le fichier de class.
 
-export class nomClass {
-	propriete:type;
-	methode():type;
-	...
-}
-
-L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location';
+L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location'; // sans le préfixe
 
 
 
 Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.
 Il y a deux sortes de directives : 
--Directives structurelles (ajoute, modifie ou supprime un élément du DOM) ex : *ngIf="", *ngFor="", *ngSwitchCase="...
+-Directives structurelles (ajoute, modifie ou supprime un élément du DOM) ex : *ngIf="", *ngFor="let x of y", *ngSwitchCase="...
 -Attribute directive (modifier l'apparence ou le comportement d'un élément du DOM) ex : [ngStyle]="{}"
 
 Ajouter des listeners dans une directive :
