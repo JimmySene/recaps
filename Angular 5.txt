@@ -4,7 +4,7 @@ Créé en 2016. Evolution de AngularJS.
 Dans Angular, tout est COMPONENT. Un component ne gère que sa vue et ses données, a son propre cycle de vie et communique
 avec d'autres components uniquement via les évènements.
 
-Déclaration d'un component :
+Déclaration d'un component : ng g c nom-component avec angular cli
 
 import { Component } from '@angular/core';
 
@@ -74,7 +74,7 @@ avec la commande ng build et transférer sur le serveur l'ensemble des fichiers s
 
 Utiliser la commande ng g class nomClass pour créer le fichier de class.
 
-L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location'; // sans le préfixe
+L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location'; // sans le sufixe
 
 
 

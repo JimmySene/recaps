@@ -1,0 +1,63 @@
+Linux est un système d'exploitation au même titre que Windows et Mac OS.
+Il est réputé pour sa sécurité et ses mises à jour fréquentes.
+
+Le principe de base de Linux est de nous permettre un contrôle total sur la machine sur laquelle il est installé.
+
+Un système d'exploitation : superlogiciel faisant la liaison entre la partie hardware et software sur un ordinateur.
+Se lance au démarrage après l'écran de boot.
+
+Boot loader : Programme permettant de choisir un OS à lancer au démarrage. Aussi appelé "GRUB".
+
+Les programmes Windows ne fonctionnent pas sur Linux et inversement.
+Cependant il est possible de lancer des programmes windows avec le programme wine.
+
+La majorité des programmes sous LINUX sont gratuits, souvent mis à jour et meilleurs voir exclusifs.
+
+===================== HISTOIRE =====================
+
+1969 -> UNIX plus puissant que MS-DOS mais plus compliqué
+1984 -> MS-DOS de Microsoft
+
+Texte blanc sur fond noir.
+
+C'est en 1984 que Richard Stallman fonda le projet GNU : un système d'exploitation basé sur UNIX gratuit et libre.
+(MAC OS est également basé sur UNIX.)
+
+PS : Le code source d'Unix n'a pas été repris et a complètement été réécrit. Il n'y a que le fonctionnement qui est le même.
+
+1991 -> Linus Torvalds créé LINUX.
+
+Le projet GNU et Linux ont fusionné pour créer GNU/Linux.
+
+===============================================================
+
+Différentes distributions de Linux ont été créés. Ce qui différe d'une distribution à l'autre est :
+
+-L'installation de l'OS
+-La gestion de l'installation des programmes
+-Les programmes préinstallés
+
+Debian et Red Hat sont des distributions de Linux et il en existe d'autres.
+
+L'un des gros avantages de Debian est son gestionnaire de paquets apt-get. 
+Tous les programmes téléchargeables sont centralisés au même endroit et sont facilement installables et desinstallables.
+Debian est l'une des seules distrib à être développée par des indépendants à travers le monde et non par une entreprise.
+
+Il existe également des distributions de distributions. 
+Skolelinux (pour les écoles) et Ubuntu sont des distributions de Debian, il en existe d'autres.
+
+Ubuntu est devenu célèbre pour plusieurs raisons :
+-Prévu pour le grand public, d'où son slogan "Linux for human beings".
+-Mises à jour fréquentes
+-Beaucoup d'utilisateurs donc beaucoup d'aide
+
+
+
+
+
+
+
+
+
+
+

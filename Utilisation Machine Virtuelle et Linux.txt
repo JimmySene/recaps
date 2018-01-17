@@ -61,3 +61,5 @@ Commandes sous redhat :
 -yum search nomLogiciel : Cherche un logiciel
 
 Utiliser une commande propre au dossier actuel : ./nomDeLaCommande
+
+Afficher l'adresse IP : ip addr show
