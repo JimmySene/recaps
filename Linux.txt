@@ -51,6 +51,58 @@ Ubuntu est devenu célèbre pour plusieurs raisons :
 -Mises à jour fréquentes
 -Beaucoup d'utilisateurs donc beaucoup d'aide
 
+===============================================================
+
+Le programme X gère le monde graphique de Linux. Par dessus y est greffé un gestionnaire de bureau.
+Celui-ci gère les fenêtres, leur apparence, leurs options...
+
+Les plus connus sont Unity, KDE, XFCE et Gnome.
+Il existe différentes versions d'Ubuntu liés à un gestionnaire de bureau différent comme Kubuntu (KDE) ou Xubuntu (XFCE).
+Ubuntu était livré par défaut avec Gnome mais est désormais livré avec Unity.
+
+Il est possible d'avoir plusieurs gestionnaires de bureaux et d'en faire le choix au démarrage après s'être logué.
+La compatibilité des programmes reste optimale.
+
+La console reste la même peu importe le gestionnaire de bureau choisi.
+
+---
+
+Le partionnement : Découper virtuellement un disque en plusieurs parties.
+Réduire la mémoire allouée à un OS sur un disque dur pour en laisser de la place pour un autre.
+
+Il est préférable d'effectuer une défragmentation avant de partionner son HDD pour y installer Linux.
+
+Il est utile de créer une partition de 1GO max pour une extension à la mémoire vive afin que linux continue dessus en cas de problème.
+Définir en tant qu'espace d'échange "swap".
+
+Il y a un système de fichier par partition. Un système de fichier est une façon d'organiser les fichiers par référence
+au sein d'un annuaire, mais également de leur donner des droits. Il ne peut y avoir qu'un seul système de fichier par  partition.
+
+Systèmes de fichiers Microsoft : FAT 16 (< à 4GO), FAT 32 (< à 2TO), NTFS (16Eo + journalisé)
+Linux : ext2 (pas besoin de defragmentation car les fichiers se fragmentent peu), ext3 (journalisation), ext4 (plus performant)
+
+Le nom des disques sous Linux :
+-1ère lettre : H ou S : H pour IDE et S pour SCSI (S-ATA), ce sont deux types de connectique à la carte mère
+-2ième lettre : D 
+-3ième lettre : A, B, C... (premier disque, deuxième, troisième...)
+-Un chiffre pour la partition : 1, 2, 3...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
