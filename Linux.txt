@@ -25,7 +25,7 @@ C'est en 1984 que Richard Stallman fonda le projet GNU : un système d'exploitati
 
 PS : Le code source d'Unix n'a pas été repris et a complètement été réécrit. Il n'y a que le fonctionnement qui est le même.
 
-1991 -> Linus Torvalds créé LINUX.
+1991 -> Linus Torvalds créé son propre OS : LINUX.
 
 Le projet GNU et Linux ont fusionné pour créer GNU/Linux.
 
@@ -53,17 +53,20 @@ Ubuntu est devenu célèbre pour plusieurs raisons :
 
 ===============================================================
 
-Le programme X gère le monde graphique de Linux. Par dessus y est greffé un gestionnaire de bureau.
+Le programme X gère le mode graphique de Linux. Par dessus y est greffé un gestionnaire de bureau.
 Celui-ci gère les fenêtres, leur apparence, leurs options...
 
 Les plus connus sont Unity, KDE, XFCE et Gnome.
 Il existe différentes versions d'Ubuntu liés à un gestionnaire de bureau différent comme Kubuntu (KDE) ou Xubuntu (XFCE).
-Ubuntu était livré par défaut avec Gnome mais est désormais livré avec Unity.
+Ubuntu était livré par défaut avec Gnome, puis avec Unity pour enfin revenir sur Gnome.
 
 Il est possible d'avoir plusieurs gestionnaires de bureaux et d'en faire le choix au démarrage après s'être logué.
 La compatibilité des programmes reste optimale.
 
 La console reste la même peu importe le gestionnaire de bureau choisi.
+
+(Sur Unity : On peut changer de gestionnaire de bureau en cliquant sur l'icone Ubuntu à côté de login / mot de passe.)
+(Sur KDE : La petite flèche pointant vers le bas sur l'écran de login)
 
 ---
 
@@ -72,7 +75,7 @@ Réduire la mémoire allouée à un OS sur un disque dur pour en laisser de la place
 
 Il est préférable d'effectuer une défragmentation avant de partionner son HDD pour y installer Linux.
 
-Il est utile de créer une partition de 1GO max pour une extension à la mémoire vive afin que linux continue dessus en cas de problème.
+Il est utile de créer une partition de 1GO max pour une extension à la mémoire vive afin que linux continue dessus en cas de dépassement de mémoire.
 Définir en tant qu'espace d'échange "swap".
 
 Il y a un système de fichier par partition. Un système de fichier est une façon d'organiser les fichiers par référence
@@ -86,6 +89,82 @@ Le nom des disques sous Linux :
 -2ième lettre : D 
 -3ième lettre : A, B, C... (premier disque, deuxième, troisième...)
 -Un chiffre pour la partition : 1, 2, 3...
+
+---
+
+Unity :
+L'explorateur de fichier s'appelle "Nautilus".
+
+KDE :
+La barre des tâches s'appelle "le tableau de bord"
+Le menu démarrer "le menu K".
+Le navigateur web : Konqueror
+L'explorateur de fichiers : QuickAccess ou Dolphin (plus complet)
+Les widgets : Plasmoïdes
+
+Si installation de Ubuntu dans une VM, penser à installer les additions invité en allant dans "périphériques" "installer..."
+Cela permettra d'avoir accès à la VM en plein écran, de partager le presse papier et dossiers de Linux - Windows...
+
+L'utilisation de la console permet d'aller beaucoup plus vites dans ce que l'on fait.
+
+Aller dans la console : CTRL + ALT + FX (1 à 6)
+Sortir de la console : CTRL + ALT + F7
+
+Il est cependant plus pratique d'utiliser un terminal en mode graphique.
+
+Utiliser Putty pour se connecter à un serveur Linux distant via Internet avec le protocole SSH (plus sécurisé que TelNet).
+Un serveur est un ordinateur constamment connectée à Internet servant généralement à stocker et livrer des fichiers.
+
+L'invite de commande s'affiche et indique :
+nomUtilisateur@nomMachine:~$
+~ = dossier "home" (dossier personnel)
+$ = connecté en utilisateur "normal". # = connecté en superutilisateur "root".
+
+Certaines commandes ont des paramètres. Il existe deux types de paramètres :
+-courts : un tiret + une lettre
+-longs : deux tirets + plusieurs lettres
+
+On peut attribuer une valeur à un paramètre :
+-court : parametre valeur
+-long : parametre=valeur
+
+Les commandes et paramètres sont sensibles à la casse.
+Toutes les commandes sont des programmes utilisables à partir de l'invite de commande.
+
+Autocomplétion : 
+-appuie deux fois sur tab pour afficher une liste des commandes 
+-appuie une fois sur tab pour autocomplétion
+
+Si la liste s'étale sur plusieurs pages : espace pour passer à la page suivante, entrée pour la ligne et q pour sortir.
+
+Appuie sur la touche haut pour revenir à la commande précédente, bas pour la commande suivante.
+
+La convention de nommage pour les fichiers et dossiers : minuscules sans espaces ni accents (ce n'est pas une règle)
+
+Dans Linux, tout est fichier. Les lecteurs C:, D:, E:... de Windows sont tous regroupés en un seul et même endroit appelé
+"racine" : /. 
+
+Se rendre dans le dossier personnel : cd:~
+Se rendre dans le dossier racine : cd /
+
+Les dossiers personnels de chaque utilisateur se situent dans /home
+
+===================== COMMANDES =====================
+
+date : affiche la date et l'heure
+ls : affiche la liste des dossiers et fichiers
+	-a / --all : affiche les fichiers cachés (commencant par un .)
+history : affiche un historique des commandes utilisées
+clear (ctrl + l) : nettoie la console
+exit (ctrl + d) : ferme la console
+pwd : affiche le dossier actuel
+which nomCommande : connaitre l'emplacement de la commande
+
+
+
+
+
+
 
 
 
