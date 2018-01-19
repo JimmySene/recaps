@@ -149,16 +149,48 @@ Se rendre dans le dossier racine : cd /
 
 Les dossiers personnels de chaque utilisateur se situent dans /home
 
+Les fichiers sur Linux sont stockés en deux parties : le nom et le contenu (inode).
+
 ===================== COMMANDES =====================
 
 date : affiche la date et l'heure
 ls : affiche la liste des dossiers et fichiers
 	-a / --all : affiche les fichiers cachés (commencant par un .)
+	-l : liste détaillée
+	-h : affiche le poids 
+	-t : trie par date de dernière modification
 history : affiche un historique des commandes utilisées
 clear (ctrl + l) : nettoie la console
 exit (ctrl + d) : ferme la console
 pwd : affiche le dossier actuel
 which nomCommande : connaitre l'emplacement de la commande
+cd : se déplacer dans l'arborescence (chemins relatifs ou absolus)
+du : affiche la taille des dossiers dans le dossier actuel
+	-a : et des fichiers
+	-h : poids en MO
+	-s : affiche le poids total
+cat nomFichier : affiche le contenu d'un fichier
+	-n : affiche les numéros de ligne
+less nomFichier : affiche le contenu d'un fichier page par page
+head nomFichier : affiche les premières lignes d'un fichier
+	-n nbLignes : affiche les X premières lignes
+tail nomFichier : affiche les dernières lignes d'un fichier (CTRL + C pour fermer la commande)
+	-n : Affiche les X dernière lignes
+	-f : Suit la fin du fichier (temps réel)
+touch nomFichier : créer un fichier (ou édite sa date de modification)
+mkdir nomDossier : créer un dossier
+	-p arborescence1/arborescence2/... : créer des dossiers enfants
+cp nomFichier nomNouveauFichierOuCheminRelatifOuAbsolu : copie un fichier
+	-R : copie un dossier et son contenu
+mv nomFichierOuDossier/ cheminRelatifOuAbsolu : déplacer un fichier ou le renomme
+rm nomFichier : supprimer un fichier
+	-i : demande une confirmation
+	-f : détruit à coup sûr
+	-v : fait parler la commande
+	-r : supprimer un dossier
+ln nomFichierSource nomFichierCible : créer un lien physique vers un même inode
+	-s : créer un lien symbolique vers un nom de fichier
+
 
 
 
