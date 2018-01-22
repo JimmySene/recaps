@@ -144,12 +144,36 @@ La convention de nommage pour les fichiers et dossiers : minuscules sans espaces
 Dans Linux, tout est fichier. Les lecteurs C:, D:, E:... de Windows sont tous regroupés en un seul et même endroit appelé
 "racine" : /. 
 
-Se rendre dans le dossier personnel : cd:~
+Se rendre dans le dossier personnel : cd:~ ou cd
 Se rendre dans le dossier racine : cd /
 
 Les dossiers personnels de chaque utilisateur se situent dans /home
 
 Les fichiers sur Linux sont stockés en deux parties : le nom et le contenu (inode).
+
+Linux est un OS multi-utilisateurs dédiés à être utilisé par plusieurs personnes. 
+Les comptes utilisateurs sont limités en droit.
+Le compte administrateur root permet de tout faire et est accessible via la commande sudo (Substitute User DO). On peut se logguer en root sur beaucoup de distributions Linux mais pas
+sur Ubuntu car c'est consideré comme trop dangereux pour un débutant. Cela constitue une barrière contre les virus notamment.
+
+Lors de la création d'un compte, un groupe portant le même nom est créé.
+
+Les droits des fichiers et dossiers sont représentés par une série de lettres : 
+	d : dossier
+	l : link
+	r : droit de lecture
+	w : droit d'écriture
+	x : droit d'éxécution (programmes et scripts) (si c'est un dossier, on peut le traverser et voir son contenu descendant)
+	- : fichier / pas de droit
+
+Sous la forme suivante : 
+
+wxxxyyyzzz : 
+
+w : fichier / dossier / link
+xxx : droits du propriétaire
+yyy : droits du groupe
+zzz : droits des autres utilisateurs
 
 ===================== COMMANDES =====================
 
@@ -161,7 +185,7 @@ ls : affiche la liste des dossiers et fichiers
 	-t : trie par date de dernière modification
 history : affiche un historique des commandes utilisées
 clear (ctrl + l) : nettoie la console
-exit (ctrl + d) : ferme la console
+exit (ctrl + d) : ferme la console / sort du mode root
 pwd : affiche le dossier actuel
 which nomCommande : connaitre l'emplacement de la commande
 cd : se déplacer dans l'arborescence (chemins relatifs ou absolus)
@@ -190,6 +214,41 @@ rm nomFichier : supprimer un fichier
 	-r : supprimer un dossier
 ln nomFichierSource nomFichierCible : créer un lien physique vers un même inode
 	-s : créer un lien symbolique vers un nom de fichier
+sudo : passer temporairement en root
+	su : en permanence
+chmod nbDroit nomFichier : modifier les droits utilisateur d'un fichier
+	Manière absolu : r = 4 ; w = 2 ; x = 1 -> il faut additionner les droits et mettre 3 chiffres pour utilisateur, groupe et autres
+	Manière relative : u = user, g = group, o = other ; + = ajouter, - = retirer, = = affecter -> Exemple : chmod g+w rapport.txt
+	(777 = tous les droits pour tous, 000 = aucun droits pour tous)
+	root outrepasse tous les droits
+	-R : affecter récursivement à tous les sous-dossiers
+setxkbmap fr : change le clavier en AZERTY
+nano : ouvre l'éditeur de texte nano (^ signifie CTRL)
+man nomCommande : avoir les infos sur une commande
+
+
+===================== COMMANDES ROOT =====================
+
+DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
+passwd nomUser : Changer le mot de passe d'un compte utilisateur
+DEBIAN et ses distribs -> deluser nomUser / Autres LINUX -> userdel Supprimer un utilisateur
+	--remove-home (avant le nomUser) : Supprime le dossier personnel du compte utilisateur
+DEBIAN et ses distribs -> addgroup nomGroupe / Autres LINUX -> groupadd nomGroupe : Ajoute un groupe
+usermod nomUser : modifier un utilisateur
+	-l : renomer l'utilisateur
+	-g : changer le groupe de l'utilisateur
+	-G : changer les groupes de l'utilisateur (séparés par des virgules)
+	-a : ajoute l'utilisateur à 1 ou des gorupe(s)
+	EXEMPLE : usermod -G amis, prof patrick
+DEBIAN et ses distribs -> delgroup nomGroupe / Autres LINUX -> groupdel nomGroupe : supprimer un groupe
+chown nomUser nomFichier : changer le propriétaire d'un fichier
+	-R : affecter récursivement les sous-dossiers et fichiers
+	ASTUCE : chown permet de changer le groupe propriétaire, il suffit d'ajouter à côté du nomUser:nomGroupe
+chgrp nomGroupe nomFichier : changer le groupe propriétaire d'un fichier
+
+
+
+
 
 
 
