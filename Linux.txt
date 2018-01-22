@@ -151,7 +151,9 @@ Les dossiers personnels de chaque utilisateur se situent dans /home
 
 Les fichiers sur Linux sont stockés en deux parties : le nom et le contenu (inode).
 
-Linux est un OS multi-utilisateurs dédiés à être utilisé par plusieurs personnes. 
+---
+
+Linux est un OS multi-utilisateurs dédié à être utilisé par plusieurs personnes. 
 Les comptes utilisateurs sont limités en droit.
 Le compte administrateur root permet de tout faire et est accessible via la commande sudo (Substitute User DO). On peut se logguer en root sur beaucoup de distributions Linux mais pas
 sur Ubuntu car c'est consideré comme trop dangereux pour un débutant. Cela constitue une barrière contre les virus notamment.
@@ -174,6 +176,22 @@ w : fichier / dossier / link
 xxx : droits du propriétaire
 yyy : droits du groupe
 zzz : droits des autres utilisateurs
+
+---
+
+
+On peut modifier quelques paramètres des consoles en éditant le fichier bashrc situé dans etc/ ou home/.
+le fichier profile fait la même chose mais pour les shell demandant de se logguer. profile fait appel à bashrc. Modifier bashrc est donc suffisant.
+
+---
+
+Sous les distributions Debian, il n'y a pas de programmes d'installation .exe comme sur Windows, mais des paquets en .deb.
+Une sorte de dossier zippé contenant tous les fichiers du programme. 
+
+Tous les .deb sont situés à un seul et même endroit appelé dépôt ou repository et possèdent une gestion de dépendance.
+Il existe plusieurs dépôts qui sont des copies des autres proposant les même paquets. Il est conseillé de choisir un dépôt se situant à proximité.
+
+Le dépot Ubuntu pour la france : fr.archive.ubuntu.com
 
 ===================== COMMANDES =====================
 
@@ -224,7 +242,30 @@ chmod nbDroit nomFichier : modifier les droits utilisateur d'un fichier
 	-R : affecter récursivement à tous les sous-dossiers
 setxkbmap fr : change le clavier en AZERTY
 nano : ouvre l'éditeur de texte nano (^ signifie CTRL)
+	CTRL + O pour enregistrer
+	-m : permet l'utilisation de la souris dans la console (mouse)
+	-i : indentation automatique (autoindent)
+	-A : retour intelligent avec le bouton origine (smarthome)
+	Le fichier de configuration personnel de Nano s'appelle .nanorc et est situé dans le dossier personnel
+	Le fichier de configuration global de Nano s'appelle nanorc et est situé dans le dossier etc (modifiable en root)
 man nomCommande : avoir les infos sur une commande
+alias : affiche la liste des alias de commandes créés dans le fichier .bashrc
+apt-get : télécharger et installer des paquets
+	update : mettre à jour le cache (root)
+	install nomPaquet : télécharge et installe un paquet
+	remove nomPaquet : supprimer un paquet
+	autoremove nomPaquet : supprimer un paquet et ses dépendances devenues inutiles
+	upgrade : mettre à jour ses paquets (selon ce qui est situé dans le cache, faire un apt-get update avant de préférence) 
+	Modifier les dépots en éditant le fichier sources.list situé dans /etc/apt/
+apt-cache search nomPaquet : rechercher un paquet si on ne connait pas son nom
+man nomCommande : affiche le manuel d'une commande (man pour "manual") 
+	Utiliser le / pour faire des recherches dans le manuel
+	Les mots écrits en gras sont à recopier, ceux soulignés sont à remplacer
+	... signifie que l'entrée est à répéter autant de fois que l'on veut
+	[] signifient des arguments facultatifs contrairement aux arguments obligatoires écrits en brut
+	| signifie OU
+apropos motClef : retrouver une commande grâce à un mot clé (affiche une liste)
+whatis nomCommande : affiche la description d'une commande
 
 
 ===================== COMMANDES ROOT =====================
