@@ -181,7 +181,9 @@ zzz : droits des autres utilisateurs
 
 
 On peut modifier quelques paramètres des consoles en éditant le fichier bashrc situé dans etc/ ou home/.
-le fichier profile fait la même chose mais pour les shell demandant de se logguer. profile fait appel à bashrc. Modifier bashrc est donc suffisant.
+le fichier profile fait la même chose mais pour les shell demandant de se logguer. profile fait appel à bashrc.
+Modifier bashrc est donc suffisant.
+Le fichier .bashrc est executé au démarrage de la console.
 
 ---
 
@@ -189,13 +191,15 @@ Sous les distributions Debian, il n'y a pas de programmes d'installation .exe co
 Une sorte de dossier zippé contenant tous les fichiers du programme. 
 
 Tous les .deb sont situés à un seul et même endroit appelé dépôt ou repository et possèdent une gestion de dépendance.
-Il existe plusieurs dépôts qui sont des copies des autres proposant les même paquets. Il est conseillé de choisir un dépôt se situant à proximité.
+Il existe plusieurs dépôts qui sont des copies des autres proposant les même paquets.
+Il est conseillé de choisir un dépôt se situant à proximité.
 
 Le dépot Ubuntu pour la france : fr.archive.ubuntu.com
 
 ===================== COMMANDES =====================
 
 date : affiche la date et l'heure
+	MMJJHHmmAAAAA : change la date
 ls : affiche la liste des dossiers et fichiers
 	-a / --all : affiche les fichiers cachés (commencant par un .)
 	-l : liste détaillée
@@ -234,6 +238,7 @@ ln nomFichierSource nomFichierCible : créer un lien physique vers un même inode
 	-s : créer un lien symbolique vers un nom de fichier
 sudo : passer temporairement en root
 	su : en permanence
+	-E : Préserver les variables d'environnement
 chmod nbDroit nomFichier : modifier les droits utilisateur d'un fichier
 	Manière absolu : r = 4 ; w = 2 ; x = 1 -> il faut additionner les droits et mettre 3 chiffres pour utilisateur, groupe et autres
 	Manière relative : u = user, g = group, o = other ; + = ajouter, - = retirer, = = affecter -> Exemple : chmod g+w rapport.txt
@@ -248,7 +253,6 @@ nano : ouvre l'éditeur de texte nano (^ signifie CTRL)
 	-A : retour intelligent avec le bouton origine (smarthome)
 	Le fichier de configuration personnel de Nano s'appelle .nanorc et est situé dans le dossier personnel
 	Le fichier de configuration global de Nano s'appelle nanorc et est situé dans le dossier etc (modifiable en root)
-man nomCommande : avoir les infos sur une commande
 alias : affiche la liste des alias de commandes créés dans le fichier .bashrc
 apt-get : télécharger et installer des paquets
 	update : mettre à jour le cache (root)
@@ -266,6 +270,25 @@ man nomCommande : affiche le manuel d'une commande (man pour "manual")
 	| signifie OU
 apropos motClef : retrouver une commande grâce à un mot clé (affiche une liste)
 whatis nomCommande : affiche la description d'une commande
+lsb_release : affiche la version actuelle de Debian
+	-a : affiche les infos
+	-ds : affiche une description
+dpkg : Package manager pour Debian
+	-L name Paquet : affiche la liste des fichiers d'un paquet
+dpkg-reconfigure keyboard-configuration : Modifier le clavier
+ip addr : affiche l'adresse IP
+locate nomFichier : Localise un fichier dans la base de données de fichiers du disque (mise à jour une fois par jour)
+find où quoi queFaireAvec : Trouver un fichier dans le disque dur à partir du dossier actuel (si pas de "où")
+	-name "nomFichier" : rechercher un fichier par nom
+	-size +10M (k, M, G...) (+ ou -) : recherche un fichier en fonction de son poids
+	-atime X (remplacer X par le nb de jours) : recherche un fichier par date de dernier accès
+	-type X (remplacer X par d si dossier, f si fichier)
+
+	-printf "" : afficher un texte formaté
+	-delete : supprime les fichiers
+	-exec commande {} \; : execute une commande ({} est remplacé par le nom du fichier)
+hostname : affiche le nom du pc (pour le modifier il faut modifier les fichiers en root situés dans /etc/hostname et /etc/hosts)
+
 
 
 ===================== COMMANDES ROOT =====================
@@ -286,6 +309,8 @@ chown nomUser nomFichier : changer le propriétaire d'un fichier
 	-R : affecter récursivement les sous-dossiers et fichiers
 	ASTUCE : chown permet de changer le groupe propriétaire, il suffit d'ajouter à côté du nomUser:nomGroupe
 chgrp nomGroupe nomFichier : changer le groupe propriétaire d'un fichier
+updatedb : met à jour la base de données de fichiers
+reboot : redémarre l'ordinateur
 
 
 
