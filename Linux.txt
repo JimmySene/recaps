@@ -288,7 +288,28 @@ find où quoi queFaireAvec : Trouver un fichier dans le disque dur à partir du do
 	-delete : supprime les fichiers
 	-exec commande {} \; : execute une commande ({} est remplacé par le nom du fichier)
 hostname : affiche le nom du pc (pour le modifier il faut modifier les fichiers en root situés dans /etc/hostname et /etc/hosts)
-
+grep texte nomFichier : recherche un mot dans un fichier
+	-i : ne tient pas compte de la casse
+	-n : connaitre le numéro de ligne
+	-v : inverser la recherche (ne contient pas le mot)
+	-r (rgrep) : rechercher dans tous les fichiers et sous-dossiers (mettre repertoire à la fin à la place du nomFichier)
+	-E (egrep) : utiliser une expression régulière comme filtre
+sort nomFichier : trie le contneu d'un fichier
+	-o : enregistrer le trie : sort nomNewFichier nomFichier
+	-r : trier en ordre inverse
+	-R : trier aléatoirement
+	-n : trier des nombres
+wc nomFichier : compte le nombre de lignes, mots et octets d'un fichier
+	-l : compte le nb de lignes
+	-w : compte le nb de mots
+	-c : compte le nb d'octets
+	-m : compte le nb de caractères
+uniq nomFichier : supprime les doublons (nécessite que le fichier soit trié avec la commande sort)
+	-c : affiche le nb de fois qu'une occurence apparait
+	-d : afficher uniquement les lignes en double
+cut -c nbCaracteres nomFichier : couper chaque lignes selon le nombre de caractères
+	-d : indiquer un délimiteur
+	-f : indiquer le numéro du ou des champs à couper
 
 
 ===================== COMMANDES ROOT =====================

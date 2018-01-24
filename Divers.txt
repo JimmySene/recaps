@@ -6,3 +6,8 @@ Shadow DOM :
 	-Utilisable seul en dehors du component
 	Utiliser la méthode .attachShadow({mode: "open"}) sur un élément pour appliquer le SHADOW DOM dessus.
 	Accessible via le noeud racine ShadowRoot.
+
+
+Format CSV :
+	"Comma Separated Value". Les entrées sont séparées par des virgules.
+	Fichiers principalement générés par Excel et Calc (Tableurs).
