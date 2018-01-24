@@ -196,6 +196,25 @@ Il est conseillé de choisir un dépôt se situant à proximité.
 
 Le dépot Ubuntu pour la france : fr.archive.ubuntu.com
 
+---
+
+Chaque commandes produisent deux flux de données différentes : la sortie standard et la sortie d'erreurs.
+
+On peut rediriger le résultat d'une commande dans un fichier au lieu de l'afficher dans la console en utilisant
+les flux de redirection.
+
+Sortie standard : > nomFichier (création / replacement) ou >> (ajout à la fin du fichier) à la fin de la commande.
+Sortie d'erreurs : 2> nomFichier (création / remplacement) ou 2>> nomFichier (ajout à la fin du fichier) ...
+Fusionner les deux sorties dans un fichier : >(>) nomFichier 2>&1
+
+On peut également agir sur les entrées d'une commande :
+
+< : lire depuis un fichier (retourne son contenu)
+<< FIN : lire depuis le clavier (on peut remplacer FIN par ce que l'on veut, c'est ce qu'il faut taper pour sortir)
+
+| permet de chainer des commandes.
+
+
 ===================== COMMANDES =====================
 
 date : affiche la date et l'heure
@@ -309,7 +328,7 @@ uniq nomFichier : supprime les doublons (nécessite que le fichier soit trié avec
 	-d : afficher uniquement les lignes en double
 cut -c nbCaracteres nomFichier : couper chaque lignes selon le nombre de caractères
 	-d : indiquer un délimiteur
-	-f : indiquer le numéro du ou des champs à couper
+	-f : indiquer le numéro du ou des champs (colone(s)) à couper
 
 
 ===================== COMMANDES ROOT =====================

@@ -8,6 +8,60 @@ Shadow DOM :
 	Accessible via le noeud racine ShadowRoot.
 
 
-Format CSV :
-	"Comma Separated Value". Les entrées sont séparées par des virgules.
+
+
+Serveur : Ordinateur relié à Internet ayant pour rôle de servir des données à celui qui lui en demande.
+
+
+
+
+Sérialisation : Consiste à transformer une structure de donnée simple ou complexe en fichier texte.
+
+Formats de sérialisation : 
+
+-Format CSV :
+	"Comma Separated Value". Les données sont séparées par des virgules.
 	Fichiers principalement générés par Excel et Calc (Tableurs).
+-Format YAML : (Yet Another Markup Language)
+	standard de sérialisation de données pour tous les langages, facile à comprendre pour les humains
+	Permet d'inclure plusieurs documents en les séparant par ---
+	S'utilise davantage pour la configuration de fichiers.
+	Continet des types avancés comme les dates
+	Commentaires : #
+	Exemple :
+	---
+	nom_section:
+		nom: valeur
+		nom: valeur
+
+	autre_section:
+		nom: valeur
+		...
+-Format XML : 
+	reine des formats de sérialisation. Pro mais verbeux, fragile et complexe.
+	Données entre balises <>.
+-Format JSON (Javascript Object Notation) :
+	Représentation des données sous forme de variables javascript. Plus légère que XML. Pas de commentaires.
+	S'utilise davantage pour l'envoi de données.
+	Se présente sous cette forme :
+	[
+		{
+			'nom' : 'valeur',
+			'nom' : 'valeur'
+		},
+		{
+			...
+		}
+	]
+-Format INI
+	Souvent des fichiers de configuration avec des paramètres
+	Constitué de deux éléments : l'en-tête (ou section) s'écrivant [nom_section] ; et la valeur s'écrivant nom=valeur
+	Exemple :
+	[nom_section]
+	nom=valeur
+	nom=valeur
+
+	[autre_section]
+	nom=valeur
+	...
+
