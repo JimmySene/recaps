@@ -329,8 +329,16 @@ uniq nomFichier : supprime les doublons (nécessite que le fichier soit trié avec
 cut -c nbCaracteres nomFichier : couper chaque lignes selon le nombre de caractères
 	-d : indiquer un délimiteur
 	-f : indiquer le numéro du ou des champs (colone(s)) à couper
-
-
+w : savoir qui a lancé tel ou tel programme sur la machine
+tload : affiche un graphique de la charge de l'ordinateur
+ps : afficher les processus de manière statique
+	-ef : lister tous les processus (et non pas que ceux que la console et utilisateur courant)
+	-u nomUtilisateur : lister les processus lancés par un utilisateur
+top : liste dynamiquement les processus
+kill PID : demande l'arrêt du processus (remplacer PID par l'ID du processus)
+	-9 : force l'arrêt du processus
+killall nomProcessus : tue plusieurs processus (qui possède une arborescence)
+nohup nomCommande : mettre la commande en tâche de fond (et ne l'attache à aucune console contrairement à &)
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
@@ -350,7 +358,8 @@ chown nomUser nomFichier : changer le propriétaire d'un fichier
 	ASTUCE : chown permet de changer le groupe propriétaire, il suffit d'ajouter à côté du nomUser:nomGroupe
 chgrp nomGroupe nomFichier : changer le groupe propriétaire d'un fichier
 updatedb : met à jour la base de données de fichiers
-reboot : redémarre l'ordinateur
+reboot : redémarre l'ordinateur (fait appel à shutdown)
+halt : éteint l'ordinateur (fait appel à shutdown)
 
 
 
