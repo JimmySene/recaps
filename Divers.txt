@@ -42,6 +42,7 @@ Formats de sérialisation :
 	Données entre balises <>.
 -Format JSON (Javascript Object Notation) :
 	Représentation des données sous forme de variables javascript. Plus légère que XML. Pas de commentaires.
+	Subset de YAML.
 	S'utilise davantage pour l'envoi de données.
 	Se présente sous cette forme :
 	[
