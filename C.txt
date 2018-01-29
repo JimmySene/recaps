@@ -1,0 +1,19 @@
+Inclure des fichiers .h : #include "fichier"
+
+Les fichiers .h contiennent les prototypes des fonctions. Ils sont à inclure en haut de chaque fichiers C en cas
+d'utilisation des fonctions.
+
+Un prototype d'une fonction permet d'écrire la fonction n'importe où dans le code notamment après le main.
+
+Initialiser un tableau à 0 : int tab[4] = {0};
+Le nom du tableau continent l'adresse de la première entrée. 
+
+On peut initialiser un string de la sorte : char chaine[] = "texte";
+Cela dit on ne peut pas changer la chaine avec cette méthode ensuite.
+
+strlen(); // récupérer la taille d'une chaine
+strcopy(copieDeLaChaine, chaineACopier); // Copie une chaine dans une autre
+strcat(chaine1, chaine2); // Coincatène deux chaines
+strcmp(chaine1, chaine2); // comparer deux chaines ; renvoie 0 si identiques
+strchr(chaine, caractere); // rechercher un caractère dans une chaine
+sprintf(chaine, "Blabla", potentielleVariable); // Ecrire dans une chaine
