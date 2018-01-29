@@ -214,6 +214,13 @@ On peut également agir sur les entrées d'une commande :
 
 | permet de chainer des commandes.
 
+On peut écrire plusieurs commandes sur une seule ligne en les séparant par un ; ou un && (celui-ci garantit la bonne execution).
+
+---
+
+Sous Linux, on a pris l'habitude de compresser nos fichiers en deux étapes :
+	-Réunir les fichiers en une archive avec le programme tar (.tar)
+	-Compresser le gros fichier obtenu à l'aide de gzip (.gz) ou bzip2 (.bz2)
 
 ===================== COMMANDES =====================
 
@@ -339,6 +346,25 @@ kill PID : demande l'arrêt du processus (remplacer PID par l'ID du processus)
 	-9 : force l'arrêt du processus
 killall nomProcessus : tue plusieurs processus (qui possède une arborescence)
 nohup nomCommande : mettre la commande en tâche de fond (et ne l'attache à aucune console contrairement à &)
+bg : relance un processus en pause mais en arrière plan (CTRL + Z pour mettre en pause un processus)
+jobs : affiche les processus liés à la console
+fg %x : Relance le processus en premier plan (remplace x par le numéro du processus donné par la commande jobs)
+at HH:MM : Lance une ou plusieurs commande(s) à une heure précise (CTRL + D pour sortir du prompt)
+	ajouter "tomorrow" à la fin de la commande pour lancer la commande le lendemain, ou la date sous forme MM/JJ/AAAA.
+	"now +x motClef" lance une commande après x temps (remplacer motClef par minutes, hours, days, weeks, months, years)
+atq : affiche la liste des commandes en attente
+atrm nomJob : supprimer une commande en attente
+sleep x : fait une pause de x secondes (ou mettre en plus m, h ou d)
+echo "xxx" >(>) nomFichier : écrit une ligne (remplacer xxx) dans un fichier (ou à la fin)
+crontab : programme la liste des commandes à éxecuter régulièrement
+	-e : modifier le crontab
+	-l : afficher le crontab
+	-r : supprimer le crontab
+tar -cvf nom_archive.tar nom_dossier : créer une archive tar de nom_dossier
+	-c : créer une archive tar
+	-v : afficher le détail de l'opération
+	-f : assembler l'archive dans un fichier
+	tar -tf nomArchive : affiche le contenu de l'archive sans l'extraire
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
