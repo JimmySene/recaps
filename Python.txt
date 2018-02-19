@@ -1,0 +1,27 @@
+Utiliser IDLE Python pour tester rapidemment du code.
+
+VARIABLES
+
+nom = valeur
+
+CONDITIONS
+
+if a < b :
+	instructions
+
+SAISIE :
+
+variable = type(input("texte"))
+
+AFFICHAGE :
+
+print("texte")
+print(variable)
+
+CONCATENATION : ,
+
+BOUCLE :
+
+for i in range (min,max,nbPas) :
+	instructions
+

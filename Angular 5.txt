@@ -35,7 +35,7 @@ Un component est en soit une class avec un décorateur @Component.
 Avec Angular, on peut utiliser un CLI pour générer le squelette de son application avec une simple commande.
 Il faut avoir installé une version de node JS et de NPM pour pouvoir l'utiliser.
 
-Installer Angular-cli : npm install -g angular-cli
+Installer Angular-cli : npm install -g @angular-cli
 
 Créer un projet : ng new nom-projet
 
@@ -56,7 +56,7 @@ Liste de commandes de création :
 -module : ng g module nom-module
 
 Evènement click (Equivalent de ng-click = "") : (click) = ""
-Input Data-binding (Equivalent de ng-model = "") : [(ngModel)] = ""
+Input Data-binding (Equivalent de ng-model = "") : [(ngModel)] = "" (penser à inclure le module forms dans app.module.ts)
 
 Structure d'un projet :
 

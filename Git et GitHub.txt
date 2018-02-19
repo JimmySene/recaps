@@ -1,3 +1,11 @@
+Git est un logiciel de gestion de versions de projets de développement.
+Il stock sur un dépot distant (appelé repository) différentes versions d'un projet informatique afin de garder des backups et permettre 
+une édition multi-utilisateur aisée. 
+
+On le préfère à Subversion (SVN) pour le fait qu'il soit décentralisé et offre la possibilité de créer des branches.
+
+---
+
 Utiliser Git Bash pour use les commandes GIT (clic droit sur le dossier d'appli -> Git Bash)
 
 Deux façons de procéder pour créer un nouveau dossier GIT (appelé "Repository") en local :
@@ -50,6 +58,27 @@ Annuler le dernier commit et les changements dans le fichier : git reset --hard 
 
 Anuler les modifications d'un fichier : git checkout nomFichier
 
+Gérer les remotes (dépôts distants) : 
+
+git remote : affiche la liste des dépôts enregistrés (simplement les nom)
+git remote -v : affiche la liste des dépôts enregistrés (nom et adresse)
+git remote add <nom du dépôt> <adresse du dépôt> : ajoute un nouveau dépôt
+git remote remove <nom du dépôt> : supprime un dépôt
+
+Configurer son identité (obligatoire pour commit) : 
+
+git config --global user.name "Jimmy Sené"
+git config --global user.email jimmy.sene@laposte.net
+
+Migrer un projet versionné de SVN à Git : 
+
+git svn clone <adresse du dépôt SVN> --no-metadata
+cd <dossier du projet>
+git remote add origin <adresse du dépôt distant git>
+git push
+git push --set-upstream origin master
+
+
 ===== INFOS GITHUB =====
 
 Publier ses codes sources sur GitHub est gratuit si on les met en opensource.
@@ -70,4 +99,6 @@ Voir où est synchroniser le repo : git remote -v
 Liens : 
 -https://help.github.com/articles/fork-a-repo/
 -https://help.github.com/articles/syncing-a-fork/
+
+https://blog.axopen.com/2017/02/git-comprendre-la-gestion-de-versions/
 

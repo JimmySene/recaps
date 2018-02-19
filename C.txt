@@ -5,15 +5,109 @@ d'utilisation des fonctions.
 
 Un prototype d'une fonction permet d'écrire la fonction n'importe où dans le code notamment après le main.
 
-Initialiser un tableau à 0 : int tab[4] = {0};
-Le nom du tableau continent l'adresse de la première entrée. 
+Préprocesseur (fichiers.h et fichiers.c) -> compilateur (fichiers .o et fichiers .a / .lib) -> linker (fichier .exe)
 
 On peut initialiser un string de la sorte : char chaine[] = "texte";
 Cela dit on ne peut pas changer la chaine avec cette méthode ensuite.
 
 strlen(); // récupérer la taille d'une chaine
 strcopy(copieDeLaChaine, chaineACopier); // Copie une chaine dans une autre
-strcat(chaine1, chaine2); // Coincatène deux chaines
+strcat(chaine1, chaine2); // Concatène deux chaines
 strcmp(chaine1, chaine2); // comparer deux chaines ; renvoie 0 si identiques
 strchr(chaine, caractere); // rechercher un caractère dans une chaine
 sprintf(chaine, "Blabla", potentielleVariable); // Ecrire dans une chaine
+
+Les variables sont des données temporaires que l'on stock dans la RAM.
+Elles sont représentées par un nom, traduit ensuite par le compilateur en adresse. 
+La valeur d'une variable peut être de type int, long, float, double, char. Dans tous les cas, le compilateur traduit la valeur en un nombre.
+
+Sensible à la casse.
+
+Déclarer une variable signifie demander la permission d'allouer de l'espace mémoire.
+
+Une constante se déclare de la façon suivante : const type NOM = valeur;
+C'est une variable qui possède une valeur qui ne changera pas dans le programme.
+
+Pour afficher une variable dans un printf, il faut utiliser le %d (int), %ld (long), %f (float et double), %c (char) ou %s (string).
+
+Les conditions :
+
+if()
+{
+
+} else if() {
+
+} else {
+
+}
+
+switch(variable)
+{
+	case 0:
+		break;
+	case 1:
+		break;
+	default:
+		break;
+}
+
+Les boucles :
+
+while()
+{
+
+}
+
+do
+{
+
+}while();
+
+for(initialisation;condition;incrementation)
+{
+
+}
+
+Fonctions :
+
+sortie nom(entrées)
+{
+
+}
+
+type nom(parametres)
+{
+	return;
+}
+
+type void pour une procédure (ne renvoit rien).
+
+Adresse de la variable : &variable
+Afficher l'adresse dans un printf : %p
+
+Un pointeur est une variable contenant l'adresse d'une autre variable.
+
+Créer un pointeur : type *nom = adresse;
+Afficher le contenu de la variable pointée dans un printf : *nomPointeur
+
+Passer des pointeurs à des fonctions permet de modifier les valeurs des variables pointées à partir des fonctions mêmes et de ne plus
+être limié au retour d'une seule valeur.
+
+Un tableau est une variable contenant plusieurs valeurs. Il se déclare comme ceci : type nom[quantite]
+Impossible de faire de déclarations dynamiques (mettre une variable en quantite) en C89. Sauf avec l'utilisation de malloc().
+
+Pour accéder à la valeur d'une case du tableau, il faut préciser son indice entre crochets. Ex : tab[0]
+tab est un pointeur pointant vers la première entrée. tab + 1 pointe sur la deuxième entrée. etc...
+On peut ainsi récupérer la valeur d'une case du tableau en mettant l'étoile du pointeur devant son nom.
+
+Initialiser un tableau à 0 : type tab[quantite] = {0};
+
+Créer une structure :
+
+struct nom
+{
+	type variable;
+	type variable;
+};
+
+Accéder au contenu d'un pointeur de structure : pointeurStructure->variable
