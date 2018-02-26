@@ -21,12 +21,18 @@ export class MonPremierComponent {
 }
 
 
-Infos : @angular/core est le module coeur de Angular qui contient la classe "Component" à importée à chaque création.
+Infos : @angular/core est le module coeur de Angular qui contient la classe "Component" à importer à chaque création.
 @Component est un décorateur, issu du langage TypeScript. Il permet de modifier une class pour la "transformer"
 en web component Angular.
-Il y a trois MetaDatas : "selector" est le Custom Element W3C (Balise HTML 5 perso) et "template" est l'import HTML W3C (intégation de document HTML 5).
-Utiliser "templateUrl" à la place de "template" pour renseigner une url menant vers un fichier de template.
-styles permet d'entrer le code CSS. styleUrls mentionne dans un array les fichiers CSS.
+Il y a trois MetaDatas : 
+-"selector" est le Custom Element W3C (Balise HTML 5 perso). Il y a trois façons de l"utiliser :
+	-'exemple' => créer la balise <exemple></exemple>
+	-'.exemple' => Créer une class css <div class="exemple"></div>
+	-[exemple] => Créer un attribut html <div exemple></div>
+-"template" est l'import HTML W3C (intégation de document HTML 5). Utiliser les `` pour écrire sur plusieurs lignes. 
+	Utiliser "templateUrl" à la place de "template" pour renseigner une url menant vers un fichier de template.
+-styles permet d'entrer le code CSS. 
+	styleUrls mentionne dans un array les fichiers CSS.
 
 "export" pour exporter le component dans toute l'application.
 
@@ -63,7 +69,7 @@ Structure d'un projet :
 Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
 -nom.component.html -> template HTML
 -nom.component.ts -> fichier TypeScript principal
--nom.component.spec.ts -> fichier pour les tests (optionnel)
+-nom.component.spec.ts -> fichier pour les tests (optionnel et peut être supprimé)
 
 Il y a un component principal du nom de app directement dans le dossier.
 
@@ -74,8 +80,7 @@ avec la commande ng build et transférer sur le serveur l'ensemble des fichiers s
 
 Utiliser la commande ng g class nomClass pour créer le fichier de class.
 
-L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location'; // sans le sufixe
-
+L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location"; // sans le sufixe
 
 
 Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.

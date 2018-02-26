@@ -66,3 +66,24 @@ Formats de sérialisation :
 	nom=valeur
 	...
 
+Dart (anciennement appelé "Dash") : Langage de programmation créé par Google en 2011, visant à remplacer Javascript. 
+Cependant, la priorité est que le code dart soit compilé en JS sur tous les navigateurs.
+
+Typescript : Langage de programmation créé par Microsoft en 2012, visant à améliorer et sécuriser le développement en langage Javascript.
+Il permet le typage statique, la création de classes et d'interfaces et l'implantation de modules en gardant l'approche non contraignante du JS.
+
+EcmaScript : Standard du web et ensemble de normes imposées aux langages de script. Langage de programmation orienté prototype.
+
+Programmation orienté prototype : Programmation orienté objet sans classes. Un prototype est un objet à partir duquel on peut créer d'autres objets.
+
+Langage de haut niveau : Langage avec un haut niveau d'abstraction et compréhensible pour un humain.
+
+Langage de bas niveau : Langage avec un bas niveau d'abstraction et difficilement compréhensible pour un humain, qui se rapproche plus du langage machine.
+
+Assembleur : Langage de bas niveau représentant le langage machine lisible pour un humain.
+
+Compilateur : Programme qui transforme un code source en un langage de bas niveau pouvant être lu par la machine.
+
+Décompilateur : Programme qui transforme du langage de bas niveau en langage de haut niveau.
+
+Transcompilateur (compilateur source à source) : Programme qui traduit un code source vers un autre langage de programmation (haut niveau).

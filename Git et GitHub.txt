@@ -70,6 +70,10 @@ Configurer son identité (obligatoire pour commit) :
 git config --global user.name "Jimmy Sené"
 git config --global user.email jimmy.sene@laposte.net
 
+Passer par un proxy :
+
+git config --global http.proxy http://user:pass@proxyhost:proxyport
+
 Migrer un projet versionné de SVN à Git : 
 
 git svn clone <adresse du dépôt SVN> --no-metadata
