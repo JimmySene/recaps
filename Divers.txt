@@ -67,7 +67,7 @@ Formats de sérialisation :
 	...
 
 Dart (anciennement appelé "Dash") : Langage de programmation créé par Google en 2011, visant à remplacer Javascript. 
-Cependant, la priorité est que le code dart soit compilé en JS sur tous les navigateurs.
+Cependant, le but initial semble avoir été abandonné et la priorité est que le code dart soit compilé en JS sur tous les navigateurs.
 
 Typescript : Langage de programmation créé par Microsoft en 2012, visant à améliorer et sécuriser le développement en langage Javascript.
 Il permet le typage statique, la création de classes et d'interfaces et l'implantation de modules en gardant l'approche non contraignante du JS.

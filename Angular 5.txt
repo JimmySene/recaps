@@ -34,7 +34,10 @@ Il y a trois MetaDatas :
 -styles permet d'entrer le code CSS. 
 	styleUrls mentionne dans un array les fichiers CSS.
 
-"export" pour exporter le component dans toute l'application.
+"export" pour exporter le component dans toute l'application. C'est dans cette classe où l'on peut placer le code de notre application (prorpiétés et méthodes).
+
+Utiliser le mot clef this pour accéder aux données du component au sein des méthodes et propriétés.
+
 
 Un component est en soit une class avec un décorateur @Component.
 
@@ -61,8 +64,55 @@ Liste de commandes de création :
 -enum : ng g enum nom-enum
 -module : ng g module nom-module
 
+Interpolation : {{ }} pour afficher des données dans un template HTML. On peut effectuer des calculs en son sein.
+
+Property-binding : Lie des propriétés du modèle à des éléments HTML du DOM. Il est préférable d'éviter d'utiliser l'interpolation dans les attributs html car cela ne fonctionne qu'avec des string. 
+Il vaut mieux mettre l'attribut html etre crochets. Ainsi il pourra être lié à une variable du modèle. Exemple : <input [disabled] = "myDisabled" /> // sachant que myDisabled est = à true ou false
+Une alternative existe : bind-attribut. Exemple : <input bind-disabled = "myDisabled" /> // sachant que myDisabled est = à true ou false
+
+[style.attributCSS] = "propriete" -> change le style d'un élément HTML du DOM. Exemple : <p [style.color] = "couleur">Test</p> // sachant que couleur est définie à "blue"
+On peut mettre des conditions comme valeur. Exemple : <p [style.color] = "erreur ? red : green">Test</p> // sachant que erreur est définie à true ou false
+Il est possible de définir plusieurs effets de styles en les mettant dans un objet et en utilisant la syntaxe 1 dans le template.
+
 Evènement click (Equivalent de ng-click = "") : (click) = ""
 Input Data-binding (Equivalent de ng-model = "") : [(ngModel)] = "" (penser à inclure le module forms dans app.module.ts)
+
+Reference template variable : #nomVariable dans une balise HTML pour stocker l'élément HTML dans une variable que l'on peut ensuite exploiter dans le template ou dans le modèle en utilisant
+son nom. Exemple : <input #myInput (click)="afficheValeur(myInput)" type="text" /> puis, on récupère l'élément myInput dans la méthode afficheValeur. Ce qui nous permet d'accéder à l'ensemble
+de ses propriétés et méthodes.
+
+Structures conditionnelles :
+
+IF : 
+
+<h1 *ngIf = "variableBool">Test</h1>
+
+IF / ELSE :
+
+<div *ngIf="variableBool; then thenBlock; else elseBlock"></div>
+
+<ng-template #thenBlock>
+	<h1>Test 1</h1>
+</ng-template>
+
+<ng-template #elseBlock>
+	<h1>Test 2</h1>
+</ng-template>
+
+SWITCH :
+
+<div [ngSwitch] = "variable">
+	<div *ngSwitchCase="'red'">Red</div>
+	<div *ngSwitchCase="'blue'">Blue</div>
+	<div *ngSwitchCase="'green'">Green</div>
+	<div *ngSwitchDefault>Default</div>
+</div>
+
+BOUCLES :
+
+<div *ngFor = "let color of colors; index as i">
+	<p>{{ i }} {{ color }}</p>
+</div>
 
 Structure d'un projet :
 
