@@ -1,30 +1,104 @@
-TypeScript est un langage qui étend le Javascript en orienté objet avec des class, des interfaces et du typage manuel.
+TypeScript est un langage qui étend le Javascript (superset) en orienté objet avec des class, des interfaces et du typage manuel.
 Angular 2.0 a été programmé en TypeScript. Anders Hejlsberg (designer du C#) a inventé le langage.
 Cross browser et cross platform.
 
 Fichier TypeScript : .ts
+Tout code valide en JS est valide en TS.
 On peut convertir les fichiers .js en .ts simplement en les renommant.
 
-Du code TS a besoin d'un compiler pour être converti en Javascript et pouvoir être lu. 
-Ce compiler est appelé TSC et est un fichier TS a implementé. 
+Du code TS a besoin d'un transcompilateur pour être converti en Javascript et pouvoir être lu.
+On utilise la commande tsc nomFichierTS pour transcompiler un fichier TS en JS.
 
-Création de variable :
+Le TS permet notamment de repérer les erreurs lors de la compilation et dans l'éditeur de code.
 
-var message:string = "Hello world"
+=== VARIABLES ET TYPAGE STATIQUE ===
 
-Création d'une classe et utilisation d'un objet :
+let message:type = valeur;
+OU var message:type = valeur;
+
+Différence entre var et let :
+	-var : la variable est liée (scoped) à la fonction la plus proche
+	-let : la variable est liée (scoped) au bloc de code le plus proche
+
+=== FONCTIONS FLECHEES (EXPRESSIONS LAMBDAS) ===
+
+C'est un moyen plus rapide de déclarer une fonction :
+
+let nomFonction = (parametres) => instruction; // ou { } si plusieurs lignes d'instructions
+
+Les paramètres ne sont pas obligatoires.
+
+Rendre un paramètre facultatif : le faire précéder d'un ?. 
+PS : Une fois qu'un paramètre est rendu facultatif, tous les paramètres situés à sa droite le deviennent également.
+
+=== ENUMERATIONS ===
+
+enum nomEnum = [val1 = 0, val2 = 1, val3 = 2...];
+
+Accès : nomEnum.val
+
+=== INTERFACES ===
+
+interface nomInterface {
+	propriete:type,
+	method():type
+}
+
+== CLASSES ET OBJETS ===
 
 class nomClasse {
-	greet():void {
+
+	constructor(parametres) {
+		// LE CONSTRUCTEUR EST UNE FONCTION QUI SE DECLENCHE A LA CREATION D'UN OBJET DE LA CLASSE
+	}
+
+
+	propriete:type = valeur;
+
+	method():void {
 		// INSTRUCTIONS DE LA PROCEDURE
 	}
 }
 
-var obj = new nomClasse();
+let obj = new nomClasse(); // new permet l'allocation dynamique de mémoire
 obj.greet();
 
-Types :
+Il est possible de rendre private / protected / public les propriétés et méthodes d'une classe.
 
-Number, String, Boolean, Void
+Un moyen rapide de déclarer des propriétés et de les initialiser est de déclarer les propriétés dans la déclaration du constructeur de la classe.
+Exemple : constructor(private val1:number, private val2:number...) { }
 
-Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.
+On peut également mettre des fonctions getters et setters pour accéder ou modifier des propriétés privées via les objets.
+
+get nomGetter() { return this.propriete }
+
+set nomSetter(parametre) { this.propriete = parametre }
+
+/!\ Lors de la transcompilation, il faut savoir que la norme de nommage camelCase est utilisée, hors si on appelle les getters et setters avec le même nom en majuscule des propriétés, il va y avoir une erreur.
+Pour la remédier, il est préférable de mettre lors de la déclaration des propriétés un _ devant leur nom.
+
+L'accès aux propriétés et méthodes d'un objet actuel au sein d'une classe se fait avec le mot clef this.
+
+=== TYPES ===
+
+Number, String, Boolean, Void, Any
+
+On peut déclarer un array comme ceci : type[] = [val1, val2, val3...];
+
+=== MODULES ===
+
+En TS, l'organisation des fichiers est dite modulaire. Il est recommandé de créer un fichier par classe. Chaque fichier est un module que l'on peut exporter et importer dans d'autres.
+
+Ajouter le mot clef export devant une classe pour le configurer en tant que "module" et permettre son importation dans d'autres fichiers.
+Utiliser le mot clef import { nomDeLaClasse } from { location } pour importer un module.
+
+=== DECORATEURS ===
+
+Déclaration attachée à une classe, une méthode ou une propriété. Précédé d'un @. 
+Exemple : @Component({
+
+})
+
+=== DIVERS ===
+
+Vidéo explicative : https://www.youtube.com/watch?v=NjN00cM18Z4
