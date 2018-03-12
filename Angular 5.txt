@@ -1,6 +1,45 @@
 Framework TypeScript utilisé pour crééer des SPA et raccourcir drastiquement le code JS. 
 Créé en 2016. Evolution de AngularJS.
 
+=============================================================================
+
+Avec Angular, on peut utiliser un CLI pour générer le squelette de son application avec une simple commande.
+Il faut avoir installé une version de node JS et de NPM pour pouvoir l'utiliser.
+
+Installer Angular-cli : npm install -g @angular-cli
+
+Créer un projet : ng new nom-projet
+
+Se placer dans le dossier de projet et lancer le serveur en lancant la commande ng serve.
+Si VM : ng serve --host 0.0.0.0 --port 4200
+
+Accéder à l'appli grâce au navigateur à l'adresse : IP:port
+
+Liste de commandes de création :
+
+-component : ng g component nom-component
+-directive : ng g directive nom-directive
+-pipe : ng g pipe nom-pipe
+-class : ng g class nom-class
+-service : ng g service nom-service
+-interface : ng g interface nom-interface
+-enum : ng g enum nom-enum
+-module : ng g module nom-module
+
+Structure d'un projet :
+
+Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
+-nom.component.html -> template HTML
+-nom.component.ts -> fichier TypeScript principal
+-nom.component.spec.ts -> fichier pour les tests (optionnel et peut être supprimé)
+
+Il y a un component principal du nom de app directement dans le dossier.
+
+Lorsque le développement est fini et que l'on souhaite mettre l'application sur un serveur, il faut le compiler
+avec la commande ng build et transférer sur le serveur l'ensemble des fichiers se situant dans le dossier "dist".
+
+=============================================================================
+
 Dans Angular, tout est COMPONENT. Un component ne gère que sa vue et ses données, a son propre cycle de vie et communique
 avec d'autres components uniquement via les évènements.
 
@@ -41,28 +80,8 @@ Utiliser le mot clef this pour accéder aux données du component au sein des méth
 
 Un component est en soit une class avec un décorateur @Component.
 
-Avec Angular, on peut utiliser un CLI pour générer le squelette de son application avec une simple commande.
-Il faut avoir installé une version de node JS et de NPM pour pouvoir l'utiliser.
+=============================================================================
 
-Installer Angular-cli : npm install -g @angular-cli
-
-Créer un projet : ng new nom-projet
-
-Se placer dans le dossier de projet et lancer le serveur en lancant la commande ng serve.
-Si VM : ng serve --host 0.0.0.0 --port 4200
-
-Accéder à l'appli grâce au navigateur à l'adresse : IP:port
-
-Liste de commandes de création :
-
--component : ng g component nom-component
--directive : ng g directive nom-directive
--pipe : ng g pipe nom-pipe
--class : ng g class nom-class
--service : ng g service nom-service
--interface : ng g interface nom-interface
--enum : ng g enum nom-enum
--module : ng g module nom-module
 
 Interpolation : {{ }} pour afficher des données dans un template HTML. On peut effectuer des calculs en son sein.
 
@@ -114,17 +133,35 @@ BOUCLES :
 	<p>{{ i }} {{ color }}</p>
 </div>
 
-Structure d'un projet :
+=== Création d'un service ===
 
-Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
--nom.component.html -> template HTML
--nom.component.ts -> fichier TypeScript principal
--nom.component.spec.ts -> fichier pour les tests (optionnel et peut être supprimé)
+ng g s nomService dans Angular CLI
 
-Il y a un component principal du nom de app directement dans le dossier.
+Un service permet l'utilisation de méthodes dans des components en leur retournant des données.
 
-Lorsque le développement est fini et que l'on souhaite mettre l'application sur un serveur, il faut le compiler
-avec la commande ng build et transférer sur le serveur l'ensemble des fichiers se situant dans le dossier "dist".
+Inclure l'importation dans app.module.ts et dans son providers.
+
+Pour utiliser un service, il faut inclure une instance du service en paramètre du constructor du component : 
+
+constructor(private _nomService: NomService) { 
+
+}
+
+et dans le ngOnInit : this._nomService.methode()
+
+=== Http ===
+
+Importer le module HttpClientModule dans app.module.ts (location : '@angular/common/http')
+Importer HttpClient dans le service (location : '@angular/common/http')
+Importer Observable dans le service (location :'rxjs/Observable')
+Inclure une instance de l'objet HttpClient en paramètre dans le constructeur du service : private http: HttpClient
+
+nomMethodeDuService(): Observable<casting> {
+	this.http.<casting>get(urlFichierOuServeur) // url est de type string
+}
+
+Dans le component qui utilise le service : this._nomService.methode().subscribe(data => this.variable = data);
+
 
 === Création d'une class externe ===
 
@@ -132,6 +169,7 @@ Utiliser la commande ng g class nomClass pour créer le fichier de class.
 
 L'importer dans les fichiers des components qui utilisent la classe avec : import { nomClass } from "location"; // sans le sufixe
 
+=== Création d'une directive ===
 
 Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.
 Il y a deux sortes de directives : 
