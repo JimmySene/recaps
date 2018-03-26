@@ -1,0 +1,3 @@
+Bootstrap est un framework CSS développé pour les besoins de Twitter.
+Il sert à gagner du temps dans la mise en forme de son site et d'uniformiser le tout sur tous les navigateurs et tous les appareils.
+

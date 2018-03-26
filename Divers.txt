@@ -89,3 +89,11 @@ Décompilateur : Programme qui transforme du langage de bas niveau en langage de 
 Transcompilateur (compilateur source à source) : Programme qui traduit un code source vers un autre langage de programmation (haut niveau).
 
 Origine : Combinaison d'un protocole, un hôte et un numéro de port
+
+Convention de nommage : règles concernant l'écriture du code source notamment le nom des variables
+	-Le Camel case : les mots sont liés sans espace avec une majuscule en début de mot, à l'exception du premier. C'est la convention la plus utilisée. [Javascript, Java, C++, C#,...]
+	-Le Pascal case : les mots sont liés sans espace avec une majuscule en début de mot [Pascal, class PHP]
+	-Le Kebab case / Spinal case : les mots sont en minuscules et liés par des tirets - (à utiliser dans les url, nom de fichiers, class et id html)
+	-L'Underscore case / Snake case : les mots sont en minuscules et liés par des underscores _ [PHP, Ruby, Python]
+	-Screaming snake case : les mots sont en majuscules et liés par des underscores _ [Constantes PHP, exceptions ADA]
+	

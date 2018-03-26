@@ -25,3 +25,8 @@ BOUCLE :
 for i in range (min,max,nbPas) :
 	instructions
 
+RANDOM :
+
+from random import * // import de la fonction
+random() // retourne un nombre entre 0 et 1
+
