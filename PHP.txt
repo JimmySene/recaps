@@ -1,0 +1,31 @@
+PHPMailer : Librairie PHP d'envoie de mail
+
+<?php 
+require 'PHPMailerAutoload.php';
+$mail = new PHPMailer;
+$mail->setFrom('adresseExpediteur', 'nomExpediteur');
+$mail->addAdress('adresseDestinataire', 'nomDestinataire');
+$mail->Subject = 'sujet';
+$mail->Body = 'Message';
+
+if(!$mail->send())
+{
+	echo "Le message n'a pas été envoyé.";
+	echo "Erreur retournée : " . $mail->ErrorInfo;
+
+} else {
+	echo "Le message a bien été envoyé !";
+
+} ?>
+
+Attacher un fichier :
+
+$mail->addAttachment($path, $name, $encoding, $type); // $path contient le lien local vers le fichier et est obligatoire
+Les trois autres arguments sont facultatifs : $name le nom, $encoding est base64 par défaut, $type est le type MIME
+
+$mail->addStringAttachment($donnees, $name, $encoding, $type); // même chose qu'au dessus
+
+Envoyer un email en format html :
+
+$mail->isHTML(true);
+$mail->AltBody = 'Message en texte brut pour les clients mail qui ne lisent pas le HTML';

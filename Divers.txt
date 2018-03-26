@@ -96,4 +96,8 @@ Convention de nommage : règles concernant l'écriture du code source notamment le
 	-Le Kebab case / Spinal case : les mots sont en minuscules et liés par des tirets - (à utiliser dans les url, nom de fichiers, class et id html)
 	-L'Underscore case / Snake case : les mots sont en minuscules et liés par des underscores _ [PHP, Ruby, Python]
 	-Screaming snake case : les mots sont en majuscules et liés par des underscores _ [Constantes PHP, exceptions ADA]
+
+Type MIME : Internet Media Type, aussi appelé Content-type est un identifiant de format de données sur internet en deux parties séparées par un /.
+Les deux parties sont le type et le sous-type.
+Exemples : image/jpeg, text/html, video/mp4, audio/mpeg, multipart/alternative, application/javascript...
 	
