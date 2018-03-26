@@ -87,3 +87,5 @@ Compilateur : Programme qui transforme un code source en un langage de bas nivea
 Décompilateur : Programme qui transforme du langage de bas niveau en langage de haut niveau.
 
 Transcompilateur (compilateur source à source) : Programme qui traduit un code source vers un autre langage de programmation (haut niveau).
+
+Origine : Combinaison d'un protocole, un hôte et un numéro de port

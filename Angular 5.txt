@@ -1,21 +1,22 @@
 Framework TypeScript utilisé pour crééer des SPA et raccourcir drastiquement le code JS. 
-Créé en 2016. Evolution de AngularJS.
+Créé en 2016 par Google. Evolution de AngularJS.
 
 =============================================================================
 
-Avec Angular, on peut utiliser un CLI pour générer le squelette de son application avec une simple commande.
-Il faut avoir installé une version de node JS et de NPM pour pouvoir l'utiliser.
+Avec Angular, on peut utiliser un CLI (Command Line Interface) pour générer le squelette de son application avec une simple commande.
+Il faut avoir installé une version de node JS (6.9.x et supérieur) et de NPM (3.x.x et supérieur) pour pouvoir l'utiliser.
+
 
 Installer Angular-cli : npm install -g @angular-cli
 
 Créer un projet : ng new nom-projet
 
 Se placer dans le dossier de projet et lancer le serveur en lancant la commande ng serve.
-Si VM : ng serve --host 0.0.0.0 --port 4200
+Si VM : ng serve --host 0.0.0.0 --port 4200 --open // --open (-o) ouvre un onglet dans le navigateur
 
 Accéder à l'appli grâce au navigateur à l'adresse : IP:port
 
-Liste de commandes de création :
+Liste de commandes de création via le CLI :
 
 -component : ng g component nom-component
 -directive : ng g directive nom-directive
@@ -28,12 +29,18 @@ Liste de commandes de création :
 
 Structure d'un projet :
 
+L'appli se situe dans le dossier src du dossier de projet.
+
 Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
 -nom.component.html -> template HTML
 -nom.component.ts -> fichier TypeScript principal
 -nom.component.spec.ts -> fichier pour les tests (optionnel et peut être supprimé)
 
 Il y a un component principal du nom de app directement dans le dossier.
+
+Le dossier assets comporte toutes les ressources diverses de l'application (images, json...)
+
+Il y a un fichier html et css principal (index.html et styles.css).
 
 Lorsque le développement est fini et que l'on souhaite mettre l'application sur un serveur, il faut le compiler
 avec la commande ng build et transférer sur le serveur l'ensemble des fichiers se situant dans le dossier "dist".
@@ -93,12 +100,17 @@ Une alternative existe : bind-attribut. Exemple : <input bind-disabled = "myDisa
 On peut mettre des conditions comme valeur. Exemple : <p [style.color] = "erreur ? red : green">Test</p> // sachant que erreur est définie à true ou false
 Il est possible de définir plusieurs effets de styles en les mettant dans un objet et en utilisant la syntaxe 1 dans le template.
 
-Evènement click (Equivalent de ng-click = "") : (click) = ""
-Input Data-binding (Equivalent de ng-model = "") : [(ngModel)] = "" (penser à inclure le module forms dans app.module.ts)
+Event-binding : Evènement click (Equivalent de ng-click = "") -> (click) = ""
+Input Data-binding (Equivalent de ng-model = "") (property binding + event binding) : [(ngModel)] = "" (penser à inclure le module forms dans app.module.ts)
 
 Reference template variable : #nomVariable dans une balise HTML pour stocker l'élément HTML dans une variable que l'on peut ensuite exploiter dans le template ou dans le modèle en utilisant
 son nom. Exemple : <input #myInput (click)="afficheValeur(myInput)" type="text" /> puis, on récupère l'élément myInput dans la méthode afficheValeur. Ce qui nous permet d'accéder à l'ensemble
 de ses propriétés et méthodes.
+
+Propriétés personnalisées : dans le fichier TS, mettre le décorateur @Input() nomPropriete: type; et inclure Input de @angular/core en haut du fichier.
+Cela aura pour effet de rendre disponible la propriété désirée dans le tag html du component au sein du template pour lui affecter une valeur.
+
+Exemple : <component-enfant prop-perso="salut"></component-enfant>
 
 Structures conditionnelles :
 
@@ -133,15 +145,32 @@ BOUCLES :
 	<p>{{ i }} {{ color }}</p>
 </div>
 
+=== Pipes ===
+
+Les pipes prennent des données en INPUT, les transforment, puis les affichent en sortie dans le DOM. Elles peuvent s'enchainer à condition de respecter
+l'ordre ci-dessous :
+
+
+variable | async -> attendre l'arrivée des données du serveur avant d'éxecuter les autres pipes
+variable | date: '' -> affiche de façon plus claire la date
+variable | uppercase / lowercase -> affiche en majuscule / minuscule
+
 === Création d'un service ===
 
 ng g s nomService dans Angular CLI
 
 Un service permet l'utilisation de méthodes dans des components en leur retournant des données.
+Cela sert à limiter le code et à éviter de le dupliquer inutilement.
 
-Inclure l'importation dans app.module.ts et dans son providers.
+Pour être utilisé dans une application, un service doit être injecté :
 
-Pour utiliser un service, il faut inclure une instance du service en paramètre du constructor du component : 
+-Dans app.module.ts : si on veut que l'instance du service soit disponible dans tous les components et autres services
+-Dans app.component.ts : si on veut que l'instance du service soit disponible dans tous les components mais pas les autres services
+-Dans le component désiré : si on veut que l'instance du service ne soit disponible que dans le component et ses components enfants mais nul part ailleurs
+
+Pour injecter, il faut import le service en haut du fichier ts et l'inclure dans le providers (si app.module.ts)
+Dans un component, il faut le déclarer comme argument dans son constructeur en ajoutant l'import en haut du fichier.
+
 
 constructor(private _nomService: NomService) { 
 
@@ -160,7 +189,11 @@ nomMethodeDuService(): Observable<casting> {
 	this.http.<casting>get(urlFichierOuServeur) // url est de type string
 }
 
-Dans le component qui utilise le service : this._nomService.methode().subscribe(data => this.variable = data);
+Dans le component qui utilise le service : this._nomService.methode().subscribe(
+(value) => { },
+(error) => { },
+() => { }
+);
 
 
 === Création d'une class externe ===
@@ -172,9 +205,9 @@ L'importer dans les fichiers des components qui utilisent la classe avec : impor
 === Création d'une directive ===
 
 Une directive est une classe à laquelle on applique un décorateur @Directive qui modifie le DOM.
-Il y a deux sortes de directives : 
--Directives structurelles (ajoute, modifie ou supprime un élément du DOM) ex : *ngIf="", *ngFor="let x of y", *ngSwitchCase="...
--Attribute directive (modifier l'apparence ou le comportement d'un élément du DOM) ex : [ngStyle]="{}"
+Il y a deux sortes de directives : "
+-Directives structurelles (ajoute, modifie ou supprime un élément du DOM) ex : *ngIf="", *ngFor="let x of y", *ngSwitchCase="..."
+-Attribute directive (modifier l'apparence ou le comportement d'un élément existant du DOM) ex : [ngStyle]="{clef:valeur}", [ngClass]="{class:condition}"
 
 Ajouter des listeners dans une directive :
 
