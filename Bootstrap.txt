@@ -1,3 +1,31 @@
 Bootstrap est un framework CSS développé pour les besoins de Twitter.
 Il sert à gagner du temps dans la mise en forme de son site et d'uniformiser le tout sur tous les navigateurs et tous les appareils.
 
+C'est un fichier CSS qui contient de nombreuses classes.
+
+Bootstrap décompose la page web selon un système de grille qui possède 12 colonnes d'une largeur qui varie en fonction de la taille de la fenêtre.
+Une rangée, appelée row, prend la hauteur du plus gros élément qu'elle contient.
+
+Classes :
+
+container : contient et centre la grille sur une largeur fixe
+container-fluid : continet la grille et lui fait occuper toute la largeur
+
+row : représente une rangée et établit des marges négatives de -15px à gauche et à droite
+
+col-xs-x : élément smartphone < 768px
+col-sm-x : élément tablette => 768px
+col-md-x : écran ordinateur portable => 992px
+col-lg-x : écran de PC fixe >= 1200px
+
+de taille x (1 à 12)
+
+col-y-offset-x : espace vide de taille x (1 à 12) / y = xs, sm, md ou lg
+
+col-y-pull-x : décale vers la gauche
+col-y-push-x : décale vers la droite
+
+page-header : définit l'entete de page
+
+
+

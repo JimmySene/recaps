@@ -153,7 +153,7 @@ l'ordre ci-dessous :
 
 variable | async -> attendre l'arrivée des données du serveur avant d'éxecuter les autres pipes
 variable | date: '' -> affiche de façon plus claire la date
-variable | uppercase / lowercase -> affiche en majuscule / minuscule
+variable | uppercase / lowercase / titlecase -> affiche en majuscule / minuscule / Majuscule en début de mot
 
 === Création d'un service ===
 
@@ -174,9 +174,11 @@ Dans un component, il faut le déclarer comme argument dans son constructeur en a
 
 constructor(private _nomService: NomService) { 
 
+// pour accéder aux méthodes du service il faut utiliser this._nomService.methode();
+
 }
 
-et dans le ngOnInit : this._nomService.methode()
+et dans le ngOnInit du component : this._nomService.methode()
 
 === Http ===
 
@@ -190,9 +192,9 @@ nomMethodeDuService(): Observable<casting> {
 }
 
 Dans le component qui utilise le service : this._nomService.methode().subscribe(
-(value) => { },
-(error) => { },
-() => { }
+(value) => { // on peut exploiter la value },
+(error) => { // on peut exploiter l'erreur },
+() => { // à la fin de la requête }
 );
 
 
@@ -213,5 +215,29 @@ Ajouter des listeners dans une directive :
 
 @HostListener('event') onEvent() { }
 
+=============================================================================
 
+ANGULAR MATERIAL :
+
+Installer : npm install --save @angular/material @angular/cdk
+Ainsi que les animations : npm install --save @angular/animations
+
+Ces deux installations doivent se faire dans le dossier du projet angular dans lequel on souhaite utilisé material.
+
+Ajouter import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; dans le fichier module.ts.
+
+Il faut également inclure un thème au projet dans styles.css : @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+Themes existants : 
+	-deeppurple-amber.css
+	-indigo-pink.css
+	-pink-bluegrey.css
+	-purple-green.css
+
+Il ne reste plus qu'à inclure les modules de Material dans le fichier module.ts du projet pour pouvoir les utiliser.
+
+
+Getting started : https://material.angular.io/guide/getting-started
+
+Pour le date picker, penser à inclure le module MatNativeDateModule de @angular/material.
 
