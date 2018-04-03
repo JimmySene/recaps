@@ -1,13 +1,32 @@
+Python est un langage de programmation interprété servant à créer des scripts ou des programmes complets, voir des progriciels.
+
+Depuis la version 3 de Python, la compatibilité ascendante a été cassée car le projet Python a été purgé de ses fonctionnalités obsolètes.
+Ce qui signifie qu'un code fonctionnant pour la version 2 ne fonctionnera pas forcémment en version 3 et supérieur. 
+
+Il faut télécharger Python pour que l'ordinateur puisse comprendre le code.
+
 Utiliser IDLE Python pour tester rapidemment du code.
+
+Convention de nommage : underscore case ou camel case
+
+On peut utiliser les triples guillemets pour éviter d'échapper les " et les ' ainsi que faire des sauts de lignes sans utiliser \n.
 
 VARIABLES
 
 nom = valeur
+plusieurs avec la même valeur : nom1 = nom2 = valeur
+interchanger les valeurs : a,b = b,a
 
 CONDITIONS
 
 if a < b :
 	instructions
+elif a > b :
+	instructions
+else :
+	instructions
+
+Les indentations sont obligatoires.
 
 SAISIE :
 
