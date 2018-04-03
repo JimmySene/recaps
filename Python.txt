@@ -17,6 +17,8 @@ nom = valeur
 plusieurs avec la même valeur : nom1 = nom2 = valeur
 interchanger les valeurs : a,b = b,a
 
+Les booleans commencent par une majuscule : True, False
+
 CONDITIONS
 
 if a < b :
@@ -27,6 +29,7 @@ else :
 	instructions
 
 Les indentations sont obligatoires.
+Ce qu'il y a entre le mot clef et les : sont appelés les prédicats.
 
 SAISIE :
 
