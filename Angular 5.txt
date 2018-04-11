@@ -215,6 +215,11 @@ Ajouter des listeners dans une directive :
 
 @HostListener('event') onEvent() { }
 
+Importer une librairie JS dans Angular :
+
+Utiliser NPM pour installer la librairie dans le dossier du projet
+Puis, dans fichier .ts du component écrire : import * as alias from 'nom-de-la-librairie';
+
 =============================================================================
 
 ANGULAR MATERIAL :

@@ -1,3 +1,9 @@
+Création de variable : $variable = valeur;
+Afficher du texte : echo "texte";
+
+
+///////////////////////////////////////////////////////////
+
 PHPMailer : Librairie PHP d'envoie de mail
 
 <?php 
