@@ -1,3 +1,29 @@
+Dès qu'il y a la moindre ligne de php dans le code html, votre fichier doit avoir l'extension .php
+Les variables en PHP doivent commencer par un $ et peuvent contenir n'importe quel type
+exemple : $variable = contenu;
+
+Concaténation : .
+Afficher du texte : echo "contenu";
+Dans la fonction date() pour récupérer la date du jour, le "d"  = le jour, le "m" = le mois, le "Y" = année
+
+is_numeric($variable) : Teste si $variable est un numérique (retour 1 si true, retourne rien si false)
+rand(debut,fin) : Renvoie un nombre aléatoire situé entre debut et fin
+
+Quelques fonctions pour les chaines de caractère :
+-ucfirst($chaine) : mettre la première lettre de la chaine en majuscules
+-ucwords($chaine) : mettre la première lettre de chaque mots de la chaine en majuscules
+-strtolower($chaine) : mettre la chaine en minuscules
+-strtoupper($chaine) : mettre la chaine en majuscules
+
+Création d'une variable tableau : $tab = array(val1, val2, val3....);
+Afficher une variable tableau sous forme de texte pour le débogage : print_r($tab);  L'entourer de balises <pre></pre> pour un affichage plus clair(modifié)
+count($tab) : compte et renvoie le nombre d'éléments dans le tableau(modifié)
+min($tab) et max($tab) : retourne le minimum et le maximum d'un tableau
+Trier un tableau : sort($tab)
+Trier un tableau dans l'ordre inverse : rsort($tab)
+
+=========================================================================
+
 PHPMailer : Librairie PHP d'envoie de mail
 
 <?php 

@@ -16,6 +16,7 @@ Deux façons de procéder pour créer un nouveau dossier GIT (appelé "Repository") 
 A partir de là, modifier les fichiers du repo en local puis :
 
 Ajouter un fichier créé ou modifié à l'index : git add "nomFichier"
+OU Ajouter tous les fichiers avec telle extension : git add "*.extension"
 OU Ajouter tous les fichiers à l'index : git add .
 
 Faire un commit : git commit -m "message"
@@ -23,12 +24,16 @@ Faire un commit : git commit -m "message"
 Puis continuer à faire des modifications en local : modification fichier(s) -> git add nomDuFichier(s) -> git commit -m ""
 Répéter cette boucle jusqu'à ce que la journée se termine (cas général). Puis :
 
-Télécharger les derniers commits d'un remote : git pull
+Télécharger les derniers commits d'un remote si il existe : git pull
 
 Vérifier que le travail des collègues n'entre pas en conflit avec nos modifications effectuées via nos précédents commits.
 Si ça va mal, choisir quelles versions garder. Si tout va bien :
 
-Pusher ses commits sur un remote : git push
+Pusher ses commits sur un remote : git push -u origin master (-u permet de garder en mémoire que c'est là qu'on souhaite push nos modifications à l'avenir)
+Les autres fois, faire : git push
+
+Si le remote n'existe pas, il faut le créer (sur GitHub par exemple) et le préciser en local en faisant : git remote add origin adresse_du_remote
+Ainsi, les pull et push seront disponibles et on pourra stocker nos versions à distance.
 
 ===== AUTRES COMMANDES =====
 
@@ -38,6 +43,9 @@ Quitter le log en faisant "q"
 
 Voir le statut du repo (dernières modifs) : git status
 Voir le statut d'un fichier précis : git diff nomFichier
+Voir les changements effectués après un pull et un add : git diff --staged
+
+Supprimer un fichier dans la zone add : git reset fichier
 
 Créer une branche : git branch nomBranche
 
