@@ -391,6 +391,30 @@ visudo : éditer le fichier /etc/sudoers pour donner les droits sudo aux comptes 
 
 su nomUtilisateur : se connecter sur un autre compte
 
+===================== Connexion à un serveur distant avec SSH ====================
+
+Un serveur est un PC allumé et connecté à internet 7j/7 24h/24.
+
+Sur un réseau, les ordinateurs communiquent via un protocole. Il en existe plusieurs en fonction de ce que l'on souhaite se transmettre.
+Ex : IMAP (mail), FTP (fichiers), HTTP (pages web)...
+SSH est un protocole de communication chiffré. Successeur de Telnet qui envoyait les messages en clair sur le réseau.
+Il utilise une méthode de chiffrement symétrique et asymétrique.
+
+Grâce à SSH, on peut se connecter à un serveur linux distant de manière sécurisée.
+
+Transformer son pc en serveur : apt-get install openssh-server
+A partir de là, le serveur SSH sera lancé à chaque démarrage. Sinon, utiliser la commande :
+
+sudo /etc/init.d/ssh start -> démarrer ssh
+sudo /etc/init.d/ssh stop -> arrêt de ssh
+
+Pour se connecter à un serveur, il faut utiliser la commande ssh :
+
+ssh login@ip
+Le mot de passe sera demandé après un message indiquant l'empreinte du serveur (si connecté pour la première fois).
+
+Sur un PC (windows), utiliser le logiciel PuTTY pour se connecter sur un serveur linux.
+
 ===================== SCRIPT SHELL =====================
 
 
@@ -428,6 +452,8 @@ Déclaration de variable :
 
 nomVariable='valeur'
 
+/!\ Ne pas mettre d'espace avant et après le =
+
 Dans BASH, tout est chaine de caractère.
 
 Afficher une variable : 
@@ -463,12 +489,12 @@ on peut les utiliser dans notre code ou en créer de nouvelles avec export
 
 Créer une variable tableau :
 
-tableau=('valeur1', 'valeur2', 'valeur3')
+tableau=('valeur1' 'valeur2' 'valeur3')
 
 Accéder à une case du tableau :
 
-{tableau[indice]}
-echo {tableau[*]} // affiche tous les éléments du tableau
+${tableau[indice]}
+echo ${tableau[*]} // affiche tous les éléments du tableau séparés par un espace
 
 On peut passer des paramètres à la commande du script, ils sont récupérés dedans à travers des variables partant de $1 à $9. ($0 contient le nom du script.)
 Utiliser shift pour décaler à droite (si + de 9 paramètres).
@@ -496,6 +522,15 @@ else
 fi
 
 Dans le test, -z $chaine vérifie que la chaine est vide (ou n'existe pas), -n $chaine vérifie qu'elle est non vide (ou existe).
+
+/!\ Il y a un espace après le [ et un espace avant le ] du test.
+
+Pour comparer des nombres, il faut utiliser les paramètres -eq (égalité), -ne (différent), -lt (inférieur), -gt (supérieur), -le (inférieur ou égal), 
+-ge (supérieur ou égal)
+
+Pour faire des tests sur un fichier, il faut utiliser les paramètres -e $fichier (fichier existe), -d $fichier (vérifie si dossier), 
+-f $fichier (vérifie si fichier), -L $fichier (lien symbolique), -r $fichier (si lisible), -w $fichier (si modifiable), -x $fichier (si executable), 
+$fichier -nt $fichier2 (si plus récent que), $fichier -ot $fichier2 (si plus ancien que).
 
 case $variable in
 	"valeur1")
