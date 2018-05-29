@@ -1,14 +1,17 @@
-Git est un logiciel de gestion de versions de projets de développement.
-Il stock sur un dépot distant (appelé repository) différentes versions d'un projet informatique afin de garder des backups et permettre 
+Git est un logiciel libre de gestion de versions de projets de développement. Développé par Linus Torvalds.
+Il stock sur un dépot (appelé repository) différentes versions d'un projet informatique afin de garder des backups et permettre 
 une édition multi-utilisateur aisée. 
 
-On le préfère à Subversion (SVN) pour le fait qu'il soit décentralisé et offre la possibilité de créer des branches.
+On le préfère à Subversion (SVN) pour le fait :
+-qu'il soit décentralisé (distribué)
+-offre la possibilité de créer des branches
+-permet l'annulation de commits.
 
 ---
 
 Utiliser Git Bash pour use les commandes GIT (clic droit sur le dossier d'appli -> Git Bash)
 
-Deux façons de procéder pour créer un nouveau dossier GIT (appelé "Repository") en local :
+Deux façons de procéder pour créer un nouveau dossier GIT (appelé "Dépôt" ou "Repository") en local :
 
 1) Initialiser un dossier déjà existant : git init nomDossier
 2) Cloner un repository qui existe déjà sur un serveur distant (appelé "Remote") : git clone lienDuRepo
@@ -21,16 +24,22 @@ OU Ajouter tous les fichiers à l'index : git add .
 
 Faire un commit : git commit -m "message"
 
+(Le message doit décrire le changement effectué et doit être écrit au présent. En anglais de préférence.)
+
 Puis continuer à faire des modifications en local : modification fichier(s) -> git add nomDuFichier(s) -> git commit -m ""
 Répéter cette boucle jusqu'à ce que la journée se termine (cas général). Puis :
 
-Télécharger les derniers commits d'un remote si il existe : git pull
+Télécharger les derniers commits d'un remote : git pull
+C'est une fusion des commandes git fetch (télécharger les commits) et git merge (fusionner les commits de la branche du serveur à celle en local).
 
 Vérifier que le travail des collègues n'entre pas en conflit avec nos modifications effectuées via nos précédents commits.
-Si ça va mal, choisir quelles versions garder. Si tout va bien :
+Si ça va mal, choisir quelle version garder en éditant les fichiers qu'il faut (enlever les <<<<<< et garder la bonne version). Puis commiter.
+Si tout va bien :
 
 Pusher ses commits sur un remote : git push -u origin master (-u permet de garder en mémoire que c'est là qu'on souhaite push nos modifications à l'avenir)
 Les autres fois, faire : git push
+
+Les commits push sur un serveur ne peuvent plus être supprimés si ce n'est en créant un commit inverse en utilisant la commande git revert idDuCommit.
 
 Si le remote n'existe pas, il faut le créer (sur GitHub par exemple) et le préciser en local en faisant : git remote add origin adresse_du_remote
 Ainsi, les pull et push seront disponibles et on pourra stocker nos versions à distance.
@@ -42,29 +51,30 @@ Voir le log des commits effectués dans le repo : git log
 Quitter le log en faisant "q"
 
 Voir le statut du repo (dernières modifs) : git status
+Voir ce qui a été modifié depuis le dernier commit : git diff
 Voir le statut d'un fichier précis : git diff nomFichier
 Voir les changements effectués après un pull et un add : git diff --staged
 
 Supprimer un fichier dans la zone add : git reset fichier
-
-Créer une branche : git branch nomBranche
+=======
+Voir qui a modifié un fichier : git blame fichier.extension
+Voir pourquoi telle ou telle modification a été faite : git show idCommit
 
 Voir les branches : git branch
-
+Créer une branche : git branch nomBranche
+Se déplacer vers une branche : git checkout nomBranche (il faut TOUJOURS commiter les changements avant de changer de branche au risque de transmettre les modifs dans l'autre branche)
 Intégrer (fusion) une branche dans une autre : git merge nomBranche (faire la commande dans la branche master)
-
-Se déplacer vers une branche : git checkout nomBranche
-
+Supprimer une branche  : git branch -d nomBranche (une fois mergé dans master il faut supprimer la branche annexe)
 Revenir au dernier commit et à la branche principale : git checkout master
+Sauvegarder les modifications sans commit pour passer à une autre branche : git stash
+Récupérer la sauvegarde : git stash apply
+Créer une copie d'une branche d'un remote : git branch --track nomBranche nomRemote/nomBranche (faire un pull dans la branche pour télécharger les modifs de la branche)
 
-Supprimer une branche  : git branch -d nomBranche
 
 Changer le message du dernier commit : git commit --amend
-
-Annuler le dernier commit : git reset HEAD^
+Annuler le dernier commit (pas le fichier) : git reset HEAD^
 Annuler le dernier commit et les changements dans le fichier : git reset --hard HEAD^
-
-Anuler les modifications d'un fichier : git checkout nomFichier
+Annuler les modifications d'un fichier avant commit (et le rétablir à l'ancien commit) : git checkout nomFichier
 
 Gérer les remotes (dépôts distants) : 
 
@@ -72,6 +82,12 @@ git remote : affiche la liste des dépôts enregistrés (simplement les nom)
 git remote -v : affiche la liste des dépôts enregistrés (nom et adresse)
 git remote add <nom du dépôt> <adresse du dépôt> : ajoute un nouveau dépôt
 git remote remove <nom du dépôt> : supprime un dépôt
+
+Configurer les couleurs dans la console bash : 
+
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
 
 Configurer son identité (obligatoire pour commit) : 
 
@@ -89,6 +105,8 @@ cd <dossier du projet>
 git remote add origin <adresse du dépôt distant git>
 git push
 git push --set-upstream origin master
+
+Créer le fichier .gitignore à la racine du projet en y indiquant, ligne par ligne, le nom des fichiers à ignorer.
 
 
 ===== INFOS GITHUB =====

@@ -233,8 +233,8 @@ ls : affiche la liste des dossiers et fichiers
 	-t : trie par date de dernière modification
 history : affiche un historique des commandes utilisées
 clear (ctrl + l) : nettoie la console
-exit (ctrl + d) : ferme la console / sort du mode root
-pwd : affiche le dossier actuel
+exit (ctrl + d) : ferme la console / sort du mode root / ferme la session
+pwd : affiche le chemin du dossier actuel
 which nomCommande : connaitre l'emplacement de la commande
 cd : se déplacer dans l'arborescence (chemins relatifs ou absolus)
 du : affiche la taille des dossiers dans le dossier actuel
@@ -365,6 +365,7 @@ tar -cvf nom_archive.tar nom_dossier : créer une archive tar de nom_dossier
 	-v : afficher le détail de l'opération
 	-f : assembler l'archive dans un fichier
 	tar -tf nomArchive : affiche le contenu de l'archive sans l'extraire
+chsh : changer de shell (ils se situent dans le dossier /bin/nomShell)
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
@@ -386,9 +387,165 @@ chgrp nomGroupe nomFichier : changer le groupe propriétaire d'un fichier
 updatedb : met à jour la base de données de fichiers
 reboot : redémarre l'ordinateur (fait appel à shutdown)
 halt : éteint l'ordinateur (fait appel à shutdown)
+visudo : éditer le fichier /etc/sudoers pour donner les droits sudo aux comptes utilisateurs
+
+su nomUtilisateur : se connecter sur un autre compte
+
+===================== SCRIPT SHELL =====================
 
 
+Minilangage de programmation dédié à Linux pour automatiser certaines tâches.
 
+Shell = environnement console. Programme qui gère l'invite de commande.
+SH (le plus ancien présent sur tout UNIX) et Bash (présents sur Linux et MAC OS X, qui hérite de SH) sont les shells les plus répendus.
+
+.bashrc est le fichier de configuration du shell bash.
+
+Les script diffèrent d'un shell à l'autre.
+
+Par convention, les fichiers de script shell portent l'extension .sh mais ce n'est pas obligatoire.
+
+SCRIPT BASH (plus complet que SH et plus répendu que ses alternatives plus puissantes) :
+
+Indiquer en première ligne du fichier le chemin du shell dont on veut forcer l'utilisation : #!/bin/bash
+Si cette ligne n'est pas présente, le shell que l'utilisateur utilise sera utilisé.
+
+#! = sha-bang
+
+Ecrire ensuite les commandes à automatiser.
+
+Une fois le fichier enregistré, il faut lui donner le droit d'éxecution.
+
+Façon rapide de faire : chmod +x nomFichier.sh
+
+Executer le script : ./nomFichier.sh
+
+Débugguer un script : bash -x nomFicher.sh
+
+Pour lancer le script de partout, il faut le placer dans un repértoire du PATH comme /bin
+
+Déclaration de variable :
+
+nomVariable='valeur'
+
+Dans BASH, tout est chaine de caractère.
+
+Afficher une variable : 
+
+echo $nomVariable
+
+Différents types de quotes (délimiteurs) :
+
+'' -> chaine de caractère pure
+"" -> analyse ce qu'il y a dedans (affiche texte et contenu des variables)
+`` -> execute ce qu'il y a dedans
+
+Lire la saisie utilisateur :
+
+read variable
+read -p 'texte' variable
+read -p 'Entrez un mdp' -s password
+read -p 'entrez un message avant 5 secondes :' -t 5 message
+read -p 'entrez votre nom (5 caracteres max) :' -n 5 nom
+
+Faire des calculs :
+
+let "a = 5"
+let "b = 2"
+let "c = a + b"
+echo $c // affiche 7
+
+Variables globales (d'environnement) sont disponibles partout :
+
+les afficher avec la commande env
+leur nom sont en majuscule par convention
+on peut les utiliser dans notre code ou en créer de nouvelles avec export
+
+Créer une variable tableau :
+
+tableau=('valeur1', 'valeur2', 'valeur3')
+
+Accéder à une case du tableau :
+
+{tableau[indice]}
+echo {tableau[*]} // affiche tous les éléments du tableau
+
+On peut passer des paramètres à la commande du script, ils sont récupérés dedans à travers des variables partant de $1 à $9. ($0 contient le nom du script.)
+Utiliser shift pour décaler à droite (si + de 9 paramètres).
+
+Conditions :
+
+if [ test ]
+then
+	instructions...
+elif [ test ]
+then
+	instructions...
+else
+	instructions...
+fi
+
+OU
+
+if [ test ]; then
+	instructions...
+elif [ test ]; then
+	instructions...
+else
+	instructions...
+fi
+
+Dans le test, -z $chaine vérifie que la chaine est vide (ou n'existe pas), -n $chaine vérifie qu'elle est non vide (ou existe).
+
+case $variable in
+	"valeur1")
+	instructions...
+	;;
+	"valeur2)
+	instructions...
+	;;
+	valeur3)
+	instructions...
+	;;
+	*)
+		instructions par défaut...
+		;;
+esac
+
+Boucles :
+
+while [ test ]
+do
+	instructions...
+done
+
+until [ test ]
+do
+	instructions...
+done
+
+for variable in 'valeur1', 'valeur2', 'valeur3'
+do
+	instructions...
+done
+
+Fonctions :
+
+maFonction ()
+
+{
+instructions...
+}
+
+OU
+
+function maFonction
+
+{
+instructions...
+}
+
+Appel : maFonction
 
 
 

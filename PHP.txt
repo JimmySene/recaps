@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Dès qu'il y a la moindre ligne de php dans le code html, votre fichier doit avoir l'extension .php
 Les variables en PHP doivent commencer par un $ et peuvent contenir n'importe quel type
 exemple : $variable = contenu;
@@ -23,6 +24,13 @@ Trier un tableau : sort($tab)
 Trier un tableau dans l'ordre inverse : rsort($tab)
 
 =========================================================================
+=======
+Création de variable : $variable = valeur;
+Afficher du texte : echo "texte";
+
+
+///////////////////////////////////////////////////////////
+>>>>>>> 10e4ec228c6e92e0b974a7bd7095d414b17be3b2
 
 PHPMailer : Librairie PHP d'envoie de mail
 
