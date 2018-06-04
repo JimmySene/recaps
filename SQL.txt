@@ -1,0 +1,2 @@
+Remplacer un caractère ou un mot dans un champs d'une table :
+UPDATE table SET nom_champs = replace(nom_champs, 'élémentAremplacer', 'élémentAMettre');
