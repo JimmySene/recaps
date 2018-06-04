@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 Dès qu'il y a la moindre ligne de php dans le code html, votre fichier doit avoir l'extension .php
 Les variables en PHP doivent commencer par un $ et peuvent contenir n'importe quel type
 exemple : $variable = contenu;
+
+Afficher du texte : echo "votre texte ici";
 
 Concaténation : .
 Afficher du texte : echo "contenu";
@@ -23,14 +24,33 @@ min($tab) et max($tab) : retourne le minimum et le maximum d'un tableau
 Trier un tableau : sort($tab)
 Trier un tableau dans l'ordre inverse : rsort($tab)
 
-=========================================================================
-=======
-Création de variable : $variable = valeur;
-Afficher du texte : echo "texte";
+Redirection directe : header('location:lien');
+Redirection après x secondes : header('refresh:x;url=lien');
 
+Connexion SQL : $con = mysqli_connect('ip', 'user', 'mdp', 'bdd');
+$req = "ECRIRE LA REQUETE ICI";
 
-///////////////////////////////////////////////////////////
->>>>>>> 10e4ec228c6e92e0b974a7bd7095d414b17be3b2
+Execution d'une requête : 
+INSERT / UPDATE / DELETE : mysqli_query($con, $req); 
+SELECT : $data = mysqli_query($con, $req);
+
+parcourir les données d'un renvoie de requete : while($donnees = mysqli_fetch_assoc($data))
+avoir le nombre de lignes retournées par une requete : mysqli_num_rows($data);
+
+Tester l'existence d'une variable : isset()
+Tester si une variable n'est pas vide : !empty()
+
+Démarrer une session : session_start(); // au début de tout code html, à dupliquer sur toutes les pages d'un site
+Fermer une session : session_destroy(); // après un session_start
+Créer une variable session : $_SESSION['nom'] = valeur;
+
+Transmettre des données d'une page à l'autre :
+	
+Par lien : $_GET['nom'] = valeur; // retour des &nom=valeur dans l'url
+Par formulaire : $_POST['nom'] = valeur; // le nom est le retour de l'attribut 'name' et la valeur l'attribut 'value' ou ce qui est rempli dans le champs
+
+==========================
+
 
 PHPMailer : Librairie PHP d'envoie de mail
 
