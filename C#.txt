@@ -30,3 +30,6 @@ Appel de fonction : variable = nom_fonction(argument...);
 Conditions : if(), else(), else if(), switch() case valeur: break;
 
 Boucles : while(), do while(), for(type variable;condition;incrementation), foreach(type nom_alias in array)
+
+Passer une variable en référence permettant sa modification au sein d'une fonction ou procédure : nomFonction(ref nomVariable);
+Dans les paramètres de la fonction, préciser (ref typeVariable nomVariable).
