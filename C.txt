@@ -91,7 +91,7 @@ Créer un pointeur : type *nom = adresse;
 Afficher le contenu de la variable pointée dans un printf : *nomPointeur
 
 Passer des pointeurs à des fonctions permet de modifier les valeurs des variables pointées à partir des fonctions mêmes et de ne plus
-être limié au retour d'une seule valeur.
+être limité au retour d'une seule valeur.
 
 Un tableau est une variable contenant plusieurs valeurs. Il se déclare comme ceci : type nom[quantite]
 Impossible de faire de déclarations dynamiques (mettre une variable en quantite) en C89. Sauf avec l'utilisation de malloc().

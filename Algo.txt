@@ -1,0 +1,99 @@
+Définition : 
+Un algorythme est une représentation formelle de la résolution d'un problème en vu d'être traduit dans un langage de programmation.
+Suite d'instructions en langage naturel.
+
+---
+
+Créer un Algo : 
+
+Algo nomAlgo
+Variables :
+	Déclarations...
+Début
+	Instructions...
+Fin
+
+---
+
+Déclaration de variables : nomVariable : type
+Exemples : 
+	I : Entier
+	Message : Chaine de caractères
+	Loyer : Reel
+	Reponse : Booleen
+
+Affectation de valeur : I <- 50 // se fait entre début et fin
+
+---
+
+Afficher un message : AFFICHER("message")
+Afficher une variable : AFFICHER(variable)
+
+Concaténation : ,
+
+Lire la saisie clavier : SAISIR(variable)
+
+---
+
+Conditions : 
+
+Si(condition)
+	Instructions
+Sinon
+	Si(condition)
+		Instructions...
+	Fsi
+Sinon
+	Instructions
+Fsi
+
+---
+
+Boucles : 
+
+Tant que (condition)
+	Instructions
+Ftq
+
+Répéter
+	Instructions
+Jusqu'à (condition)
+
+Pour (I <- 1 à 5)
+	Instructions
+Fpour
+
+---
+
+Déclaration d'un tableau : nomTab tableau [taille] : type
+Exemple : montab tableau [10] : Entier
+
+Accès à une valeur du tableau : nomTab[indice]
+Obtenir la taille du tableau : Taille(monTab)
+
+---
+
+Fonctions et Procédures : // à faire avant l'algo principal 
+
+Fonction :
+
+fonction nomFonction(parametres)
+Variables
+Début
+	Instructions
+	Retourner
+Fin
+
+Appel : Variable <- nomFonction ou Afficher(nomFonction)
+
+Procédure : 
+
+procédure nomProcédure(parametres)
+Variables
+Début
+	Instructions
+Fin
+
+Appel : nomProcedure()
+
+
