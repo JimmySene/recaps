@@ -1,7 +1,13 @@
 Bootstrap est un framework CSS développé pour les besoins de Twitter.
 Il sert à gagner du temps dans la mise en forme de son site et d'uniformiser le tout sur tous les navigateurs et tous les appareils.
 
+La derniere version actuelle de Bootstrap est la version 4. Elle n'est pas compatible avec IE 8/9.
+
 C'est un fichier CSS qui contient de nombreuses classes.
+
+Inclure cette balise meta à chaque page HTML : 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 Bootstrap décompose la page web selon un système de grille qui possède 12 colonnes d'une largeur qui varie en fonction de la taille de la fenêtre.
 Une rangée, appelée row, prend la hauteur du plus gros élément qu'elle contient.
@@ -9,14 +15,17 @@ Une rangée, appelée row, prend la hauteur du plus gros élément qu'elle contient.
 Classes :
 
 container : contient et centre la grille sur une largeur fixe
-container-fluid : continet la grille et lui fait occuper toute la largeur
+container-fluid : contient la grille et lui fait occuper toute la largeur
 
 row : représente une rangée et établit des marges négatives de -15px à gauche et à droite
 
-col-xs-x : élément smartphone < 768px
-col-sm-x : élément tablette => 768px
-col-md-x : écran ordinateur portable => 992px
-col-lg-x : écran de PC fixe >= 1200px
+
+    .col-x (extra small devices - screen width less than 576px)
+    .col-sm-x (small devices - screen width equal to or greater than 576px)
+    .col-md-x (medium devices - screen width equal to or greater than 768px)
+    .col-lg-x (large devices - screen width equal to or greater than 992px)
+    .col-xl-x (xlarge devices - screen width equal to or greater than 1200px)
+
 
 de taille x (1 à 12)
 
@@ -27,5 +36,29 @@ col-y-push-x : décale vers la droite
 
 page-header : définit l'entete de page
 
+display-x (x allant de 1 à 4) : titre moins épais et plus grand
+
+.font-weight-bold 	Bold text 	
+.font-italic 	Italic text 	
+.font-weight-light 	Light weight text 	
+.font-weight-normal 	Normal text 	
+.lead 	Makes a paragraph stand out 	
+.small 	Indicates smaller text (set to 85% of the size of the parent) 	
+.text-left 	Indicates left-aligned text 	
+.text-*-right 	Indicates left-aligned text on small, medium, large or xlarge screens 	
+.text-center 	Indicates center-aligned text 	
+.text-*-center 	Indicates center-aligned text on small, medium, large or xlarge screens 	
+.text-right 	Indicates right-aligned text 	
+.text-*-right 	Indicates right-aligned text on small, medium, large or xlarge screens 	
+.text-justify 	Indicates justified text 	
+.text-monospace 	Monospaced text 	
+.text-nowrap 	Indicates no wrap text 	
+.text-lowercase 	Indicates lowercased text 	
+.text-uppercase 	Indicates uppercased text 	
+.text-capitalize 	Indicates capitalized text 	
+.initialism 	Displays the text inside an <abbr> element in a slightly smaller font size 	
+.list-unstyled 	Removes the default list-style and left margin on list items (works on both <ul> and <ol>). This class only applies to immediate children list items (to remove the default list-style from any nested lists, apply this class to any nested lists as well) 	
+.list-inline 	Places all list items on a single line (used together with .list-inline-item on each <li> elements) 	
+.pre-scrollable 	Makes a <pre> element scrollable
 
 

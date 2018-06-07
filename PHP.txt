@@ -27,7 +27,7 @@ Trier un tableau dans l'ordre inverse : rsort($tab)
 Redirection directe : header('location:lien');
 Redirection après x secondes : header('refresh:x;url=lien');
 
-Connexion SQL : $con = mysqli_connect('ip', 'user', 'mdp', 'bdd');
+Connexion SQL : $con = mysqli_connect('ip', 'user', 'mdp', 'bdd'); // ip correspond à l'adresse du serveur où est installé MySQL
 $req = "ECRIRE LA REQUETE ICI";
 
 Execution d'une requête : 
@@ -48,6 +48,9 @@ Transmettre des données d'une page à l'autre :
 	
 Par lien : $_GET['nom'] = valeur; // retour des &nom=valeur dans l'url
 Par formulaire : $_POST['nom'] = valeur; // le nom est le retour de l'attribut 'name' et la valeur l'attribut 'value' ou ce qui est rempli dans le champs
+
+Mettre php_flag output_buffering on
+ dans le .htaccess si il y a des problèmes avec les sessions sur un hébergeur tel que 000webhost.
 
 ==========================
 

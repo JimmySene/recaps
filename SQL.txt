@@ -1,2 +1,78 @@
+Récupérer des données : SELECT * FROM nom_table
+Filtrer les données : WHERE nom_champs = 'valeur' AND nom_champs = 'valeur'... // pas besoin de '' pour les nombres 
+Trier les données : ORDER BY nom_champs // Ajouter DESC à la fin pour inverser
+Limiter les données : LIMIT x, y // x = première entrée y = nb d'entrées à prendre après x
+Insérer des données : INSERT INTO nom_table(nom_champs1, nom_champs2...) VALUES('valeur1', 'valeur2'...)
+Modifier des données : UPDATE nom_table SET nom_champs='valeur'
+Supprimer des données : DELETE FROM nom_table
+
+Pour les dates et les nombres, on peut utiliser le mot clef BETWEEN '' AND '' pour filtrer des données situées dans un interval.
+
+Il existe deux types de fonctions SQL :
+
+-scalaires : agissent sur chaque entrées d'un champ
+-agrégat : agissent sur toute la table et retournent une seule valeur
+
+Ces fonctions créent un champs virtuel appelé alias avec le mot clef AS
+
+FONCTIONS SCALAIRES :
+
+UPPER($texte) : met en majuscule
+LOWER($texte) : met en minuscule
+LENGTH($texte) : compte le nombre de caractères
+ROUND($decimal, nb_apres_la_virgule) : arrondie un nombre décimal
+
+FONCTIONS D'AGREGAT :
+
+AVG(champs_numerique) : renvoie la moyenne
+SUM(champs_numerique) : Additionne les valeurs
+MAX(champs_numérique) : retourne la valeur maximale
+MIN(champs_numérique) : retourne la valeur minimale
+COUNT(*) : compte le nombre d'entrées // ajouter DISTINCT nom_du_champs pour compter le nb d'entrées distinctes 
+
+On peut utiliser GROUP BY pour grouper les données reçues par une fonction d'agrégat et filtrer le résultat renvoyé avec HAVING.
+
+Exemple : SELECT AVG(prix) AS prix_moyen, console FROM jeux_videos WHERE possesseur = 'Jimmy' GROUP BY console HAVING prix_moyen <= 10
+
+FONCTIONS AVEC LES DATES :
+
+Les champs DATE sont au format 'AAAA-MM-JJ', TIME 'HH:MM' et DATETIME 'AAAA-MM-JJ HH:MM'.
+
+NOW() : date et heure actuelle
+CUREDATE() : date actuelle
+CURETIME() : heure actuelle
+
+DAY(champs_date) : renvoie le jour
+MONTH(champs_date) : renvoie le mois
+YEAR(champs_date) : renvoie l'année
+HOUR(champs_date) : renvoie l'heure
+MINUTE(champs_date) : renvoie les minutes
+SECOND(champs_date) : renvoie les secondes
+
+DATE_FORMAT(champs_date, '%d/%m/%Y %Hh%imin%ss') : formate la date
+
+DATE_ADD(champs_date, INTERVAL 15 DAY) : retourne la date ajoutée de 15 jours (exemple)
+DATE_SUB(champs_date, INTERVAL 2 MONTH) : retourne la date soustraite de 2 mois (exemple)
+
+Il existe 2 types de jointure :
+-interne : renvoie les données avec une correspondance dans les deux tables
+-externe : renvoie les données même si il n'y a pas de correspondance dans les deux tables
+
+Jointures internes :
+	-WHERE nom_table.nom_champs = nom_table2.nom_champs2 // il s'agit de l'ancienne syntaxe
+	-INNER JOIN nom_table_principale ON nom_table_principale.nom_champs = nom_table2.nom_champs2
+Jointure externes :
+	-LEFT JOIN nom_table ON nom_table.nom_champs = nom_table2.nom_champs2 // Prend toutes les données de la table de gauche à côté du FROM
+	-RIGHT JOIN nom_table ON nom_table.nom_champs = nom_table2.nom_champs2 // Prend toutes les données de la table de droite (nom_table)
+	
+Les jointures sont à placer avant les filtres dans la requête.
+
+---
+
 Remplacer un caractère ou un mot dans un champs d'une table :
 UPDATE table SET nom_champs = replace(nom_champs, 'élémentAremplacer', 'élémentAMettre');
+
+RESSOURCES : 
+https://dev.mysql.com/doc/refman/8.0/en/numeric-functions.html
+https://dev.mysql.com/doc/refman/8.0/en/string-functions.html
+https://openclassrooms.com/courses/concevez-votre-site-web-avec-php-et-mysql/presentation-des-bases-de-donnees-2

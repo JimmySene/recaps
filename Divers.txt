@@ -101,3 +101,4 @@ Type MIME : Internet Media Type, aussi appelé Content-type est un identifiant de
 Les deux parties sont le type et le sous-type.
 Exemples : image/jpeg, text/html, video/mp4, audio/mpeg, multipart/alternative, application/javascript...
 	
+CDN (Content Delivery Network) : Ensemble de serveurs situés partout dans le monde qui délivre le même contenu avec un système de cache optimal
