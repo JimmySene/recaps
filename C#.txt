@@ -1,0 +1,32 @@
+Sensible à la casse. Norme Pascal Case.
+
+Commentaires : courts // ou longs /* */
+
+Déclaration de variable : type nom = valeur;
+Types principaux : int, string, decimal, bool
+
+Afficher du texte dans la console : Console.WriteLine("texte");
+Passer une ligne : Environment.NewLine(); // \n fonctionne aussi
+Lire une entrée clavier : string messsage = Console.ReadLine(); // renvoie toujours un string 
+Console.ReadKey(true) // renvoie un ConsoleKeyInfo à stocker dans une variable. Tester variable.Key == ConsoleKey.O pour validation "o"
+Tester la converssion d'une chaine en nombre : Int.TryParse(variable, out new_variable) // renvoie true si conversion possible sinon false
+Convertir une chaine en nombre : Int.Parse(variable); OU Convert.ToInt32(variable);
+Concaténation : +
+
+Array : type[] nom = new type[nb_cases]; // ou new type[] { "valeur1", "valeur2"...};
+Listes : List<type> nom = new List<type>(); // using System.Collections.Generic
+	Ajouter dans une liste : nom_list.Add(valeur);
+	Supprimer dans une liste : nom_list.Remove("valeur"); OU nom_list.RemoveAt(indice);
+
+Trier un tableau : Array.Sort(nom_tab);
+Récupérer un indice : int indice = nom_list.IndexOf("valeur");
+
+Procédure : static void nom_procedure(type_argument nom_argument...) { }
+Fonction : static type nom(type_argument nom_argument...) { return ; }
+
+Appel de procédure : nom_procedure(argument...);
+Appel de fonction : variable = nom_fonction(argument...);
+
+Conditions : if(), else(), else if(), switch() case valeur: break;
+
+Boucles : while(), do while(), for(type variable;condition;incrementation), foreach(type nom_alias in array)
