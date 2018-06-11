@@ -320,7 +320,7 @@ grep texte nomFichier : recherche un mot dans un fichier
 	-v : inverser la recherche (ne contient pas le mot)
 	-r (rgrep) : rechercher dans tous les fichiers et sous-dossiers (mettre repertoire à la fin à la place du nomFichier)
 	-E (egrep) : utiliser une expression régulière comme filtre
-sort nomFichier : trie le contneu d'un fichier
+sort nomFichier : trie le contenu d'un fichier
 	-o : enregistrer le trie : sort nomNewFichier nomFichier
 	-r : trier en ordre inverse
 	-R : trier aléatoirement
