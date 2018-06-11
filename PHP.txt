@@ -1,8 +1,13 @@
 Dès qu'il y a la moindre ligne de php dans le code html, votre fichier doit avoir l'extension .php
+
+Ecrire du code PHP : <?php codePHP... ?>
+Dans un fichier 100% php (sans html), une bonne pratique est d'enlever la balise de fin ?>.
+
 Les variables en PHP doivent commencer par un $ et peuvent contenir n'importe quel type
 exemple : $variable = contenu;
 
 Afficher du texte : echo "votre texte ici";
+Au lieu parfois de taper <?php echo "message"; ?>, on peut utiliser les shorts open tags : <?="message"?>
 
 Concaténation : .
 Afficher du texte : echo "contenu";

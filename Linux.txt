@@ -219,7 +219,7 @@ On peut écrire plusieurs commandes sur une seule ligne en les séparant par un ; 
 ---
 
 Sous Linux, on a pris l'habitude de compresser nos fichiers en deux étapes :
-	-Réunir les fichiers en une archive avec le programme tar (.tar)
+	-Réunir les fichiers en une archive avec le programme tar (.tar) // car gzip et bzip2 ne peuvent compresser qu'un fichier à la fois
 	-Compresser le gros fichier obtenu à l'aide de gzip (.gz) ou bzip2 (.bz2)
 
 ===================== COMMANDES =====================
@@ -366,6 +366,26 @@ tar -cvf nom_archive.tar nom_dossier : créer une archive tar de nom_dossier
 	-f : assembler l'archive dans un fichier
 	tar -tf nomArchive : affiche le contenu de l'archive sans l'extraire
 chsh : changer de shell (ils se situent dans le dossier /bin/nomShell)
+tar : création et extraction d'archives
+	-zcvf nomArchive nomDossier/ : créer une archive compressée en .gz
+	-zxvf nomArchive : extrait le contenu d'une archive compressée en .gz
+	-jcvf nomArchive nomDossier/ : créer une archive compressée en .bz2
+	-jxvf nomArchive : extrait le contenu d'une archive compressée en .bz2
+	-cvf nomArchive nomDossier/ : créer une archive tar et affiche les détails de l'opération (NON COMPRESSE)
+	-ztf nomArchive : apperçu avant extraction d'un .tar.gz
+	-jtf nomArchive : apperçu avant extraction d'un .tar.bz2
+	-tf nomArchive : apperçu avant extraction d'un .tar
+	-rvf nomArchive nomFichier : ajouter un fichier à l'archive
+	-xvf nomArchive : extraire le contenu de l'archive .tar
+gzip nomArchive : compresse l'archive en .gz
+gunzip nomArchive : décompresse l'archive compressée en gz
+bzip2 nomArchive : compresse l'archive en .bz2
+bunzip2 : décompresse l'archive compressée en bz2
+unzip nomArchive.zip : décompresser les .zip (Il faut installer le paquet avant)
+	-l : voir le contenu avant extraction
+zip -r nomArchive nomDossier/ : compresse en .zip le dossier et son contenu
+unrar e nomArchive.rar : décompresser les .rar (Il faut installer le paquet avant)
+	l : voir le contenu avant extraction
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
@@ -464,7 +484,7 @@ Différents types de quotes (délimiteurs) :
 
 '' -> chaine de caractère pure
 "" -> analyse ce qu'il y a dedans (affiche texte et contenu des variables)
-`` -> execute ce qu'il y a dedans
+`` -> execute ce qu'il y a dedans (une nouvelle méthode est apparue : $() )
 
 Lire la saisie utilisateur :
 
@@ -566,21 +586,19 @@ done
 
 Fonctions :
 
-maFonction ()
-
-{
-instructions...
+maFonction(){
+	instructions...
+	// utiliser $1, $2... pour utiliser les arguments passés à la fonction
 }
 
 OU
 
-function maFonction
-
-{
-instructions...
+function maFonction {
+	instructions...
+	// utiliser $1, $2... pour utiliser les arguments passés à la fonction
 }
 
-Appel : maFonction
+Appel : maFonction argument1 argument2...
 
 
 
