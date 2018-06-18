@@ -1,0 +1,86 @@
+Symfony est un célèbre framework PHP développé par Sensiolabs, entreprise française.
+Son but premier est d'optimiser la productivité des développeurs PHP en leur facilitant le développement de sites web.
+Le design pattern utilisé par le framework pour organiser le code est MVC. 
+
+Dans Symfony, tout projet de site web est appelé une application.
+
+PHP doit être installé sur la machine. Vérifier en ligne de commande avec php -v
+Si php est installé mais que la commande indique une erreur, il faut placer le chemin de PHP dans la variable d'environnement PATH.
+
+Installer un nouveau projet Symfony : php symfony.phar new nomProjet 3.3.2
+
+Une fois ceci fait, l'application est disponible à l'adresse : localhost/Symfony/web/app_dev.php
+
+L'architecture de Symfony comprend plusieurs dossiers :
+
+app : dossier de l'application sauf code source
+bin : executables pouvant être lancés en ligne de commande
+src : code source divisés en bundles (briques d'application)
+tests : sert aux tests
+var : logs, cache, fichiers de config symfony. On écrit rien nous meme dans ce dossier.
+vendor : lib externes dont Symfony, Twig, Doctrine, SwiftMailer...
+web : images, fichiers css et js dont le controlleur frontal (point d'entrée) app.php et app_dev.php
+
+Il y a deux controlleurs frontaux, app.php et app_dev.php. app_dev.php est pour l'environnement de développement et l'autre pour la prod.
+
+Généralement, l'application contient un seul bundle appelé core ou app. Mais il est intéressant de développer plusieurs bundles si on souhaite
+partager nos fonctionnalités avec d'autres développeurs.
+
+Un Bundle est constitué de plusieurs dossiers :
+
+-Controller : contient les controleurs
+-DependencyInjection : contient des infos sur le bundle
+-Entity : contient les modèles
+-Forms : contient les formulaires
+-Resources
+	-config : contient les fichiers de conf
+	-public : contient les fichiers css, js et images
+	-views : contient les vues, notamment les templates Twig
+
+Site pour télécharger des bundles : http://knpbundles.com/
+
+Utiliser l'executable console : php bin/console
+Générer un bundle : php bin/console generate:bundle
+
+Un Bundle se nomme par convention : NomEntreprise/NomBundle
+Exemple : Jimdev/AppBundle
+
+Choisir de préférence yml comme format de fichier de configuration.
+
+En utilisant cette commande, le bundle a été ajouté au Kernel (noyau) situé dans app/AppKernel.php
+Il a également été placé dans le routeur situé dans le dossier du Bundle Resources/config/routing.yml
+
+Une fois ceci fait, il faut modifier le routeur du bundle (routing.yml) pour y indiquer de nouvelles routes.
+Les routes se présentent sous cettee forme :
+
+Exemple 1 : 
+nom_route:
+    path: /nom-chemin
+    defaults: { _controller: nomCompletDuBundle:nomController:nomAction }
+
+Eemple 2 :
+nom_route_complexe:
+    path: /nom-chemin/{parametre1}/{parametre2}.{parametre3}
+    defaults: 
+	_controller: nomCompletDuBundle:nomController:nomAction
+	parametre3: html // paramètre par défaut
+    requirements:
+        parametre1: contrainte
+	parametre2: contrainte
+	parametre3: contrainte
+
+Les paramètres peuvent être récupérées en argument (de même nom, peu importe l'ordre) de la méthode action utilisée dans le controller appelé par la route.
+On peut générer des URL à partir d'un template Twig avec {{ path('nomRoute', {'nomParametre' : nomVariableDansTwig }) }}
+			à partir d'un controller avec $this->get('router')->generate('nomRoute');
+						 ou $this->generateUrl('nomRoute');
+
+/!\ il faut mettre 4 espaces (comme avant path et defaults) et non une indentation classique dans les fichiers .yml au risque de créer une erreur. /!\
+
+Ensuite, il faut générer un controller avec ses actions. Les actions sont les méthodes du controller pouvant être appelées par le routeur. 
+Elles sont toutes suffixés de "Action" au sein du controller.
+
+Générer un controller : php bin/console generate:controller
+
+On peut créer un template twig attaché au controller pendant sa génération.
+Un template twig est une page html dynamisée sans PHP. Twig est un langage à part qui facilite la compréhension pour les designers.
+Les templates sont situés dans le dossier Resources/views/DossierMemeNomQueController

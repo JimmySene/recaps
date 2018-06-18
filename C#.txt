@@ -9,7 +9,7 @@ Afficher du texte dans la console : Console.WriteLine("texte");
 Passer une ligne : Environment.NewLine(); // \n fonctionne aussi
 Lire une entrée clavier : string messsage = Console.ReadLine(); // renvoie toujours un string 
 Console.ReadKey(true) // renvoie un ConsoleKeyInfo à stocker dans une variable. Tester variable.Key == ConsoleKey.O pour validation "o"
-Tester la converssion d'une chaine en nombre : Int.TryParse(variable, out new_variable) // renvoie true si conversion possible sinon false
+Tester la conversion d'une chaine en nombre : Int.TryParse(variable, out new_variable) // renvoie true si conversion possible sinon false
 Convertir une chaine en nombre : Int.Parse(variable); OU Convert.ToInt32(variable);
 Concaténation : +
 
