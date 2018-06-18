@@ -280,14 +280,17 @@ nano : ouvre l'éditeur de texte nano (^ signifie CTRL)
 	Le fichier de configuration personnel de Nano s'appelle .nanorc et est situé dans le dossier personnel
 	Le fichier de configuration global de Nano s'appelle nanorc et est situé dans le dossier etc (modifiable en root)
 alias : affiche la liste des alias de commandes créés dans le fichier .bashrc
-apt-get : télécharger et installer des paquets
+apt-get : télécharger et installer des paquets .deb
 	update : mettre à jour le cache (root)
 	install nomPaquet : télécharge et installe un paquet
 	remove nomPaquet : supprimer un paquet
 	autoremove nomPaquet : supprimer un paquet et ses dépendances devenues inutiles
 	upgrade : mettre à jour ses paquets (selon ce qui est situé dans le cache, faire un apt-get update avant de préférence) 
 	Modifier les dépots en éditant le fichier sources.list situé dans /etc/apt/
-apt-cache search nomPaquet : rechercher un paquet si on ne connait pas son nom
+apt-cache search nomPaquet : rechercher un paquet .deb si on ne connait pas son nom
+yum install nomPaquet : télécharger et installer des paquets .rpm
+rpm -ivh nomPaquet.rpm : Installe un paquet .rpm
+rpm -e nomPaquet : Désinstalle un paquet .rpm
 man nomCommande : affiche le manuel d'une commande (man pour "manual") 
 	Utiliser le / pour faire des recherches dans le manuel
 	Les mots écrits en gras sont à recopier, ceux soulignés sont à remplacer
@@ -360,11 +363,6 @@ crontab : programme la liste des commandes à éxecuter régulièrement
 	-e : modifier le crontab
 	-l : afficher le crontab
 	-r : supprimer le crontab
-tar -cvf nom_archive.tar nom_dossier : créer une archive tar de nom_dossier
-	-c : créer une archive tar
-	-v : afficher le détail de l'opération
-	-f : assembler l'archive dans un fichier
-	tar -tf nomArchive : affiche le contenu de l'archive sans l'extraire
 chsh : changer de shell (ils se situent dans le dossier /bin/nomShell)
 tar : création et extraction d'archives
 	-zcvf nomArchive nomDossier/ : créer une archive compressée en .gz
@@ -386,6 +384,9 @@ unzip nomArchive.zip : décompresser les .zip (Il faut installer le paquet avant)
 zip -r nomArchive nomDossier/ : compresse en .zip le dossier et son contenu
 unrar e nomArchive.rar : décompresser les .rar (Il faut installer le paquet avant)
 	l : voir le contenu avant extraction
+wget lien : télécharger un fichier à partir d'une URL (CTRTL + C pour le stopper)
+	-c : reprendre un téléchargement arrêté
+scp fichierOrigine login@ip:dossierDestination/ : copier des fichiers sur un réseau
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
