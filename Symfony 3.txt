@@ -82,5 +82,104 @@ Elles sont toutes suffixés de "Action" au sein du controller.
 Générer un controller : php bin/console generate:controller
 
 On peut créer un template twig attaché au controller pendant sa génération.
-Un template twig est une page html dynamisée sans PHP. Twig est un langage à part qui facilite la compréhension pour les designers.
+Un template twig est une page html dynamisée sans PHP. Twig est un langage à part qui facilite la compréhension pour les designers et prémunie notre appli aux failles XSS.
 Les templates sont situés dans le dossier Resources/views/DossierMemeNomQueController
+
+Pour récupérer la requête dans le controller, il faut ajouter l'argument Request $request dans la méthode action.
+A partir de là, on peut récupérer les superglobales :
+
+GET : $variable = $request->query->get('nomVariableGet');
+POST : $variable = $request->request->get('nomVariablePost');
+COOKIES : $variable = $request->cookies->get('nomVariableCookie');
+SERVER : $variable = $request->server->get('REQUEST_URI');
+EN TETE : $variable = $request->headers->get('USER_AGENT');
+PARAMETRES DE ROUTEE : $variable = $request->attributes->get('nomParametreRoute');
+
+Récupération de la SESSION : $session = $request->getSession();
+Récupérer le contnu d'une variable SESSION : $variable = $session->get('nomVariableSession');
+Modifier le contenu d'une variable SESSION : $session->set('nomVariableSession','valeur');
+
+ou effectuer des tests :
+
+$request->isMethod('POST') : renvoie true si la reqûete est une envoi de formulaire
+$request->isXmlHttpRequest() : renvoie true si la requête est une reqûete AJAX
+
+Enfin, il faut que la méthode action retourne un objet de type Response. 
+En général, une méthode d'un controller renvoie une vue, ici un template twig. 
+Pour lier ces deux actions, on utilise cette méthode :
+
+return $this->render('nomBundle:NomDossierVyue:nomVue.html.twig', array(parametresARenvoyer));
+
+Pour une reedirection, on utilise plutôt :
+
+return $this->redirectToRoute('nomRoute');
+Changer la valeur du paramètre intercept_redirects à true dans le fichier app/config/config_dev.yml pour débogguer lors de redirections (si besoin).
+
+Retourner du JSON :
+
+return new JsonResponse(array(parametres)); // encode l'argument en JSON et définit le bon content-type de la réponse.
+
+Dans TWIG, on affiche une variable comme ceci :
+-simple : {{ nomVar }}
+-tableau : {{nomTab['indice'] }}
+-objet : {{ nomObj.attributOuMethode }}
+On peut également appliquer des filtres avec | (upper, lower, title, striptags, raw, length, date('format'))
+Exemple : {{ maVar|nomFiltre|nomFiltre2}}
+
+Liste des filtres disponibles : https://twig.symfony.com/doc/2.x/filters/index.html
+La concaténation se fait avec les ~
+
+Variables globales disponible : app
+app.request : contient la requete
+app.session : contient les sessions
+app.environment : l'environnement courant
+app.debug : true si le mode ebug est activé, sinon false
+app.user : utilisateur courant
+
+Pour créer une variable globale, il faut la placer dans le fichier app/config/config.yml
+twig:
+	globals:
+		nomVariableGlobal: "%app_nomVariable%"
+et dans le fichier app/config/parameters.yml
+parameters:
+	app_nomVariable : valeur
+
+struture conditionnelle :
+
+{% if conddition %}
+	...
+{% elseif condition %}
+	...
+{% else %}
+	...
+{% endif %}
+
+boucle :
+
+{% for valeur, option in tableau %}
+	...
+{% endfor %}
+
+Une variable loop est créée dans la boucle avec les attributs suivant : 
+.index : numéro de l'itération courante commencant par 1
+.index0 : bis commencant par 0
+.revindex : nombree d'itérations restantes en finissant par 1
+.revinex0 : bis finissant par 0
+.first : true si premièree itération
+.last : true si dernière itération
+.length : nombre total d'itérations
+définition de variable :
+
+{% set nomVariable = valeur %}
+
+équivalent de isset() : is defined
+test pair : is even
+
+Il est courant de créer un template père nommé layout.html.twig pour y inlure la vue duplicable.
+On y inclut en général les blocks : {% block title %} [% endblock %} et {% block body %} {% endblock %}
+
+Dans les templates fils, il faut inclure le layout comme ceci : {% extends "nomBundle::layout.html.twig" %}
+et on y inclut les blocks title et body pour les modifier à notre guise. On appelle la fonction parent() pour récupérer le contenu des blocks par défaut.
+
+On peut inclure des templates notamment avec la fonction include("nomBundle:Controller:template.html.twig")
+et des méthodes de controller avec render(controller("nomBundle:nomController:nomAction"))
