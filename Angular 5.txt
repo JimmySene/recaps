@@ -16,6 +16,8 @@ Si VM : ng serve --host 0.0.0.0 --port 4200 --open // --open (-o) ouvre un ongle
 
 Accéder à l'appli grâce au navigateur à l'adresse : IP:port
 
+Si l'application ne change pas au gré des modifications dans le code, vérifier que le <base href=""> dans index.html est bon.
+
 Liste de commandes de création via le CLI :
 
 -component : ng g component nom-component
@@ -44,6 +46,8 @@ Il y a un fichier html et css principal (index.html et styles.css).
 
 Lorsque le développement est fini et que l'on souhaite mettre l'application sur un serveur, il faut le compiler
 avec la commande ng build et transférer sur le serveur l'ensemble des fichiers se situant dans le dossier "dist".
+Pour avoir une version prod du projet, il faut ajouter un argument à la commande : ng build --prod
+Si page blanche, alors ng build --prod --build-optimizer=false
 
 =============================================================================
 

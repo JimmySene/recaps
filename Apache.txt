@@ -1,0 +1,32 @@
+Apache est le serveur http le plus répendu au monde.
+Il permet à un serveur web de communiquer avec un client web et de transmettre des données via le protocole HTTP(s).
+
+Installation apache seul : 
+-Debian : sudo apt-get install apache2
+-Red Hat : yum install httpd
+
+Installation apache avec PHP et MYSQL : télécharger et installer W(indows)AMP / L(inux)AMP
+
+Les services et sites livrés par apache sont disponibles dans le dossier /var/www/html
+
+Les fichiers de configuration d'apache se situe dans /etc/apache2
+Par convention, on édite pas directement le fichier apache2.conf, envars et ports.conf mais on édite les fichiers
+situés dans les dossier xxx-available.
+
+
+Une fois qu'apache est installé, il s'active automatiquement au démarrage du serveur.
+
+Voici quelques commandes sous DEBIAN :
+sudo systemctl stop apache2 : arrête apache
+sudo systemctl start apache2 : lancer apache
+sudo systemctl restart apache2 : relance apache
+sudo systemctl reload apache2 : recharge la configuration d'apache
+httpd -v : voir la version d'apache
+sudo apache2ctl -M : voir les modules chargés
+
+quelques commandes sous RED HAT et CENTOS :
+
+systemctl enable httpd : active apache
+systemctl start httpd : démarre apache
+
+Ressource : https://doc.ubuntu-fr.org/apache2

@@ -10,9 +10,16 @@ Shadow DOM :
 
 
 
-Serveur : Ordinateur relié à Internet ayant pour rôle de servir des données à celui qui lui en demande.
+Serveur : Ordinateur connecté en permanence à Internet, ayant pour rôle de servir des données à celui qui lui en demande.
+Serveur web : serveur qui sert les services et données du web. Souvent composé d'un serveur http, d'un interpréteur de script et d'un SGBD.
+Serveur http (ex : Apache) : logiciel qui permet à un serveur web de communiquer avec un navigateur en utilisant la protocole HTTP(s).
 
+Web : Ensemble de documents et services disponibles sur Internet accessibles via le protocole HTTP(s).
 
+Client web : navigateur (Firefox, Edge, Chrome...)
+
+HTTP : protocole d'échange de données du web utilisant le port 80
+HTTPS : protocole d'échange de données chyffrées du web utilisant le port 443
 
 
 Sérialisation : Consiste à transformer une structure de donnée simple ou complexe en fichier texte.

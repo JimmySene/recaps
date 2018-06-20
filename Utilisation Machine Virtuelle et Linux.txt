@@ -7,7 +7,7 @@ Arrêter le serveur : halt
 
 CTRL + ALT : revenir sur le PC
 
-Récupérer l'adresse IP (10.213.93.75) puis la mettre dans putty.exe
+Récupérer l'adresse IP avec la commande ip addr puis la mettre dans putty.exe
 Réduire VMware et laisser la machine tournée.
 
 Putty.exe -> c'est un client SSH, émulateur de terminal. Logiciel libre et en version portable.
