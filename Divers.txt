@@ -7,20 +7,22 @@ Shadow DOM :
 	Utiliser la méthode .attachShadow({mode: "open"}) sur un élément pour appliquer le SHADOW DOM dessus.
 	Accessible via le noeud racine ShadowRoot.
 
-
-
-
-Serveur : Ordinateur connecté en permanence à Internet, ayant pour rôle de servir des données à celui qui lui en demande.
-Serveur web : serveur qui sert les services et données du web. Souvent composé d'un serveur http, d'un interpréteur de script et d'un SGBD.
-Serveur http (ex : Apache) : logiciel qui permet à un serveur web de communiquer avec un navigateur en utilisant la protocole HTTP(s).
-
 Web : Ensemble de documents et services disponibles sur Internet accessibles via le protocole HTTP(s).
 
 Client web : navigateur (Firefox, Edge, Chrome...)
 
+Serveur : Ordinateur connecté en permanence à Internet, ayant pour rôle de servir des données à celui qui lui en demande.
+
+Serveur web : serveur qui sert les services et données du web. Souvent composé d'un serveur http, d'un interpréteur de script et d'un SGBD.
+
+Serveur http (ex : Apache) : logiciel qui permet à un serveur web de communiquer avec un navigateur en utilisant le protocole HTTP(s).
+
 HTTP : protocole d'échange de données du web utilisant le port 80
+
 HTTPS : protocole d'échange de données chyffrées du web utilisant le port 443
 
+API (Application Programming Interface) : Ensemble normalisé de classes, méthodes et fonctions qui sert de façade par laquelle
+un logiciel offre des services à un autre programme. On l'appelle aussi "programme fournisseur" pouvant être utilisé par le "programme consommateur".
 
 Sérialisation : Consiste à transformer une structure de donnée simple ou complexe en fichier texte.
 
@@ -108,4 +110,18 @@ Type MIME : Internet Media Type, aussi appelé Content-type est un identifiant de
 Les deux parties sont le type et le sous-type.
 Exemples : image/jpeg, text/html, video/mp4, audio/mpeg, multipart/alternative, application/javascript...
 	
-CDN (Content Delivery Network) : Ensemble de serveurs situés partout dans le monde qui délivre le même contenu avec un système de cache optimal
+CDN (Content Delivery Network) : Ensemble de serveurs situés partout dans le monde qui délivre le même contenu avec un système de cache optimal.
+
+IHM (Interface Homme-Machine) : Moyen utilisé pour faire communiquer l'homme avec la machine.
+
+CLI (Command Line Interface) : IHM en mode texte, basé sur des lignes de commandes.
+
+GUI (Graphical User Interface) : IHM en mode graphique, en présence de pictogrammes et d'un dispositif de pointage.
+
+RPM (Redhat Package Manager) : Gestionnaire de paquets (.rpm) pour les distributions LINUX Redhat, CentOS et Fedora (écrit en C).
+
+YUM (Yellowdog Updater Modifier) : Surcouche de RPM gérant les téléchargements des dépendances (écrit en Python 2).
+
+DNF (Dandified YUM) : Evolution de YUM ajouté dès la verison 18 de Fedora (écrit en Python 3).
+
+APT (Advanced Package Manager) : Gestionnaire de paquets (.deb) pour les distributions LINUX Debian et ses dérivés (écrit en C++).
