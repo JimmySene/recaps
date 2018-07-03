@@ -195,6 +195,7 @@ Il existe plusieurs dépôts qui sont des copies des autres proposant les même paq
 Il est conseillé de choisir un dépôt se situant à proximité.
 
 Le dépot Ubuntu pour la france : fr.archive.ubuntu.com
+	 Debian pour la france : ftp.fr.debian.org/debian/
 
 ---
 

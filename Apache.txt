@@ -13,10 +13,10 @@ Les fichiers de configuration d'apache se situe dans /etc/apache2
 Par convention, on édite pas directement le fichier apache2.conf, envars et ports.conf mais on édite les fichiers
 situés dans les dossier xxx-available.
 
-
 Une fois qu'apache est installé, il s'active automatiquement au démarrage du serveur.
 
 Voici quelques commandes sous DEBIAN :
+
 sudo systemctl stop apache2 : arrête apache
 sudo systemctl start apache2 : lancer apache
 sudo systemctl restart apache2 : relance apache
