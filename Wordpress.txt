@@ -1,0 +1,110 @@
+Wordpress est le CMS le plus utilisé dans le monde. Il permet une création simplifiée de blogs et de sites web.
+Pas besoin de savoir programmer pour créer et gérer un site wordpress. Wordpress a été développé en PHP depuis 2003.
+
+Le CMS Wordpress a été utilisé pour créer plus de 30% des sites web existants.
+Il représente à lui seul plus de 60% des CMS utilisés au monde.
+
+Il possède un système de plugins qui permet d'ajouter des fonctionnalités au site que l'on construit.
+Que l'on peut simplement télécharger et installer via un panneau d'administration.
+De même, il existe plusieurs thèmes qui ont été construits pour changer l'apparence de notre site.
+
+Si l'on sait développer, on peut créer des plugins et des thèmes.
+
+Accéder au pannel admin : url-du-site/wp-admin
+
+Le dossier wp-content possède deux dossiers : Plugins et Themes. C'est dedans que l'on pourra développer.
+On évite de modifier les fichiers natifs de Wordpress au risque de perdre nos modifications lors des maj.
+
+Le moyen qui nous est fourni par Wordpress pour entreprendre des modifications en PHP est le principe des actions.
+Les actions sont des fonctions appelées lorsqu'un évènement particulier survient.
+
+Créer une action : add_action('nom_evenement', 'nom_fonction', 10); // le troisième paramètre est la priorité
+Exécuter une action : do_action('nom_evenement', arguments_envoyes_aux_fonctions...);
+
+Pour créer un thème, on créé un dossier avec le nom du theme sans espace ni accent dans le dossier wp-content/themes.
+On peut aussi créer un thème enfant d'un autre qui héritera du thème parent mais que l'on pourra modifier à notre guise.
+
+Dans un dossier de thème, deux fichiers doivent y figurer :
+
+-style.css comportant en commentaire des indications sur le thème (seul le nom du thème est obligatoire) :
+/*
+Theme Name: Le thème de test
+Template: nomDuDossierDuTemplateParentSiIlExiste
+Author: SENE Jimmy
+Author URI: http://monsiteweb.com
+Description: Notre premier thème WordPress !
+*/
+-index.php : point d'entrée. Structure HTML du site. 
+
+On peut créer plusieurs fichiers .php dans le dossier.
+
+Il y a un mécanisme de fallback concernant les fichiers php. index.php peut suffir pour toutes les pages du site.
+Cependant, si on a besoin d'un affichage particulier pour les catégories par exemple, on pourra alors créer un fichier
+category.php qui sera appelé au lieu de index. Puis aller plus loin en profondeur selon la catégorie appelée. Un peu comme un système de routing.
+
+Un fichier functions.php peut être présent et contient des fonctions php pouvant être utilisées dans tous les fichiers du thème.
+Créer un fichier functions.php dans un template enfant ne remplacera pas celui du parent, mais le complètera.
+
+Lors de la création d'un thème enfant, le style du thème parent a complètement été anhilé. 
+Pour le récupérer, il suffit d'ajouter la ligne @import url('../nomDossierThemeParent/style.css'); dans le style.css
+
+On peut aussi surcharger les fichiers en copiant / collant des fichiers PHP que l'on souhaite modifier.
+Par exemple, si on veut modifier le footer.php d'un thème parent, on le copie colle dans le dossier du thème enfant, et on le modifie.
+
+Créer une zone de widget (dans functions.php) pouvant être éditée dans le pannel admin : 
+
+add_action('widgets_init','test_zone');
+
+function test_zone()
+{
+	register_sidebar(array(
+		'id'=> '',
+		'name' => '',
+		'description' => '',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => ''
+	));
+}
+
+Appeler une zone widget :
+
+<?php dynamic_sidebar('id_zone_widget'); ?>
+
+Appeler un widget sans zone : 
+
+<?php the_widget('WP_Nom_Widget'); ?>
+
+Connaitre le nom des widgets natifs : https://codex.wordpress.org/Function_Reference/the_widget
+
+Créer une zone de menu (dans functions.php) pouvant être éditée dans le pannel admin :
+
+add_action('init', 'zone_menu_test');
+
+function zone_menu_test()
+{
+	register_nav_menu('id_menu', 'lib_menu');
+}
+
+Afficher un menu :
+
+<?php wp_nav_menu(array('theme_location' => 'id_zone_menu')); ?>
+
+Template tags :
+
+Fonctions Wordpress pouvant être utilisées dans nso thèmes. 
+
+get_header() : renvoie le haut de page
+get_footer() : renvoie le pied de page
+
+Boucle de rendu :
+
+while(have_posts()) :
+	the_post(); // récupère l'article
+	the_title(); // affiche le titre de l'article
+	the_content(); // afiche le contenu de l'article
+
+	comments_template(); // inclut le fichier comments.php devant contenir <?php wp_list_comments(); ?>
+	comment_form(); // affiche un formulaire d'ajout de commentaire
+endwhile;

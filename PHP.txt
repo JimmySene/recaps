@@ -6,6 +6,8 @@ Dans un fichier 100% php (sans html), une bonne pratique est d'enlever la balise
 Les variables en PHP doivent commencer par un $ et peuvent contenir n'importe quel type
 exemple : $variable = contenu;
 
+Définir une constante : define("NOM_CONSTANTE", "valeur");
+
 Afficher du texte : echo "votre texte ici";
 Au lieu parfois de taper <?php echo "message"; ?>, on peut utiliser les shorts open tags : <?="message"?>
 
