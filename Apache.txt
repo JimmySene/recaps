@@ -30,5 +30,14 @@ quelques commandes sous RED HAT et CENTOS :
 
 systemctl enable httpd : active apache
 systemctl start httpd : démarre apache
+systemctl restart httpd : rédémarre apache
+
+httpd est à remplacer par le nom du service apache.
+
+A chaque fois qu'une requête est envoyée, elle s'inscrit dans un fichier de log du nom de access_log situé dans le dossier log.
+On peut modifier le formatage du log en éditant le httpd.conf du dossier param, en ajoutant le LogFormat désiré (voir doc ci-dessous).
+Puis en ajoutant un Custom Log.
+
+https://httpd.apache.org/docs/current/fr/mod/mod_log_config.html
 
 Ressource : https://doc.ubuntu-fr.org/apache2
