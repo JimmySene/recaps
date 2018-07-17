@@ -24,6 +24,8 @@ sudo systemctl reload apache2 : recharge la configuration d'apache
 httpd -v : voir la version d'apache
 sudo apache2ctl -M : voir les modules chargés
 
+apache2 est à remplacer par le nom du service apache.
+
 quelques commandes sous RED HAT et CENTOS :
 
 systemctl enable httpd : active apache
