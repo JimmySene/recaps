@@ -508,6 +508,7 @@ Variables globales (d'environnement) sont disponibles partout :
 les afficher avec la commande env
 leur nom sont en majuscule par convention
 on peut les utiliser dans notre code ou en créer de nouvelles avec export
+on peut les supprimer avec unset
 
 Créer une variable tableau :
 
