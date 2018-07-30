@@ -1,0 +1,45 @@
+jQuery est une bibliothèque javascript servant à raccourci drastiquement le code JS afin de simplifier la manipulation
+du DOM, la programmation évenemmentielle et l'AJAX.
+
+"Write less. Do more."
+
+Dans un premier temps, il faut importer la bibliothèque dans le projet en ajoutant une balise 
+<script src="lien_de_la_biblio"></script>.
+
+Puis, ajouter cette fonction dans le projet :
+
+$(document).ready(function(){
+	code jQuery...
+});
+
+Selecteur CSS d'un ou plusieurs éléments du DOM : $('#element'), $('.elements'), $('nomBalise')...
+
+Récupérer le html d'un élément : $('element').html();
+Modifier le contenu html d'un élément : $('element').html('nouveau contenu');
+Ajouter du contenu html à la fin d'un élément : $('element').append('nouveau contenu');
+Ajouter du contenu html au début un élément : $('element').prepend('nouveau contenu');
+Supprimer un élément : $('element').remove();
+Vider un élément : $('element').empty();
+Modifier les attributs : $('element').attr("nomAttribut", "valeur");
+Récupérer un attribut : var att = $('element').attr("nomAttribut");
+
+Récupérer le texte d'un élément : $('element').text();
+
+Evenements :
+
+$('element').evenement(function(){
+	code jQuery...
+})
+
+AJAX (Asynchronous Javascript and XML) : 
+Ensemble de technologies qui permettent de récupérer des données sans recharger la page.
+
+$.ajax({
+	url: "" // par défaut la page en cours
+	data: { "nom" : "valeur" } // données envoyées avec $_GET ou $_POST
+	type: "POST" // GET par défaut
+	complete: function() { } // fonction qui s'execute en cas de succès de la reqûete
+	error: function() { } // fonction qui s'execute en cas d'erreur de la requête
+});
+
+Tout retour AJAX est encodé en UTF-8.

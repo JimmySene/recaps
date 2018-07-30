@@ -388,6 +388,14 @@ unrar e nomArchive.rar : décompresser les .rar (Il faut installer le paquet avan
 wget lien : télécharger un fichier à partir d'une URL (CTRTL + C pour le stopper)
 	-c : reprendre un téléchargement arrêté
 scp fichierOrigine login@ip:dossierDestination/ : copier des fichiers sur un réseau
+ftp url-du-ftp : se connecter à un serveur FTP pour télécharger ou uploader des fichiers
+On peut utiliser les commandes cd, ls et pwd pour naviguer sur le serveur, et !cd, !ls et !pwd pour naviguer sur son ordi
+get nomFichier : télécharger un fichier sur le serveur ftp / sftp
+put nomFichier : upload un fichier sur le serveur ftp / sftp
+sftp login@ip : se connecter à un serveur sftp
+rsync dossierSource login@IP:dossierCible : sauvegarde incremmentielle en ssh sur une autre machine
+	-a : garde les informations (comme le chmod) des fichiers
+	-r : sous dossiers
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
@@ -399,6 +407,7 @@ usermod nomUser : modifier un utilisateur
 	-l : renomer l'utilisateur
 	-g : changer le groupe de l'utilisateur
 	-G : changer les groupes de l'utilisateur (séparés par des virgules)
+	--delete : prend en compte les suppressions
 	-a : ajoute l'utilisateur à 1 ou des gorupe(s)
 	EXEMPLE : usermod -G amis, prof patrick
 DEBIAN et ses distribs -> delgroup nomGroupe / Autres LINUX -> groupdel nomGroupe : supprimer un groupe
@@ -410,8 +419,10 @@ updatedb : met à jour la base de données de fichiers
 reboot : redémarre l'ordinateur (fait appel à shutdown)
 halt : éteint l'ordinateur (fait appel à shutdown)
 visudo : éditer le fichier /etc/sudoers pour donner les droits sudo aux comptes utilisateurs
-
 su nomUtilisateur : se connecter sur un autre compte
+make (dans le répertoire source d'un programme après avoir effectué le ./configure) : compile le programme depuis les sources
+make install (bis) : installe le programme compilé
+make uninstall (bis) : désinstalle le programme compilé
 
 ===================== Connexion à un serveur distant avec SSH ====================
 
