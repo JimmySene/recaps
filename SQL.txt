@@ -1,3 +1,5 @@
+Le SQL (Structured Query Language) est un langage permettant de communiquer avec une base de données.
+
 Récupérer des données : SELECT * FROM nom_table
 Filtrer les données : WHERE nom_champs = 'valeur' AND nom_champs = 'valeur'... // pas besoin de '' pour les nombres 
 Trier les données : ORDER BY nom_champs // Ajouter DESC à la fin pour inverser

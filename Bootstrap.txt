@@ -61,4 +61,10 @@ display-x (x allant de 1 à 4) : titre moins épais et plus grand
 .list-inline 	Places all list items on a single line (used together with .list-inline-item on each <li> elements) 	
 .pre-scrollable 	Makes a <pre> element scrollable
 
+Afficher une info bulle : 
+	data-toggle="tooltip" title="texte infobulle"
+	En ajoutant le code JQuery dans la page : $(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+
 

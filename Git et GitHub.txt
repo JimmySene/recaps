@@ -1,4 +1,4 @@
-Git est un logiciel libre de gestion de versions de projets de développement. Développé par Linus Torvalds.
+Git est un logiciel de versionning utilisé en développement informatique. Développé par Linus Torvalds.
 Il stock sur un dépot (appelé repository) différentes versions d'un projet informatique afin de garder des backups et permettre 
 une édition multi-utilisateur aisée. 
 
@@ -9,7 +9,7 @@ On le préfère à Subversion (SVN) pour le fait :
 
 ---
 
-Utiliser Git Bash pour use les commandes GIT (clic droit sur le dossier d'appli -> Git Bash)
+Sur Windows, utiliser Git Bash pour utiliser les commandes GIT (clic droit sur le dossier d'appli -> Git Bash)
 
 Deux façons de procéder pour créer un nouveau dossier GIT (appelé "Dépôt" ou "Repository") en local :
 
@@ -24,7 +24,7 @@ OU Ajouter tous les fichiers à l'index : git add .
 
 Faire un commit : git commit -m "message"
 
-(Le message doit décrire le changement effectué et doit être écrit au présent. En anglais de préférence.)
+(Le message doit décrire le changement effectué et doit être écrit à l'impératif présent. En anglais de préférence.)
 
 Puis continuer à faire des modifications en local : modification fichier(s) -> git add nomDuFichier(s) -> git commit -m ""
 Répéter cette boucle jusqu'à ce que la journée se termine (cas général). Puis :
@@ -125,6 +125,9 @@ Puis
 	-> Fusionner les modifs dans la branche master : git merge upstream/master
 
 Voir où est synchroniser le repo : git remote -v
+
+Si on travaille sur un projet commun, il faut que le créateur du projet ajoute les autres en collaborateur du repo sur GitHub.
+Cela permet ensuite à tous les membres du projet comun de faire des commit et des push dessus.
 
 Liens : 
 -https://help.github.com/articles/fork-a-repo/

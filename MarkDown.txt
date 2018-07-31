@@ -1,0 +1,46 @@
+Le langage Markdown est un langage servant à formater du texte. Ce langage est ensuite automatiquement convertit en HTML.
+Il est très utilisé pour éditer des fichiers de documentations (les .md), et sur des plateformes telles que des forums, et même sur Discord.
+
+Ecrire en gras : ** texte ** ou __texte__
+Ecrire en italique : * texte * ou _texte_
+Ecrire en barre : ~~ texte ~~
+
+Titres :
+
+#titreNiveau1
+##titreNiveau2
+###titreNiveau3
+...
+
+Ou les souligner avec des === (niveau 1) ou --- (niveau 2)
+
+Listes à puces :
+
+* puce
+* puce
+* puce
+
+1. puce
+2. puce
+3. puce
+
+Liens :
+
+[texte du lien](lien)
+
+Images :
+
+![texte image](lien)
+
+Citations : > texte ici
+
+Code : `le code ici`
+
+Bloc de code : utiliser 4 espaces ou une indentation
+
+Saut de ligne : deux espaces à la fin de la ligne puis entrée
+
+ligne horizontale : --------------------------
+
+
+
