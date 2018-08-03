@@ -1,0 +1,20 @@
+PostGreSQL est un SGBDR libre plus ancien que MySQL. Il avait été mis de côté fut un temps du fait qu'il ne fonctionnait pas
+sous Windows mais uniquement sur les sytèmes UNIX. Ce problème a été résolu dans la version 8.
+
+Une base PostGreSQL ne peut pas être mise en prod directement sans passer par des fichiers de configuration.
+Cependant, un outil du nom de PgAdmin livré avec le programme permet une gestion des BDD simplifiée.
+
+Avantages : 
+
+-Respect de la norme SQL2003
+-Plus de fonctionnalités que MySQL et test d'intégrité (qui par contre baisse les perf sur les volumes de données basses [en dessous de 1GO])
+
+Il est préférable d'utiliser PostGreSQL sur les gros volumes de données.
+Si on a un faible volume de données, il faut privilégier MySQL qui sera plus rapide en execution.
+
+Anecdote : Sourceforge est passée de MySQL à PostGreSQL parce que MySQL ne pouvait plus supporter leur base devenue trop grosse et trop complexe.
+
+Un SGBDR ne fonctionne bien que si il a accès à toutes les ressources du serveur.
+Idéal : connexion lan avec serveur PHP
+
+Sources : https://openclassrooms.com/fr/courses/1121356-mysql-et-postgresql-lequel-choisir

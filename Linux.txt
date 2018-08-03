@@ -521,6 +521,13 @@ leur nom sont en majuscule par convention
 on peut les utiliser dans notre code ou en créer de nouvelles avec export
 on peut les supprimer avec unset
 
+Il en existe des génériques :
+http_proxy : utiliser un proxy pour se connecter à internet
+PATH : contient le nom des repertoires qui contiennent les executables pouvant etre lancés avec leur nom en ligne de commande
+	Voici comment ajouter une ligne dans le PATH : PATH = $PATH:/nouveauDossier... dans .bashrc d'un user ou de /etc
+
+source : https://www.generation-linux.fr/index.php?post/2008/10/15/Changer-les-dossiers-par-defaut-dans-le-PATH
+
 Créer une variable tableau :
 
 tableau=('valeur1' 'valeur2' 'valeur3')

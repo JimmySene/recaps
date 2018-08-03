@@ -22,6 +22,7 @@ sudo systemctl start apache2 : lancer apache
 sudo systemctl restart apache2 : relance apache
 sudo systemctl reload apache2 : recharge la configuration d'apache
 httpd -v : voir la version d'apache
+apachectl -v : voir la version d'apache
 sudo apache2ctl -M : voir les modules chargés
 
 apache2 est à remplacer par le nom du service apache.

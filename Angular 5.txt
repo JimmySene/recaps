@@ -33,10 +33,11 @@ Structure d'un projet :
 
 L'appli se situe dans le dossier src du dossier de projet.
 
-Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 3 fichiers :
+Dans le dossier app, chaque component est situé dans un dossier portant son nom. Ce dossier contient 4 fichiers :
 -nom.component.html -> template HTML
 -nom.component.ts -> fichier TypeScript principal
 -nom.component.spec.ts -> fichier pour les tests (optionnel et peut être supprimé)
+-nom.component.css -> fichier de style CSS
 
 Il y a un component principal du nom de app directement dans le dossier.
 
@@ -105,16 +106,18 @@ On peut mettre des conditions comme valeur. Exemple : <p [style.color] = "erreur
 Il est possible de définir plusieurs effets de styles en les mettant dans un objet et en utilisant la syntaxe 1 dans le template.
 
 Event-binding : Evènement click (Equivalent de ng-click = "") -> (click) = ""
+
 Input Data-binding (Equivalent de ng-model = "") (property binding + event binding) : [(ngModel)] = "" (penser à inclure le module forms dans app.module.ts)
 
 Reference template variable : #nomVariable dans une balise HTML pour stocker l'élément HTML dans une variable que l'on peut ensuite exploiter dans le template ou dans le modèle en utilisant
 son nom. Exemple : <input #myInput (click)="afficheValeur(myInput)" type="text" /> puis, on récupère l'élément myInput dans la méthode afficheValeur. Ce qui nous permet d'accéder à l'ensemble
 de ses propriétés et méthodes.
 
-Propriétés personnalisées : dans le fichier TS, mettre le décorateur @Input() nomPropriete: type; et inclure Input de @angular/core en haut du fichier.
-Cela aura pour effet de rendre disponible la propriété désirée dans le tag html du component au sein du template pour lui affecter une valeur.
+Input property : Lorsque l'on veut faire passer des données d'un component à un autre, on peut utiliser cette méthode.
+Dans le fichier TS du component enfant, il faut importer Input de @angular/core et l'utiliser comme ceci : @Input() nom:type;
+Puis, dans le template HTML du component parent, sur le custom tag du component enfant :
+<component-enfant [nom]="valeur"></component-enfant>
 
-Exemple : <component-enfant prop-perso="salut"></component-enfant>
 
 Structures conditionnelles :
 
@@ -183,6 +186,47 @@ constructor(private _nomService: NomService) {
 }
 
 et dans le ngOnInit du component : this._nomService.methode()
+
+=== Routing ===
+
+Le routing d'Angular permet de passer d'une vue à l'autre sans recharger la page.
+
+ng generate module app-routing --flat --module=app
+--flat : met le fichier app-routing à la racine du projet
+--module=app : l'importe dans le AppModule
+
+Mettre au sein du template HTML principal le <router-outlet></router-outlet> afin d'afficher le retour du routing à cet endroit.
+
+Editer le fichier app-routing.module.ts pour y placer les routes.
+
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+	{ path: '', redirectTo: '/cheminParDefaut', pathMatch: 'full' },
+	{ path: 'cheminDansUrl', component:nomComponent },
+	{ path: 'chemin/:id', component:nomComponent }
+	...
+]
+
+@NgModule({
+  imports: [ RouterModule.forRoot(routes)],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+
+Il faut tout d'abord y importer les différents components que l'on va utiliser.
+Puis ensuite définir les routes dans la constante routes.
+
+Dans les templates, on peut y inclure des liens activant le routing avec l'attribut routerLink="path" à la place du href.
+
+Pour récupérer les données dans l'URL, il faut inclure dans le component : 
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+et placer dans le NgOnInit : const nomVariable = +this.route.snapshot.paramMap.get('nomVariableDansUrl');
+
 
 === Http ===
 
