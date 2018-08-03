@@ -85,12 +85,9 @@ Il y a trois MetaDatas :
 -styles permet d'entrer le code CSS. 
 	styleUrls mentionne dans un array les fichiers CSS.
 
-"export" pour exporter le component dans toute l'application. C'est dans cette classe où l'on peut placer le code de notre application (prorpiétés et méthodes).
+"export" pour exporter le component dans toute l'application. C'est dans cette classe où l'on peut placer le code de notre application (propriétés et méthodes).
 
 Utiliser le mot clef this pour accéder aux données du component au sein des méthodes et propriétés.
-
-
-Un component est en soit une class avec un décorateur @Component.
 
 =============================================================================
 
@@ -101,9 +98,12 @@ Property-binding : Lie des propriétés du modèle à des éléments HTML du DOM. Il e
 Il vaut mieux mettre l'attribut html etre crochets. Ainsi il pourra être lié à une variable du modèle. Exemple : <input [disabled] = "myDisabled" /> // sachant que myDisabled est = à true ou false
 Une alternative existe : bind-attribut. Exemple : <input bind-disabled = "myDisabled" /> // sachant que myDisabled est = à true ou false
 
-[style.attributCSS] = "propriete" -> change le style d'un élément HTML du DOM. Exemple : <p [style.color] = "couleur">Test</p> // sachant que couleur est définie à "blue"
+Style-binding : [style.attributCSS] = "propriete" -> change le style d'un élément HTML du DOM. Exemple : <p [style.color] = "couleur">Test</p> // sachant que couleur est définie à "blue"
 On peut mettre des conditions comme valeur. Exemple : <p [style.color] = "erreur ? red : green">Test</p> // sachant que erreur est définie à true ou false
 Il est possible de définir plusieurs effets de styles en les mettant dans un objet et en utilisant la syntaxe 1 dans le template.
+
+Class-bingind : [class]="propriete"
+[class.nomClass]="condition" : si la condition vaut vraie alors la class de style est appliquée à l'élément HTML.
 
 Event-binding : Evènement click (Equivalent de ng-click = "") -> (click) = ""
 
@@ -272,25 +272,13 @@ Puis, dans fichier .ts du component écrire : import * as alias from 'nom-de-la-l
 
 ANGULAR MATERIAL :
 
-Installer : npm install --save @angular/material @angular/cdk
-Ainsi que les animations : npm install --save @angular/animations
+ng add @angular/material
 
-Ces deux installations doivent se faire dans le dossier du projet angular dans lequel on souhaite utilisé material.
-
-Ajouter import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; dans le fichier module.ts.
-
-Il faut également inclure un thème au projet dans styles.css : @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-Themes existants : 
-	-deeppurple-amber.css
-	-indigo-pink.css
-	-pink-bluegrey.css
-	-purple-green.css
-
-Il ne reste plus qu'à inclure les modules de Material dans le fichier module.ts du projet pour pouvoir les utiliser.
-
+Il ne reste plus qu'à inclure les modules de Material dans le fichier module.ts du projet pour pouvoir les utiliser dans chaque components.
 
 Getting started : https://material.angular.io/guide/getting-started
 
 Pour le date picker, penser à inclure le module MatNativeDateModule de @angular/material.
+
+
 
