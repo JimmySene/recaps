@@ -1,4 +1,4 @@
-PostGreSQL est un SGBDR libre plus ancien que MySQL. Il avait été mis de côté fut un temps du fait qu'il ne fonctionnait pas
+PostGreSQL est un SGBDRO libre plus ancien que MySQL. Il avait été mis de côté fut un temps du fait qu'il ne fonctionnait pas
 sous Windows mais uniquement sur les sytèmes UNIX. Ce problème a été résolu dans la version 8.
 
 Une base PostGreSQL ne peut pas être mise en prod directement sans passer par des fichiers de configuration.
@@ -17,4 +17,41 @@ Anecdote : Sourceforge est passée de MySQL à PostGreSQL parce que MySQL ne pouva
 Un SGBDR ne fonctionne bien que si il a accès à toutes les ressources du serveur.
 Idéal : connexion lan avec serveur PHP
 
+service serveur : postegres
+service client : pgadmin, serveur web, application...
+
+Installer PostgreSQL : sudo apt-get install postgresql-10
+
+Il faut dans un premier temps se connecter en tant qu'utilisateur postgres qui nous permettra d'utiliser toutes les commandes
+liées à PostgreSQL (à utiliser uniquement pour l'administration).
+
+Pour lancer l'invite de commande de PostGre, faire : psql
+
+A partir de là, il faut créer un rôle utilisateur pour éviter d'utiliser psql avec postegres (équivalent à root) :
+CREATE USER nom_utilisateur; // créé l'utilisateur
+ALTER ROLE nom_utilisateur WITH CREATEDB // lui donne le droit de créer des bases
+ALTER USER nom_utilisateur WITH ENCRYPTED PASSWORD 'mot_de_passe' // donne un mot de passe à l'utilisateur
+
+puis, créer une base de donnée
+CREATE DATABASE nom_utilisateur // si une base de donnée porte le nom d'un utilisateur elle lui est attribué par défaut
+Sinon faire : CREATE DATABASE nom_base OWNER nom_utilisateur
+
+Se connecter en tant qu'utilisateur avec psql à la BDD que l'on souhaite.
+
+Exemple : psql test
+
+\q : pour quitter psql
+\h : affiche une aide sql
+\? : affiche une aide des commandes psql
+\g : équivalent du ; en fin de requête (exécute la requête)
+
+psql -l : voir les BDD disponibles
+
+------------------
+
+PGADMIN :
+
+Installer pgadmin : sudo apt-get install pgadmin3
+
 Sources : https://openclassrooms.com/fr/courses/1121356-mysql-et-postgresql-lequel-choisir
+https://doc.ubuntu-fr.org/postgresql
