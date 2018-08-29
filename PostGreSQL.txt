@@ -21,37 +21,86 @@ service serveur : postegres
 service client : pgadmin, serveur web, application...
 
 Installer PostgreSQL : sudo apt-get install postgresql-10
+Depuis la version 10 de psql, la migration des données d'une version mineure à une autre est possible sans contraintes.
+Là où, dans les versions antérieures, on ne pouvait pas le faire sans faire un dump au format texte.
+
+    /var/lib/postgresql/10/main/: les fichiers des données.
+    /var/log/postgresql/postgresql-10-main.log: le fichier de log du cluster.
+    /etc/postgresql/10/main/: les fichiers de configuration.
+    /usr/lib/postgresql/10/: fichiers binaires du serveur, exécutables et librairies.
+
+Cela va également créer un cluster (instance de BDD) qui s'appelle "main".
+
 
 Il faut dans un premier temps se connecter en tant qu'utilisateur postgres qui nous permettra d'utiliser toutes les commandes
 liées à PostgreSQL (à utiliser uniquement pour l'administration).
 
 Pour lancer l'invite de commande de PostGre, faire : psql
+Pour se connecter à un serveur postgre distant : psql -h adresseIP -p port -U nom_user -d nom_bdd
 
 A partir de là, il faut créer un rôle utilisateur pour éviter d'utiliser psql avec postegres (équivalent à root) :
 CREATE USER nom_utilisateur; // créé l'utilisateur
-ALTER ROLE nom_utilisateur WITH CREATEDB // lui donne le droit de créer des bases
-ALTER USER nom_utilisateur WITH ENCRYPTED PASSWORD 'mot_de_passe' // donne un mot de passe à l'utilisateur
+ALTER ROLE nom_utilisateur WITH CREATEDB; // lui donne le droit de créer des bases
+ALTER ROLE nom_utilisateur WITH CREATEROLE; // lui permet de créer des rôles
+ALTER USER nom_utilisateur WITH ENCRYPTED PASSWORD 'mot_de_passe'; // donne un mot de passe à l'utilisateur
+
+On peut aussi faire tout d'un coup avec une seule commande : CREATE USER nom_utilisateur WITH PASSWORD 'mdp' CREATEDB CREATEROLE;
 
 puis, créer une base de donnée
-CREATE DATABASE nom_utilisateur // si une base de donnée porte le nom d'un utilisateur elle lui est attribué par défaut
-Sinon faire : CREATE DATABASE nom_base OWNER nom_utilisateur
+CREATE DATABASE nom_utilisateur; // si une base de donnée porte le nom d'un utilisateur elle lui est attribué par défaut
+Sinon faire : CREATE DATABASE nom_base OWNER nom_utilisateur;
 
 Se connecter en tant qu'utilisateur avec psql à la BDD que l'on souhaite.
 
 Exemple : psql test
 
-\q : pour quitter psql
+\q : pour quitter psql et sortir du serveur
 \h : affiche une aide sql
 \? : affiche une aide des commandes psql
 \g : équivalent du ; en fin de requête (exécute la requête)
 
 psql -l : voir les BDD disponibles
 
+On peut aussi créer un nouveau cluster et ne plus avoir besoin de se connecter avec Postgres pour configurer tout ça (pratique
+dans un environnement de dev).
+
+sudo pg_createcluster -u nom_utilisateur -g nom_groupe --locale=fr_FR.UTF-8 -l /home/nom_utilisateur/nom_cluster.log -d home/nom_utilisateur/nom_cluster 10 nom_cluster
+
+pg_ctlcluster 10 nom_cluster start // démarrage 
+pg_ctlcluster 10 nom_cluster stop // arrêt
+pg_ctlcluster 10 nom_cluster status // affiche si le serveur est on ou off
+pg_ctlcluster 10 nom_cluster reload // recharge la configuration
+pg_ctlcluster 10 nom_cluster restart // redémarre le serveur
+
+pg_dropcluster --stop 10 nom_cluster //  supprime un cluster
+
 ------------------
 
 PGADMIN :
 
 Installer pgadmin : sudo apt-get install pgadmin3
+
+Ajouter un serveur : File -> Add server
+	Name : nom qu'on donne au serveur
+	Host : localhost (ou ip du serveur)
+	Port : 5432 (par défaut)
+	Username : login du serveur
+	Password : Mdp du serveur
+
+Créer une BDD : Clic droit sur "Databases" -> New Database
+Créer un schéma : Clic droit sur "Schemas" -> New Schema
+Le schémas permettent de mieux organiser les données au sein d'une base selon des contextes. Pratique lorsqu'on a plusieurs versions.
+On peut autoriser un ou plusieurs utilisateurs à utiliser un schéma.
+Un schéma "public" est créé sur chaque BDD.
+
+On peut aussi le faire avec psql : CREATE SCHEMA nom_schema AUTHORIZATION nom_user;
+
+Créer une table : Clic droit sur "Tables" -> New table
+Pour accéder à une table, il faut utiliser le nom qualifié adéquat.
+Le nom qualifié se présente sous la format : nom_schema.nom_table
+
+On peut aussi le faire avec psql : CREATE TABLE nom_schema.nom_table ( ... );
+
 
 Sources : https://openclassrooms.com/fr/courses/1121356-mysql-et-postgresql-lequel-choisir
 https://doc.ubuntu-fr.org/postgresql
