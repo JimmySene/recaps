@@ -21,7 +21,7 @@ service serveur : postegres
 service client : pgadmin, serveur web, application...
 
 Installer PostgreSQL : sudo apt-get install postgresql-10
-Depuis la version 10 de psql, la migration des données d'une version mineure à une autre est possible sans contraintes.
+Depuis la version 10 de psql, la migration des données d'une version majeur (à deux chiffres) à une autre est possible sans contraintes.
 Là où, dans les versions antérieures, on ne pouvait pas le faire sans faire un dump au format texte.
 
     /var/lib/postgresql/10/main/: les fichiers des données.
@@ -101,6 +101,21 @@ Le nom qualifié se présente sous la format : nom_schema.nom_table
 
 On peut aussi le faire avec psql : CREATE TABLE nom_schema.nom_table ( ... );
 
+Types principaux de données des champs :
+
+serial : entier 4 octets à incrémentation auto
+integer : entier 4 octets
+real : réel 4 octets précision 6 décimales
+timestamp : date et heure
+cidr et inet : adresse IP v4 ou v6 réseau / ordinateur
+boolean : true / false
+text : chaine de caractere infinie
+varchar : chaine de caractere à longueur max définie
+money : montant d'une devise
+
+https://docs.postgresql.fr/10/datatype.html
+
 
 Sources : https://openclassrooms.com/fr/courses/1121356-mysql-et-postgresql-lequel-choisir
 https://doc.ubuntu-fr.org/postgresql
+https://blog.postgresql.fr/public/Doc_postgresql_9_0.pdf
