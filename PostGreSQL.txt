@@ -50,6 +50,8 @@ puis, créer une base de donnée
 CREATE DATABASE nom_utilisateur; // si une base de donnée porte le nom d'un utilisateur elle lui est attribué par défaut
 Sinon faire : CREATE DATABASE nom_base OWNER nom_utilisateur;
 
+ALTER DATABASE x OWNER TO y;
+
 Se connecter en tant qu'utilisateur avec psql à la BDD que l'on souhaite.
 
 Exemple : psql test

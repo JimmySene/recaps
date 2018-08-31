@@ -401,7 +401,7 @@ rsync dossierSource login@IP:dossierCible : sauvegarde incremmentielle en ssh su
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
 passwd nomUser : Changer le mot de passe d'un compte utilisateur
 DEBIAN et ses distribs -> deluser nomUser / Autres LINUX -> userdel Supprimer un utilisateur
-	--remove-home (avant le nomUser) : Supprime le dossier personnel du compte utilisateur
+	-r (avant le nomUser) : Supprime le dossier personnel du compte utilisateur
 DEBIAN et ses distribs -> addgroup nomGroupe / Autres LINUX -> groupadd nomGroupe : Ajoute un groupe
 usermod nomUser : modifier un utilisateur
 	-l : renomer l'utilisateur
