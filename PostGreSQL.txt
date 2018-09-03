@@ -18,7 +18,7 @@ Un SGBDR ne fonctionne bien que si il a accès à toutes les ressources du serveur
 Idéal : connexion lan avec serveur PHP
 
 service serveur : postegres
-service client : pgadmin, serveur web, application...
+service client : pgadmin, psql, serveur web, application...
 
 Installer PostgreSQL : sudo apt-get install postgresql-10
 Depuis la version 10 de psql, la migration des données d'une version majeur (à deux chiffres) à une autre est possible sans contraintes.
@@ -60,8 +60,12 @@ Exemple : psql test
 \h : affiche une aide sql
 \? : affiche une aide des commandes psql
 \g : équivalent du ; en fin de requête (exécute la requête)
+\l : voir les bdd disponibles
+\du : voir la liste des utilisateurs
 
 psql -l : voir les BDD disponibles
+psql -c "requete;" : exécuter une reqûete en dehors du cli psql
+psql -f cheminDuFichierSQL : exécute un fichier SQL
 
 On peut aussi créer un nouveau cluster et ne plus avoir besoin de se connecter avec Postgres pour configurer tout ça (pratique
 dans un environnement de dev).
@@ -76,6 +80,8 @@ pg_ctlcluster 10 nom_cluster restart // redémarre le serveur
 
 pg_dropcluster --stop 10 nom_cluster //  supprime un cluster
 
+On peut définir par défaut la base et l'utilisateur utilisé par psql avec des variables d'environnemment : PGUSER et PGDATABASE.
+
 ------------------
 
 PGADMIN :
@@ -86,21 +92,24 @@ Ajouter un serveur : File -> Add server
 	Name : nom qu'on donne au serveur
 	Host : localhost (ou ip du serveur)
 	Port : 5432 (par défaut)
-	Username : login du serveur
-	Password : Mdp du serveur
+	Base de maintenance : nom bdd
+	Username : login bdd
+	Password : Mdp bdd
+
+Tout est objet dans PostgreSQL. La manipulation pour créer n'importe quel objet dans PgAdmin reste la même pour tous :
+Clic droit -> "New".
 
 Créer une BDD : Clic droit sur "Databases" -> New Database
+
 Créer un schéma : Clic droit sur "Schemas" -> New Schema
 Le schémas permettent de mieux organiser les données au sein d'une base selon des contextes. Pratique lorsqu'on a plusieurs versions.
 On peut autoriser un ou plusieurs utilisateurs à utiliser un schéma.
 Un schéma "public" est créé sur chaque BDD.
-
 On peut aussi le faire avec psql : CREATE SCHEMA nom_schema AUTHORIZATION nom_user;
 
 Créer une table : Clic droit sur "Tables" -> New table
 Pour accéder à une table, il faut utiliser le nom qualifié adéquat.
 Le nom qualifié se présente sous la format : nom_schema.nom_table
-
 On peut aussi le faire avec psql : CREATE TABLE nom_schema.nom_table ( ... );
 
 Types principaux de données des champs :
@@ -117,6 +126,28 @@ money : montant d'une devise
 
 https://docs.postgresql.fr/10/datatype.html
 
+Clef primaire :
+
+Clic droit sur "Constraints" dans la table, et sélectionner la colone ID.
+
+Ajouter des entrées :
+
+Clic droit sur la table "View Data" -> "View 100 top rows"
+Ne pas hésiter à rafraichir pour mettre à jour l'affichage pour voir les ID s'incrémenter par exemple.
+
+On peut aussi utiliser le query tool de PgAdmin pour éxecuter des reqûetes SQL.
+
+-------
+
+CONNEXION SERVEUR DISTANT :
+
+Il faut configurer deux fichiers sur la machine serveur pour autoriser la connexion d'un client à l'exterieur.
+postgresql.conf : décommenter la ligne d'autorisation de connexion et remplacer localhost par *
+pg_hba.conf : ajouter une ligne en fin de fichier pour autoriser tel client à se connecter à postgre
+
+host all all IP/masque md5
+
+On peut changer le port utilisé par postgre en l'éditant dans le fichier postgresql.conf
 
 Sources : https://openclassrooms.com/fr/courses/1121356-mysql-et-postgresql-lequel-choisir
 https://doc.ubuntu-fr.org/postgresql
