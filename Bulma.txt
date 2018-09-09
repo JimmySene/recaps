@@ -1,0 +1,54 @@
+Bulma est un framework CSS plus léger que Bootstrap et ne faisant pas appel à Javascript. Ce qui améliore les performances.
+Le framework est constitué d'un seul fichier CSS possédant de nombreuses class à utiliser sur nos éléments HTML.
+
+Importer via CDN : <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
+La balise meta responsive est nécessaire au bon fonctionnement du framework : <meta name="viewport" content="width=device-width, initial-scale=1">
+
+===
+
+Système de colonnes pour positionner ses éléments :
+
+<div class="columns">
+	<div class="column"></div>
+	<div class="column"></div>
+	<div class="column"></div>
+	...
+</div>
+
+is-1 ... is-6
+is-offset-1 .. is-offset-11
+is-half
+is-one-quarter / three
+
+container
+container-fluid
+block
+
+
+content
+has-text-centered
+title
+subtitle
+
+footer
+
+<div class="field">
+	<label class="label"></label>
+	<div class="control">
+		<input class="input" />
+	</div>
+</div>
+
+button
+is-primary
+is-link
+is-warning
+is-danger
+notification
+
+is-fullwidth
+
+table
+is-bordered
+is-striped

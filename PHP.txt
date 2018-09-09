@@ -35,6 +35,9 @@ Redirection directe : header('location:lien');
 Redirection après x secondes : header('refresh:x;url=lien');
 
 Connexion SQL : $con = mysqli_connect('ip', 'user', 'mdp', 'bdd'); // ip correspond à l'adresse du serveur où est installé MySQL
+Connexion avec PDO : $bdd = new PDO('DSN','user','password', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); // DSN (Data Source Name diffère en fonction du SGBD utilisé)
+Exemple PDO MySQL : $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
 $req = "ECRIRE LA REQUETE ICI";
 
 Execution d'une requête : 
@@ -55,6 +58,11 @@ Transmettre des données d'une page à l'autre :
 	
 Par lien : $_GET['nom'] = valeur; // retour des &nom=valeur dans l'url
 Par formulaire : $_POST['nom'] = valeur; // le nom est le retour de l'attribut 'name' et la valeur l'attribut 'value' ou ce qui est rempli dans le champs
+
+extract($_POST) : créer des variables ayant le même nom que les éléments du $_POST afin de faciliter l'écriture dans le code
+
+Crypter un mot de passe pour l'inscription : $cryptedPass = password_hash($password, PASSWORD_DEFAULT);
+Vérification du mot de passe pour la connexion : password_verify($password, $cryptedPass); // renvoie true ou false
 
 Mettre php_flag output_buffering on
  dans le .htaccess si il y a des problèmes avec les sessions sur un hébergeur tel que 000webhost.

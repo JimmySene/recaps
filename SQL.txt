@@ -71,8 +71,14 @@ Les jointures sont à placer avant les filtres dans la requête.
 
 ---
 
+Convention de nommage : singulier, minuscule, underscore case.
+Convention clef etrangere : nomdelatable_id
+
 Remplacer un caractère ou un mot dans un champs d'une table :
 UPDATE table SET nom_champs = replace(nom_champs, 'élémentAremplacer', 'élémentAMettre');
+
+SELECTIONNER LES TABLES : SHOW TABLES (utiliser [0] sur l'array de retour pour afficher le nom des tables)
+SELECTIONNER LA STRUCTURE DES CHAMPS : DEFINE nom_de_la_table (donner des éléments en PHP avec ['Field'], ['Key'], ['Type']...
 
 RESSOURCES : 
 https://dev.mysql.com/doc/refman/8.0/en/numeric-functions.html

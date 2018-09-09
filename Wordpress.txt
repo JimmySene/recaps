@@ -36,6 +36,8 @@ Description: Notre premier thème WordPress !
 */
 -index.php : point d'entrée. Structure HTML du site. 
 
+Un fichier screenshot.png pourra également être présent pour avoir une image de thème (1200*900).
+
 On peut créer plusieurs fichiers .php dans le dossier.
 
 Il y a un mécanisme de fallback concernant les fichiers php. index.php peut suffir pour toutes les pages du site.
@@ -93,18 +95,122 @@ Afficher un menu :
 
 Template tags :
 
-Fonctions Wordpress pouvant être utilisées dans nso thèmes. 
+Fonctions Wordpress pouvant être utilisées dans nos thèmes. 
 
 get_header() : renvoie le haut de page
 get_footer() : renvoie le pied de page
+get_template_part('page.php') : inclut un template de page
+bloginfo() : renvoie le titre du site
+bloginfo('description') : renvoie la description du site
+bloginfo('charset') : renvoie l'encodage du site
+wp_title() : renvoie le titre de la page (à mettre dans la balise title)
+wp_head() : inclut le style de style.css (à mettre dans la balise head)
+wp_footer() : inclut les scripts en bas de page (à mettre dans la balise body à la fin)
+get_template_directory_uri() : donne la racine du theme
+language_attributes() : à mettre dans la balise html en tant qu'attribut pour définir la langue définie par WP
+previous_post_link() : affiche un lien vers l'article précédent
+next_post_link() : affiche un lien vers l'article suivant
+single_cat_title('', true) : affiche le nom de la catégorie sur laquelle on est situé
+single_tag_title('', true) : affiche le nom du tag sur lequel on est situé
+
+https://codex.wordpress.org/Template_Tags
+
+---
+
+Conditional tags : (renvoie true ou false en fonction de la page où on est situé)
+
+is_home() // Page principale du blog
+is_front_page() // Page principale (statique) du site
+is_category() // Catégorie
+is_tag() // Tag
+is_single // Post
+is_single(x) // Page d'un post portant l'ID x
+is_single('x') // Page d'un post portant le nom ou le slug x
+is_page() // Page
+is_page(x) // Page portant l'ID x
+is_page('x') // Page portant le nom ou le slug x
+is_singular() // Post Page ou Post Type
+is_singular('x') // Post type de nom ou de slug x
+is_admin // Page d'administration
+is_sticky // Post épinglé sur la home page
+
+https://codex.wordpress.org/Conditional_Tags
+
+---
 
 Boucle de rendu :
 
 while(have_posts()) :
 	the_post(); // récupère l'article
 	the_title(); // affiche le titre de l'article
-	the_content(); // afiche le contenu de l'article
+	the_content(); // afiche le contenu entier de l'article
+	the_excerpt(); // affiche le début du contenu de l'article et un read more si il y en a un
+	the_permalink(); // génère le lien menant vers l'article (à mettre dans le href)
+	get_the_date(); // Récupère la date de l'article
+	the_category(', '); // Récupère la ou les catégories et les sépare par le séparateur en argument de la fonction
+	the_tags(''); // Récupère les tags
 
 	comments_template(); // inclut le fichier comments.php devant contenir <?php wp_list_comments(); ?>
 	comment_form(); // affiche un formulaire d'ajout de commentaire
+
+	$post->ID;// récupère l'ID de l'article
+	$id_thumb = get_post_thumbnail_id($post->ID); // Récupère l'ID de la vignette de l'article
+	wp_get_attachment_image_src($id_thumb, 'small/medium/large/thumbnail'); // Récupère l'url du média selon l'ID donné
 endwhile;
+
+La boucle de rendu se fait sur une instance de la classe WP_Query. Par défaut, un objet $wp_query est créé et c'est sur cette instance que l'on
+effectue la boucle avec la méthode have_posts(). On aurait donc pu mettre while($wp_query->have_posts()) { $wpquery->the_post(); ... }
+
+Pour faire une boucle de rendu personnalisée, il faut créer sa propre instance de la classe WP_Query. 
+$exemple = new WP_Query($args);
+$args = array(
+	'post_type' => 'page',
+	'posts_per_page' => 5,
+	...
+);
+
+puis utiliser while($exemple->have_posts) { $exemple->the_post(); ... }
+
+A l'intérieur de la boucle de rendu, une variable global $post est créée permettant de récupérer les données de l'article, la page ou autre élément
+en utilisant ses propriétés ou des templates tags (fonctions dédiées). 
+$post->ID ou the_ID()
+$post->title ou the_title()...
+
+Il est plus pratique et courant d'utiliser les templates tags au lieu des propriétés de $post car les méthodes permettent de placer
+des balises avant et après le résultat ainsi que d'autres traitements qui peuvent se montrer utile.
+
+https://developer.wordpress.org/reference/classes/wp_query/
+
+---
+
+Custom post type :
+
+Les articles et les pages sont des post type créés par défaut dans Wordpress. Mais il est possible d'en créer de nouveaux. On les appelle les
+Custom post type. On pourra ensuite les exploiter avec la boucle de rendu.
+
+function my_function() {
+
+$args = array(
+	'public' => true,
+	'label' => 'nomApparaissantDansLeMenuAdmin'
+);
+registrer_post_type('name', $args); }
+
+add_action('init', 'my_function');
+
+https://codex.wordpress.org/Function_Reference/register_post_type
+https://blog.templatetoaster.com/wordpress-custom-post-type-plugins/
+
+---
+
+Pour inclure le design du style.css dans le template, ainsi qu'un fichier JS, il faut penser à ajouter ces lignes dans functions.php :
+
+function prefix_load()
+{
+    wp_enqueue_style('prefix_style', get_template_directory_uri().'/style.css', array(), '1.0.0', 'all');
+    wp_enqueue_script('prefix_script', get_template_directory_uri().'/script.js', array(), '1.0.0', true);
+}
+
+add_action('wp_enqueue_scripts','prefix_load');
+
+https://developer.wordpress.org/themes/basics/template-hierarchy/
