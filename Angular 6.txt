@@ -6,12 +6,11 @@ Créé en 2016 par Google. Evolution de AngularJS.
 Avec Angular, on peut utiliser un CLI (Command Line Interface) pour générer le squelette de son application avec une simple commande.
 Il faut avoir installé une version de node JS (6.9.x et supérieur) et de NPM (3.x.x et supérieur) pour pouvoir l'utiliser.
 
-
 Installer Angular-cli : npm install -g @angular-cli
 
 Créer un projet : ng new nom-projet
 
-Se placer dans le dossier de projet et lancer le serveur en lancant la commande ng serve.
+Se placer dans le dossier de projet (workspace) et lancer le serveur en lancant la commande ng serve.
 Si VM : ng serve --host 0.0.0.0 --port 4200 --open // --open (-o) ouvre un onglet dans le navigateur
 
 Accéder à l'appli grâce au navigateur à l'adresse : IP:port
@@ -40,6 +39,7 @@ Dans le dossier app, chaque component est situé dans un dossier portant son nom.
 -nom.component.css -> fichier de style CSS
 
 Il y a un component principal du nom de app directement dans le dossier.
+Ce qu'il affiche à l'écran est appelé l'application shell.
 
 Le dossier assets comporte toutes les ressources diverses de l'application (images, json...)
 
@@ -52,8 +52,8 @@ Si page blanche, alors ng build --prod --build-optimizer=false
 
 =============================================================================
 
-Dans Angular, tout est COMPONENT. Un component ne gère que sa vue et ses données, a son propre cycle de vie et communique
-avec d'autres components uniquement via les évènements.
+Dans Angular, tout est COMPONENT. Un component ne gère que sa vue (affichage/évènements) et ses données.
+Le projet doit être constitué de plusieurs components communiquant entre eux à l'aide de services.
 
 Déclaration d'un component : ng g c nom-component avec angular cli
 
@@ -71,6 +71,8 @@ import { Component } from '@angular/core';
 export class MonPremierComponent {
 }
 
+Lors de la création automatique du component par angular CLI, celui-ci est directement importé et déclaré dans app.module.ts.
+Penser à le faire manuellement dans le cas où angular CLI n'est pas utilisé.
 
 Infos : @angular/core est le module coeur de Angular qui contient la classe "Component" à importer à chaque création.
 @Component est un décorateur, issu du langage TypeScript. Il permet de modifier une class pour la "transformer"
@@ -216,7 +218,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 Il faut tout d'abord y importer les différents components que l'on va utiliser.
-Puis ensuite définir les routes dans la constante routes.
+Puis ensuite définir les routes dans la constante routes (la constante doit être placée avant le @ngModule).
 
 Dans les templates, on peut y inclure des liens activant le routing avec l'attribut routerLink="path" à la place du href.
 
@@ -226,6 +228,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 et placer dans le NgOnInit : const nomVariable = +this.route.snapshot.paramMap.get('nomVariableDansUrl');
+le + (au début de this) convertit la chaine en number. Pratique pour les id.
+
+Retourner sur la vue précédente : this.location.back(); // à mettre dans une méthode appelée par un bouton par exemple
 
 
 === Http ===
@@ -279,6 +284,22 @@ Il ne reste plus qu'à inclure les modules de Material dans le fichier module.ts 
 Getting started : https://material.angular.io/guide/getting-started
 
 Pour le date picker, penser à inclure le module MatNativeDateModule de @angular/material.
+
+==============
+
+NGX-PAGINATION : Module permettant d'inclure une pagination simple et efficace au sein d'un component.
+
+npm install ngx-pagination --save
+
+Dans app.module : 
+import { NgxPaginationModule } from 'ngx-pagination';
+Inclure NgxPaginationModule dans imports:[]
+
+Boucle de pagination :
+*ngFor="let news of news.slice().reverse()| paginate: {itemsPerPage:5, currentPage: p};
+
+Liens de pagination :
+<pagination-controls previousLabel="Précédent" nextLabel="Suivant" (pageChange)="p =$event"></pagination-controls>
 
 
 

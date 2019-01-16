@@ -1,9 +1,8 @@
-TypeScript est un langage qui étend le Javascript (superset) en orienté objet avec des class, des interfaces et du typage manuel.
+TypeScript est un langage qui étend le Javascript (superset) en orienté objet avec des classes, des interfaces et du typage manuel.
 Angular 2.0 a été programmé en TypeScript. Anders Hejlsberg (designer du C#) a inventé le langage.
 Cross browser et cross platform.
 
-Fichier TypeScript : .ts_
-omFichierTS pour transcompiler un fichier TS en JS.
+Fichier TypeScript : .ts_nomFichierTS pour transcompiler un fichier TS en JS.
 
 Le TS permet notamment de repérer les erreurs lors de la compilation et dans l'éditeur de code.
 
@@ -16,9 +15,22 @@ Différence entre var et let :
 	-var : la variable est liée (scoped) à la fonction la plus proche
 	-let : la variable est liée (scoped) au bloc de code le plus proche
 
-=== FONCTIONS FLECHEES (EXPRESSIONS LAMBDAS) ===
+=== TYPAGE GENERIQUE ===
 
-C'est un moyen plus rapide de déclarer une fonction :
+A l'instar de certains langages, il est possible de définir un type générique aux fonctions, classes ou interfaces.
+Cela permet de vérifier la cohérence de typage avec divers éléments.
+
+Exemple : function concatenate<X>(a: X[], b: X[]) :X[] { }
+
+Les types passés en paramètre peuvent être de n'importe quel type mais doivent être similaires.
+
+=== FONCTIONS ANONYMES FLECHEES (EXPRESSIONS LAMBDAS) ===
+
+C'est un moyen plus rapide de déclarer une fonction anonyme :
+
+(parametres) => { instructions... }
+
+OU
 
 let nomFonction = (parametres) => instruction; // ou { } si plusieurs lignes d'instructions
 
@@ -26,6 +38,10 @@ Les paramètres ne sont pas obligatoires.
 
 Rendre un paramètre facultatif : le faire précéder d'un ?. 
 PS : Une fois qu'un paramètre est rendu facultatif, tous les paramètres situés à sa droite le deviennent également.
+
+"L'avantage par rapport à l'actuelle norme de JavaScript (ECMAScript 5), est que la notation fléchée ne change pas la valeur 
+de contexte du mot-clé this à l'intérieur de la fonction anonyme. Cela évite donc l'utilisation d'une variable intermédiaire 
+servant à propager la valeur de this à l'intérieur de la fonction anonyme."
 
 === ENUMERATIONS ===
 
@@ -36,9 +52,13 @@ Accès : nomEnum.val
 === INTERFACES ===
 
 interface nomInterface {
-	propriete:type,
-	method():type
+	nomPropriete:type;
+	nomMethod():type { }
 }
+
+Un objet ou une classe implémentant une interface doit avoir les propriétés et méthodes correspondantes.
+
+Extension d'interface : interface b extends a.
 
 == CLASSES ET OBJETS ===
 
@@ -51,10 +71,12 @@ class nomClasse {
 
 	propriete:type = valeur;
 
-	method():void {
-		// INSTRUCTIONS DE LA PROCEDURE
+	method():type {
+		// INSTRUCTIONS DE LA FONCTION / PROCEDURE
 	}
 }
+
+Extension de classe : class Lion extends Animal
 
 let obj = new nomClasse(); // new permet l'allocation dynamique de mémoire
 obj.greet();
@@ -85,8 +107,13 @@ On peut déclarer un array comme ceci : type[] = [val1, val2, val3...];
 
 En TS, l'organisation des fichiers est dite modulaire. Il est recommandé de créer un fichier par classe. Chaque fichier est un module que l'on peut exporter et importer dans d'autres.
 
-Ajouter le mot clef export devant une classe pour le configurer en tant que "module" et permettre son importation dans d'autres fichiers.
+Pour créer un module (espace de nommage), il faut utiliser la notation module nomModule { le code ici... }
+
+Ajouter le mot clef export devant une classe pour permettre son importation dans d'autres fichiers. On peut aussi le faire
+pour des variables, fonctions et interfaces.
+
 Utiliser le mot clef import { nomDeLaClasse } from { location } pour importer un module.
+Ou encore : import nomModule = require("lienVersFichierSansExtension");
 
 === DECORATEURS ===
 

@@ -22,6 +22,8 @@ Utiliser du http : curl -Xrequete
 Utilisation de WinSCP (Service SCP -> fichier over ssh et SFTP -> SCP + prendre la main sur la gestion des controles de fichiers)
 C'est un client SFTP open source. Le but étant de sécuriser le transfert de fichiers entre un ordinateur local et distant.
 
+CTRL + ALT + H : Montrer / Cacher les fichiers cachés
+
 Explications sur le tar.gz
 .tar est un type de fichier d'archive comprenant une liste de fichiers non compressés. 
 .gz est un format compressé.
