@@ -131,3 +131,24 @@ NPM : Gestionnaire de paquets pour Node.
 Alpine (Linux) : Distribution très légère de Linux
 
 Docker : Plateforme qui permet la virtualisation d'environnements de développements (appelés containers)
+
+Swape space (espace d'échange) : Mémoire virtuelle située dans le disque dur servant à la décharge de RAM lorsque celle-ci arrive à saturation.
+
+Mémoire virtuelle : RAM + Espace d'échange
+
+Hibernation : Conserve l'ordinateur en état lors de la mise hors tension de celui-ci grâce à l'espace d'échange (Nécessite autant d'espace que de RAM).
+
+Serveur DNS (Domain Name System) : Service permettant de faire la relation entre un nom de domaine et une adresse IP.
+En entrant un nom de domaine sur un navigateur, une requête DNS est envoyée au serveur DNS (souvent situé sur la box internet)
+ pour récupérer l'adresse IP du serveur web, afin de requêter celui-ci pour récupérer la page.
+
+Serveur DHCP (Dynamic Host Configuration Protocol) : Service délivrant des adresses IP aux ordinateurs voulant se connecter à un réseau.
+Permet donc d'attribuer des adresses IP dynamiques. Contrairement aux IP fixes qui sont attribuées à un ordinateur en particulier, les
+adresses dynamiques sont attribuées à n'importe quel appareil à condition qu'il y ait encore de la place sur le réseau. Une plage
+d'adresses appelées "l'étendue", est configurée à l'avance. Le serveur DHCP renvoie aussi d'autres informations comme l'adresse du serveur
+DNS.
+
+Adresse IP (Internet Protocol) : Numéro unique permettant à un appareil de communiquer sur un réseau et d'être identifié.
+Une adresse IP est liée à la carte réseau de l'appareil connecté.
+
+Adresse de loopback (boucle locale) : 127.0.0.1 (localhost) redirigant vers la machine elle même sur le réseau.
