@@ -9,7 +9,7 @@ Shadow DOM :
 
 Web : Ensemble de documents et services disponibles sur Internet accessibles via le protocole HTTP(s).
 
-Client web : navigateur (Firefox, Edge, Chrome...)
+Client web : navigateur (Firefox, Edge, Chrome...). Envoie et recoit des requêtes (demandes) d'un serveur web.
 
 Serveur : Ordinateur connecté en permanence à Internet, ayant pour rôle de servir des données à celui qui lui en demande.
 
@@ -125,9 +125,3 @@ YUM (Yellowdog Updater Modifier) : Surcouche de RPM gérant les téléchargements d
 DNF (Dandified YUM) : Evolution de YUM ajouté dès la verison 18 de Fedora (écrit en Python 3).
 
 APT (Advanced Package Manager) : Gestionnaire de paquets (.deb) pour les distributions LINUX Debian et ses dérivés (écrit en C++).
-
-NPM : Gestionnaire de paquets pour Node.
-
-Alpine (Linux) : Distribution très légère de Linux
-
-Docker : Plateforme qui permet la virtualisation d'environnements de développements (appelés containers)

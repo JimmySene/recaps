@@ -67,6 +67,66 @@ Vérification du mot de passe pour la connexion : password_verify($password, $cry
 Mettre php_flag output_buffering on
  dans le .htaccess si il y a des problèmes avec les sessions sur un hébergeur tel que 000webhost.
 
+Syntaxe Heredoc et Nowdoc pour afficher une longue chaine :
+
+Heredoc (analyse les variables) :
+
+echo <<<EOT
+chaine
+EOT;
+ligne vide
+
+Nowdoc (n'analyse pas les variables) :
+
+echo <<<'EOT'
+chaine
+EOT;
+ligne vide
+
+==========================
+
+POO :
+
+Création d'un class : 
+
+Class nomClass { }
+
+Instancier un objet :
+
+$objet = new nomClass();
+
+Accéder à une méthode d'un objet :
+
+$objet->nomMethode();
+
+Mettre les propriétés en private / protected et la plupart des méthodes en public.
+
+Créer une variable de classe :
+
+private static $nomVariable;
+
+Accéder à ue variable de classe :
+
+NomClass::$variableDeClasse (privilégier cette notation en dehors de la class)
+ou à partir d'un objet de la même classe : $objet::variableClass
+ou à l'intérieur de la class : self::variableClass
+
+Créer une méthode de classe :
+
+private static function nomMethode() {}
+
+Création d'une constante de classe :
+
+const NOM_CONSTANTE = valeur;
+
+La constante est public et static par défaut.
+Donc on y accède à l'extérieur comme ceci : NomClass::NOM_CONSTANTE
+
+/!\ Toute propriété utilisé dans la classe qui n'a pas été déclarée au préalable est public
+
+Créer des méthodes chainées : retourner l'objet courant avec return $this dans chaque méthodes pour pouvoir utiliser cette notation :
+$article->setName('truc')->getPrice()->... (executer plusieurs méthodes sur un même objet)
+
 ==========================
 
 

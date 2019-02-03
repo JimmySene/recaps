@@ -9,6 +9,7 @@ Modifier des données : UPDATE nom_table SET nom_champs='valeur'
 Supprimer des données : DELETE FROM nom_table
 
 Pour les dates et les nombres, on peut utiliser le mot clef BETWEEN '' AND '' pour filtrer des données situées dans un interval.
+On peut aussi filtrer en recherchant tel ou tel caractère dans le mot ou le texte : WHERE nom_champs LIKE "_A_IN%"; (_ = n'importe quel caractere, % = peu importe le reste)
 
 Il existe deux types de fonctions SQL :
 
