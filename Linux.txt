@@ -1,5 +1,5 @@
 Linux est un système d'exploitation au même titre que Windows et Mac OS.
-Il est réputé pour sa sécurité et ses mises à jour fréquentes.
+Il est réputé pour sa sécurité et ses mises à jour fréquentes, ainsi que le fait qu'il soit open source.
 
 Le principe de base de Linux est de nous permettre un contrôle total sur la machine sur laquelle il est installé.
 
@@ -426,7 +426,7 @@ make uninstall (bis) : désinstalle le programme compilé
 
 ===================== Connexion à un serveur distant avec SSH ====================
 
-Un serveur est un PC allumé et connecté à internet 7j/7 24h/24.
+Un serveur est un PC allumé et connecté à internet 7j/7 24h/24 qui délivre des services.
 
 Sur un réseau, les ordinateurs communiquent via un protocole. Il en existe plusieurs en fonction de ce que l'on souhaite se transmettre.
 Ex : IMAP (mail), FTP (fichiers), HTTP (pages web)...
@@ -447,6 +447,30 @@ ssh login@ip
 Le mot de passe sera demandé après un message indiquant l'empreinte du serveur (si connecté pour la première fois).
 
 Sur un PC (windows), utiliser le logiciel PuTTY pour se connecter sur un serveur linux.
+
+
+===================== GESTION DES SERVICES =====================
+
+Les services sont généralement des processus tournant en arrière plan (deamons) sur un serveur.
+Il s'agit d'un type d'unité que gère le système d'initialisation (gestionnaire de services) systemd.
+
+Gérer un service : systemctl mot-clef nomDuService
+
+mot-clef est à remplacer par start, stop, restart, reload, status, enable, disable
+
+Voir la liste des unités de type service actifs : systemctl --type=service
+
+Voir la configuration d'un service : systemctl cat nomDuService.service
+Editer la configuration d'un service : systemctl edit nomDuService.service puis systemctl daemon-reload
+
+Voir la liste des services : service --status-all (+ = actif, - = inactif)
+On peut également gérer les services avec la commande : service nomDuService mot-clef
+Voir le statut d'un service : service nomDuService status
+
+Voir les logs système : journalctl
+Voir les logs d'un service en particulier : journalctl -u nomDuService.service
+
+L'ensemble de ces commandes doivent être effectuées avec les privilèges root.
 
 ===================== SCRIPT SHELL =====================
 
