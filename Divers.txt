@@ -153,3 +153,5 @@ Une adresse IP est liée à la carte réseau de l'appareil connecté.
 
 Adresse de loopback (boucle locale) : 127.0.0.1 (localhost) redirigant vers la machine elle même sur le réseau.
 
+LDAP (Lightweight Directory Acess Protocol) : Protocole d'accès à un annuaire
+

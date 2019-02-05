@@ -396,6 +396,7 @@ sftp login@ip : se connecter à un serveur sftp
 rsync dossierSource login@IP:dossierCible : sauvegarde incremmentielle en ssh sur une autre machine
 	-a : garde les informations (comme le chmod) des fichiers
 	-r : sous dossiers
+telnet ip port : se connecter à un serveur distant
 ===================== COMMANDES ROOT =====================
 
 DEBIAN et ses distribs -> adduser nomUser / Autres LINUX -> useradd nomUser : Ajouter un utilisateur
