@@ -1,0 +1,30 @@
+LDAP (Lightweight Directory Access Protocol) est un protocol d'accès à un annuaire.
+Un annuaire LDAP est une base de donnée hiérarchique composé d'un arbre appelé DIT, fonctionnant sur un modèle client / serveur.
+L'annaire LDAP le plus connu est OpenLDAP.
+Le DIT possède des entrées, aussi appelées classes d'objets. Tout DIT possède une racine écrite de la façon suivante :
+
+dc=nom-entreprise,dc=extension-site
+
+Exemple : dc=jimdev,dc=fr
+
+Chaque élément possède des attributs, dont un se nommant le "dn" qui permet de l'identifier de façon unique dans l'annuaire. 
+Un dn est un chemin allant de l'élément représenté à la racine du DIT. 
+
+Exemple : dn: cn=Jimmy Sené,ou=Personnes,dc=jimdev,dc=fr
+
+Il existe plusieurs termes utilisés de façon générique :
+
+dn (dinstinguished name) : identifiant de l'élément représentant le chemin complet
+dc (domain component) : nom du domaine de l'entreprise
+cn (common name) : nom commun (prénom + nom)
+gn (given name) : prénom
+sn (surname) : nom de famille
+o (organization name) : nom d'organisation
+ou (organizational unit) : département dans l'entreprise
+
+Le service LDAP côté serveur écoute par défaut sur le port 389. LDAPS sur le 636.
+
+Pour effectuer des recherches dans un annuaire LDAP, on peut utiliser la commande ldapsearch.
+Pour modifier des éléments, on utilisera la commande ldapmodify  -f nomDuFichier
+
+Le fichier attendu par la commande de modification, devra être au format LDIF.
