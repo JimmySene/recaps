@@ -155,3 +155,7 @@ Adresse de loopback (boucle locale) : 127.0.0.1 (localhost) redirigant vers la m
 
 LDAP (Lightweight Directory Acess Protocol) : Protocole d'accès à un annuaire
 
+WebSQL Database : API du web permettant de persister des données dans une base de donnée relationnelle avec SQL sur le navigateur. Ce système est déprécié par le W3C.
+
+IndexedDB : API du web permettant de persister des données dans une base de donnée côté client. Il s'agit d'un système de table indexée.
+
