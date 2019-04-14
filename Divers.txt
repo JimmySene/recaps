@@ -159,3 +159,11 @@ WebSQL Database : API du web permettant de persister des données dans une base d
 
 IndexedDB : API du web permettant de persister des données dans une base de donnée côté client. Il s'agit d'un système de table indexée.
 
+Webapp : Application web (accessible à partir d'une URL et d'un navigateur)
+
+Application native : Application téléchargeable sur le mobile via un store par exemple, développé pour un système d'exploitation spécifique.
+
+Application hybride : Application à mi-chemin entre une application native et une webapp. C'est une application téléchargeable qui est fonctionnel sous plusieurs OS.
+
+Progressive web aps : Webapp ayant l'apparence et les performances d'une application native.
+

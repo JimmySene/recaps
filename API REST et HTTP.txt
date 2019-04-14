@@ -17,6 +17,9 @@ VERBE HTTP lien HTTP/X.X
 
 Entête (date, referer, user-agent...)
 
+On peut aller voir ce qu'on appèle le manifeste pour savoir comment accéder à l'ensemble des ressources qu'envoit l'API.
+Une API propose bon nombre de services pour récolter des données depuis l'extérieur. 
+
 -Le HTTPS crypte les données envoyées du client au serveur et vice-versa.
 Il n'y a que le client et le serveur dès réception des fichiers qui peuvent voir le code source.
 Attention cependant, le https ne chiffre pas les données envoyées à la BDD car les données sont déjà déchiffrées par le serv.
@@ -31,3 +34,4 @@ Codes HTTP :
 300 ... : REDIRECTION
 400 ... : ERREUR CLIENT
 500 ... : ERREUR SERVEUR
+

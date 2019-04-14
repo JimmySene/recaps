@@ -180,8 +180,10 @@ Méthodes :
 	-split(separateur) divise un String par séparateur en plusieurs items pour ARRAY
 	-join(separateur) regroupe les items d'un array en String par séparateur
 	-length() récupère le nombre d'items dans un Array ou le nombre de caractères dans un String
+	-includes(valeur) renvoie true ou false si la fonction trouve ou non la valeur au sein du tableau
+	-forEach(function(item)) { }) parcours les éléments du tableau
 	
-Parcourir un tableau :
+Parcourir un tableau (hormis avec la méthode forEach) :
 	for (var i = 0, c = myArray.length; i < c; i++) { 
 		alert(myArray[i]);
 	}

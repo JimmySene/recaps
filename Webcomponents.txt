@@ -1,0 +1,37 @@
+Les webcomponents sont des balises HTML personnalisées que l'on peut créer et distribuer à d'autres développeurs afin de les utiliser dans nos projets.
+Une balise personnalisée est interpretée par le navigateur grâce à l'API javascript Custom Elements.
+
+Voici comment cette API fonctionne :
+
+1.Créer un fichier JS qui va définir le comportement que va avoir la balise personnalisée 
+
+Exemple : card.component.js
+
+2.Créer une classe qui hérite d'HTMLElement et qui appelle le constructeur parent
+
+Exemple : class CardElement extends HTMLElement { 
+	constructor(){
+		super();
+	}
+}
+
+3. Définir le comportement du webcomponent au sein de la classe JS
+
+Exemple : connectedCallback(){
+	this.innerHTML = `
+		// instructions manipulant le DOM
+	`;
+	
+}
+
+4.Lier le nom de la balise avec sa class JS (définir le webcomponent) 
+
+Exemple : window.customElements.define('card', CardElement);
+
+Si on applique un style personnalisé au sein du webcomponent, il y a un problème : le style css dépasse du webcomponent et s'applique à l'ensemble de la page.
+La solution pour éviter ça est d'utiliser l'API Shadow DOM pour encapsuler le code.
+Pour l'utiliser :
+
+this.attachShadow({mode: 'open'}); au sein de la class JS du webcomponent.
+
+Puis, pour le modifier, changer le this.innerHTML en this.shadowRoot.innerHTML.
