@@ -1,19 +1,56 @@
-TypeScript est un langage qui étend le Javascript (superset) en orienté objet avec des classes, des interfaces et du typage manuel.
-Angular 2.0 a été programmé en TypeScript. Anders Hejlsberg (designer du C#) a inventé le langage.
+TypeScript est un langage créé par Microsoft qui étend le Javascript (c'est un superset) en orienté objet avec des classes, des interfaces et du typage manuel.
+Angular a été programmé en TypeScript. React utilise notamment ce langage.
 Cross browser et cross platform.
 
-Fichier TypeScript : .ts_nomFichierTS pour transcompiler un fichier TS en JS.
+TypeScript nécessite d'être installé sur la machine. Pour ce faire on utilise une commande du gestionnaire de paquet NPM de Node (celui-ci doit donc être installé) :
 
-Le TS permet notamment de repérer les erreurs lors de la compilation et dans l'éditeur de code.
+npm install -g typescript
+
+Un fichier typescript porte l'extension .ts. Il ne peut pas être lu normalement (par le navigateur ou node), pour cela il a besoin d'être transcompilé en fichier js.
+Pour ce faire, on doit utiliser la commande tsc nomDuFichier.ts qui créera le fichier .js alors exploitable.
+
+Un des gros avantages du TS est qu'il intègre un déboggueur. Ce déboggeur relève les erreurs lors de chaque transcompilations. La transcompilation peut d'ailleurs être automatique
+lorsque l'on sauvegarde le projet en utilisant la commande tsc --watch nomDuFichier.ts. L'idéal est d'utiliser un terminal intégré à l'éditeur de code (comme Visual Studio Code) afin de
+voir le résultat en temps réel.
+
+Connaitre la version de TypeScript installée sur la machine : tsc -v
 
 === VARIABLES ET TYPAGE STATIQUE ===
 
-let message:type = valeur;
-OU var message:type = valeur;
+Déclaration : 
+
+-let nomVariable:type;
+-var nomVariable:type;
+
+Initialisation :
+
+-let nomVariable:type = valeur;
+-var nomVariable:type = valeur;
+
+Affectation de valeur :
+
+-nomVariable = valeur;
 
 Différence entre var et let :
 	-var : la variable est liée (scoped) à la fonction la plus proche
 	-let : la variable est liée (scoped) au bloc de code le plus proche
+
+const message:string = "test"; // Pour définir une constante dont la valeur ne pourra changer. Celle-ci doit être initialisée dès le départ.
+
+=== TYPES ===
+
+number, string, boolean, void, any, unknow, null, undefined, Date
+
+On peut déclarer un array de deux façons : 
+-let tableau:type[] = [val1, val2, val3...];
+-let tableau:Array<type> = [val1, val2, val3...];
+
+Un array peut avoir des types différents, cela se nomme le tuple type : 
+let tableau:[type1, type2...] = [val1, val2...]; // Les valeurs doivent respecter l'ordre des types indiqués
+
+On peut caster une variable comme ceci : (nomVariable as nomType) ou encore (<Type>nomVariable)
+
+Une variable peut accepter plusieurs types : let nomVariable: type1 | type2...
 
 === TYPAGE GENERIQUE ===
 
@@ -45,7 +82,8 @@ servant à propager la valeur de this à l'intérieur de la fonction anonyme."
 
 === ENUMERATIONS ===
 
-enum nomEnum = [val1 = 0, val2 = 1, val3 = 2...];
+-enum NomEnum = {val1, val2, val3...}; // val1 renverra 0, val2 renverra 1 etc...
+-enum NomEnum = {val1 = 5, val2, val3 = 12...} // val1 renverra 5, val2 renverra 6, val3 renverra 12...
 
 Accès : nomEnum.val
 
@@ -97,11 +135,6 @@ Pour la remédier, il est préférable de mettre lors de la déclaration des proprié
 
 L'accès aux propriétés et méthodes d'un objet actuel au sein d'une classe se fait avec le mot clef this.
 
-=== TYPES ===
-
-Number, String, Boolean, Void, Any
-
-On peut déclarer un array comme ceci : type[] = [val1, val2, val3...];
 
 === MODULES ===
 
@@ -112,7 +145,7 @@ Pour créer un module (espace de nommage), il faut utiliser la notation module no
 Ajouter le mot clef export devant une classe pour permettre son importation dans d'autres fichiers. On peut aussi le faire
 pour des variables, fonctions et interfaces.
 
-Utiliser le mot clef import { nomDeLaClasse } from { location } pour importer un module.
+Utiliser le mot clef import { NomDeLaClasse } from { './lienDuFichierSansExtension' } pour importer un module.
 Ou encore : import nomModule = require("lienVersFichierSansExtension");
 
 === DECORATEURS ===
@@ -124,4 +157,6 @@ Exemple : @Component({
 
 === DIVERS ===
 
-Vidéo explicative : https://www.youtube.com/watch?v=NjN00cM18Z4
+Vidéos explicatives : 
+https://www.youtube.com/watch?v=NjN00cM18Z4
+https://www.youtube.com/watch?v=WBPrJSw7yQA

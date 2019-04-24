@@ -1,0 +1,48 @@
+Node.js est un environnement d'execution (runtime environment) javascript qui permet d'executer du code javascript en dehors d'un navigateur.
+Pratique pour créer des services backend (souvent des API) en javascript qu'utiliseront des webapps.
+Il a été développé en C++ et contient le Javascript Engine v8 utilisé par Chrome.
+
+Connaitre la version de node installée sur la machine : node -v
+
+Executer un fichier javascript : node nomDuFichierJS
+
+Dans Node, il n'y a plus l'objet window accessible normalement en javascript. A la place, il a été remplacé par l'objet global.
+De même l'objet document représentant la page web n'existe pas dans node.
+
+Définir un module : module.exports.nomModule = nomVariableOuFonctionAExporter;
+Importer un module : var leModule = require("./lienDuFichierModule");
+
+Dans Node, on utilise souvent des modules préfaits accessibles à partir de cette page : https://nodejs.org/docs/latest/api/
+On importe le module désiré dans notre code et on peut alors utiliser un ensemble de fonctions pour obtenir des informations, notamment au niveau du système.
+
+Un module très utilisé est celui des évènements : EventEmitter
+
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+On enregistre des écouteurs d'évènements :
+
+emitter.on('nomEvent', (arg) => {
+	instructions de la fonction...
+});
+
+On émet un event :
+
+emitter.emit('nomEvent', {objet});
+
+Le mieux est de placer le code d'enregistrement des évènements dans une class extends EventEmitter
+
+Un autre module très utilisé est celui permettant d'écouter les requêtes HTTP :
+
+const http = require('http');
+
+const server = http.createServer((req,res) => {
+	if(req.url === "lien"){
+		res.write(JSON.stringify());
+		res.end();
+	}
+});
+
+server.listen(numeroPort);
+
+Vidéo tuto : https://www.youtube.com/watch?v=TlB_eWDSMt4
