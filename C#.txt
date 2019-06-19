@@ -3,17 +3,24 @@ Sensible à la casse. Norme Pascal Case.
 Commentaires : courts // ou longs /* */
 
 Déclaration de variable : type nom = valeur;
-Types principaux : int, string, decimal, bool
-
+Différents types : int, string, char, float, double, decimal, bool, byte
+Pour les réels, l'utilisation du type float et du type decimal impose à la valeur d'inclure le suffixe F ou M pour pouvoir être stockée (par défaut, un décimal est enregistré en double).
+Pour obtenir le nombre limite min et max d'un type : nomType.MinValue et nomType.MaxValue
+Obtenir le type d'une variable : variable.GetType();
 Afficher du texte dans la console : Console.WriteLine("texte");
 Passer une ligne : Environment.NewLine(); // \n fonctionne aussi
 Lire une entrée clavier : string messsage = Console.ReadLine(); // renvoie toujours un string 
 Console.ReadKey(true) // renvoie un ConsoleKeyInfo à stocker dans une variable. Tester variable.Key == ConsoleKey.O pour validation "o"
+Conversion entre types compatibles avec le cast implicite ou explicite. 
+Ex : int a; byte b = 5; a = b; // cast implicite
+Ex : int a = 5; byte b; b = (byte)a; // cast explicite
 Tester la conversion d'une chaine en nombre : Int.TryParse(variable, out new_variable) // renvoie true si conversion possible sinon false
-Convertir une chaine en nombre : Int.Parse(variable); OU Convert.ToInt32(variable);
+Convertir une chaine en nombre : Int.Parse(variable); OU Convert.ToInt32(variable); 
+Float.Parse(variable) // en cas d'une saisie clavier d'un nombre à virgule la , doit être utilisée et non le . !
+Convertir un nombre en chaine : variable.ToString(); OU Convert.ToString(variable);
 Concaténation : +
 
-Array : type[] nom = new type[nb_cases]; // ou new type[] { "valeur1", "valeur2"...};
+Array : type[] nom = new type[nb_cases]; // ou new type[] { "valeur1", "valeur2"...}; // new type[,] = { {}, {}}
 Listes : List<type> nom = new List<type>(); // using System.Collections.Generic
 	Ajouter dans une liste : nom_list.Add(valeur);
 	Supprimer dans une liste : nom_list.Remove("valeur"); OU nom_list.RemoveAt(indice);
@@ -33,3 +40,79 @@ Boucles : while(), do while(), for(type variable;condition;incrementation), fore
 
 Passer une variable en référence permettant sa modification au sein d'une fonction ou procédure : nomFonction(ref nomVariable);
 Dans les paramètres de la fonction, préciser (ref typeVariable nomVariable).
+
+=== POO ===
+
+Tout est objet en C#.
+
+Déclaration d'une classe :
+
+class nomClass {
+
+}
+
+Déclaration d'une méthode :
+
+typeVisibilite typeMethode nomMethode(parametres...) {
+
+}
+
+Déclaration d'une propriété auto-implementée :
+
+typeVisibilite typeProp nomProp { get; set; }
+
+Différents types de visibilités :
+-public : accès dans et en dehors de la classe
+-private : accès restreint à l'intérieur de la classe
+-protected : accès restreint à l'intérieur de la classe et aux classes filles
+-internal : accès au même assembly
+-internal protected : accès au même assembly et aux classes filles
+
+Héritage :
+
+Class nomClass : nomClassMere
+
+Constructeur :
+
+public nomConstructeurMemeNomQueObjet(parametres...) {
+
+}
+
+Appel du constructeur parent : 
+
+public nomConstructeurMemeNomQueObjet(parametres...) : base(parametres...) {
+
+}
+
+Le mot clef this pour accéder au sein d'une classe aux propriétés et méthodes de l'objet visé est facultatif.
+
+La substitution (spécialisation, redéfinition de méthodes) :
+
+public override typeMethode nomMethode(parametres...) {
+
+}
+
+il faut au préalable que la méthode d'origine permet la substitution avec le mot clef virtual.
+
+On peut appeller le comportement de la méthode de la classe mère au sein d'une classe fille en utilisant base.nomMethode().
+
+Polymorphisme (surcharge de méthodes) : possibilité de créer plusieurs fois la même méthode mais se comportant différement en fonction des paramètres reçus.
+
+Création d'une interface (contrat qu'un objet doit respecté) :
+
+interface InomInterface(){
+
+} La convention veut qu'une interface commence par un i majuscule.
+
+Le mot clef "abstract" permet de créer une classe ou une méthode abstraite. Une classe abstraite ne peut pas être instanciée mais peut uniquement être héritée. 
+Une méthode abstraite représente la signature de la méthode et doit être reprise chez les objets enfants. L'utilisation de méthodes abstraites impliquent que leur classe soit abstraite.
+
+On peut utiliser le mot-clef "partial" pour éditer une même classe dans plusieurs fichiers.
+
+Le mot clef "static" permet de rendre une méthode d'une classe accessible à partir d'elle même, sans avoir besoin d'instancier d'objet.
+Une classe static ne peut pas être instanciée (et devra comprendre que des membres static).
+On peut également mettre une propriété en static.
+
+Utiliser le mot clef "sealed" pour scellé une classe ou une méthode empêchant respectivement l'héritage et la substitution.
+
+On peut utiliser le mot clef new sur une méthode pour masquer la méthode du même nom de la classe mère.
