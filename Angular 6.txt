@@ -193,16 +193,11 @@ et dans le ngOnInit du component : this._nomService.methode()
 
 Le routing d'Angular permet de passer d'une vue à l'autre sans recharger la page.
 
-ng generate module app-routing --flat --module=app
---flat : met le fichier app-routing à la racine du projet
---module=app : l'importe dans le AppModule
+import { RouterModule, Routes, Router } from '@angular/router';
 
 Mettre au sein du template HTML principal le <router-outlet></router-outlet> afin d'afficher le retour du routing à cet endroit.
 
-Editer le fichier app-routing.module.ts pour y placer les routes.
-
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+Editer le fichier app.module.ts pour y placer les routes dans la constante routes (la constante doit être placée avant le @ngModule).
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/cheminParDefaut', pathMatch: 'full' },
@@ -215,10 +210,7 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes)],
   exports: [ RouterModule ]
 })
-export class AppRoutingModule {}
 
-Il faut tout d'abord y importer les différents components que l'on va utiliser.
-Puis ensuite définir les routes dans la constante routes (la constante doit être placée avant le @ngModule).
 
 Dans les templates, on peut y inclure des liens activant le routing avec l'attribut routerLink="path" à la place du href.
 
