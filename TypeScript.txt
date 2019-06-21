@@ -9,9 +9,8 @@ npm install -g typescript
 Un fichier typescript porte l'extension .ts. Il ne peut pas être lu normalement (par le navigateur ou node), pour cela il a besoin d'être transcompilé en fichier js.
 Pour ce faire, on doit utiliser la commande tsc nomDuFichier.ts qui créera le fichier .js alors exploitable.
 
-Un des gros avantages du TS est qu'il intègre un déboggueur. Ce déboggeur relève les erreurs lors de chaque transcompilations. La transcompilation peut d'ailleurs être automatique
-lorsque l'on sauvegarde le projet en utilisant la commande tsc --watch nomDuFichier.ts. L'idéal est d'utiliser un terminal intégré à l'éditeur de code (comme Visual Studio Code) afin de
-voir le résultat en temps réel.
+Un des gros avantages du TS est qu'il intègre un déboggueur. Ce déboggeur relève les erreurs lors de chaque transcompilations. La transcompilation peut d'ailleurs être automatique 
+en utilisant la commande tsc -w nomDuFichier.ts. L'idéal est d'utiliser un terminal intégré à l'éditeur de code (comme Visual Studio Code) afin de voir le résultat en temps réel.
 
 Connaitre la version de TypeScript installée sur la machine : tsc -v
 
@@ -39,7 +38,7 @@ const message:string = "test"; // Pour définir une constante dont la valeur ne p
 
 === TYPES ===
 
-number, string, boolean, void, any, unknow, null, undefined, Date
+number, string, boolean, void, any, unknow, null, undefined, Date, never
 
 On peut déclarer un array de deux façons : 
 -let tableau:type[] = [val1, val2, val3...];
@@ -51,6 +50,20 @@ let tableau:[type1, type2...] = [val1, val2...]; // Les valeurs doivent respecte
 On peut caster une variable comme ceci : (nomVariable as nomType) ou encore (<Type>nomVariable)
 
 Une variable peut accepter plusieurs types : let nomVariable: type1 | type2...
+
+function nom_fonction(param1:type, param2:type) :typeRetour{
+	Instructions...
+}
+
+Connaitre le type d'une variable : typeof nomVariable
+
+Créer ses propres types (structures de données) :
+
+type nomType = {
+	propriete: type;
+	propriete: type;
+	...
+}
 
 === TYPAGE GENERIQUE ===
 
@@ -97,6 +110,9 @@ interface nomInterface {
 Un objet ou une classe implémentant une interface doit avoir les propriétés et méthodes correspondantes.
 
 Extension d'interface : interface b extends a.
+
+Rendre une propriété optionnelle : ajouter un ? après le nom de la propriété
+Rendre une propriété en lecture seule : ajouter readonly avant le nom de la propriété
 
 == CLASSES ET OBJETS ===
 
@@ -154,6 +170,11 @@ Déclaration attachée à une classe, une méthode ou une propriété. Précédé d'un @.
 Exemple : @Component({
 
 })
+
+=== TSCONFIG ===
+
+Fichier permettant de configurer le compiler typescript du projet.
+Créer le fichier avec la commande tsc --init
 
 === DIVERS ===
 
