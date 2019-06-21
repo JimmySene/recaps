@@ -161,7 +161,7 @@ Un objet comporte 3 choses :
 	- Propriétés -> variables d'un objet
 	- Méthodes -> fonctions d'un objet
 	
-TOUTES LES VARIABLES CONTIENNES DES OBJETS.
+TOUTES LES VARIABLES CONTIENNENT DES OBJETS.
 
 L'accès aux propriétés et méthodes se font avec le point (objet.nomPropriété ou objet.nomMethode())
 
@@ -351,6 +351,67 @@ UTILISATION DES METHODES ET PROPRIETES : truc.propriete = valeur; / truc.methode
 
 TESTER SI INSTANCE D'OBJET -> instance instanceof objet : renvoie true ou false
 
+-----------------------------------------------------------------------------------------
+				DEPUIS E6
+-----------------------------------------------------------------------------------------
 
+Déclaration de variable locale (bloc de code) : let nomVariable;
 
+Arrows functions : (paramètres) => instruction;
+OU (paramètres) => {
+	Instructions...
+}
+
+Classes : class NomClass {
+	constructor(parametres){
+		...
+	}
+	this.propriete = valeur;
+	this.methode(){
+		instructions;
+	}
+}
+
+Héritage : class NomClassEnfant extends NomClassMere{
+	constructor(){
+		super();
+	}
+}
+
+Création d'un Set (listes de valeurs uniques) : var liste = new Set();
+Ajout dans un Set : liste.Add("valeur");
+Teste de valeur dans un Set : liste.has("valeur"); => renvoie true / false
+Retourner un itérateur : liste.entries();
+
+Création d'une Map (clef / valeur) : var dico = new Map();
+Ajouter une entrée dans une Map : dico.set("clef", "valeur");
+Connaitre la taille d'une Map : dico.size
+
+Itérateurs : Renvoie sous forme d'objet les itérations d'un tableau, d'un set, d'une map ou d'un générateur
+nomIterateur.next(); // passage suivant
+
+Générateurs : function* nomGenerateur(parametres){
+	instructions...
+	yield (premier arrêt)
+	instructions...
+	yield (deuxième arrêt)
+	...
+} // retourne une itérateur
+
+For of (semblable au foreach) : for(var nomVariable of liste){
+	instructions...
+}
+
+Promesses (promises) : var nomPromise = new Promise(function(resolve, reject){
+	instructions...
+	resolve(); OU reject();
+});
+
+Execution de la promesse : nomPromise.then(function(data){
+	
+}, function(err){
+
+});
+
+Cloner un objet : let nomObjetClone = Object.assign({}, nomObjetSource);
 
