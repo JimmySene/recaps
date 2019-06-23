@@ -167,3 +167,5 @@ Application hybride : Application à mi-chemin entre une application native et un
 
 Progressive web aps : Webapp ayant l'apparence et les performances d'une application native.
 
+Intranet : Réseau local ou privé.
+

@@ -415,3 +415,5 @@ Execution de la promesse : nomPromise.then(function(data){
 
 Cloner un objet : let nomObjetClone = Object.assign({}, nomObjetSource);
 
+Destructuration (obtenir toutes les valeurs d'un objet ou d'un tableau) : var { prop, prop, prop } = nomObjet;
+
