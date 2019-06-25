@@ -169,3 +169,5 @@ Progressive web aps : Webapp ayant l'apparence et les performances d'une applica
 
 Intranet : Réseau local ou privé.
 
+Composer : Gestionnaire de paquets pour PHP.
+

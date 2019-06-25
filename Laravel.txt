@@ -1,0 +1,53 @@
+Laravel est un framework PHP MVC open source. Nécessite le gestionnaire de paquets PHP Composer.
+Pour créer un projet, il faut se positionner dans le dossier de projet et faire la commande : composer create-project laravel/laravel .
+
+Mettre à jour le fichier vhosts.conf d'apache en ajoutant un server name et le root directory du projet.
+
+Exemple : 
+
+<VirtualHost *:80>
+	ServerName projet-laravel.fr
+	DocumentRoot "${INSTALL_DIR}/www/Laravel/public"
+</VirtualHost>
+
+Puis le fichier hosts de la machine (en administrateur/root) : 127.0.0.1 projet-laravel.fr
+
+Laravel utilise le moteur de rendu Blade pour générer les vues en HTML (à l'instar de Twig pour Symfony).
+Ces vues sont stockés dans le dossier resources/view et portent comme nom : nomDeLaVue.blade.php
+
+Le fichier de routing s'appelle web.php et est situé dans le dossier routes.
+
+Voici comment créer une route : 
+
+Route::get('/nomDeLaRoute', function () {
+    return view('nomVue');
+});
+
+OU
+
+Route::get('/nomDeLaRoute', 'NomController@nomFonctionAExecuter');
+
+Les controllers se situent dans le dossier app/Http/Controllers
+
+Pour générer un controller, il faut utiliser la commande php artisan make:controller NomController
+
+Dans la class représentant le controller, y insérer des méthodes publiques qui seront appelées par le système de routing et qui renverront les vues adéquates.
+
+Exemple : 
+
+class CoucouControler extends Controller
+{
+    public function coucou(){
+        return view('coucou'); // une vue coucou.blade.php existe et sera affichée
+    }
+}
+
+Il est bon de créer un layout à importer dans toutes les vues en créant un dossier layout et en y placant le fichier app.blade.php
+contenant un @yield('nom-contenu') qui sera remplacé par le contenu des vues.
+
+Les vues devront comprendre un @extends('layout/app') pour importer le layout puis un @section('nom-contenu') @endsection pour remplir le contenu du layout.
+
+On peut inclure bootstrap fourni directement avec Laravel en incluant la balise <link rel="stylesheet" href="{{asset('css/app.css')}}"> dans le layout.
+
+Le dossier public contient les fichiers css et js compilés de notre application. Si on veut y apporter des modifications, il est préférable de modifier les fichiers
+se situant dans le dissier resources/assets
