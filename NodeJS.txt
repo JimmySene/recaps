@@ -11,9 +11,32 @@ De même l'objet document représentant la page web n'existe pas dans node.
 
 Définir un module : module.exports.nomModule = nomVariableOuFonctionAExporter;
 Importer un module : var leModule = require("./lienDuFichierModule");
+Le lien peut être omis si on place le fichier du module dans un repertoire node_modules. Il suffira alors de l'appeler par son nom.
 
 Dans Node, on utilise souvent des modules préfaits accessibles à partir de cette page : https://nodejs.org/docs/latest/api/
-On importe le module désiré dans notre code et on peut alors utiliser un ensemble de fonctions pour obtenir des informations, notamment au niveau du système.
+Ces modules sont à télécharger avec NPM avec la commande npm install nomDuModule. 
+Cela aura pour effet de télécharger et placer le module localement dans le dossier node_modules du projet. Ajouter -g à la commande pour l'installer globalement et ajouter 
+des fonctionnalités en ligne de commande (mais non utilisable en JS).
+On importe le module désiré dans notre code et on peut alors utiliser un ensemble de fonctions.
+
+Mettre à jour les modules : npm update
+
+Pour gérer la compatibilité de l'application suite à la mise à jour potentielle des modules utilisés, il est bon de créer un fichier JSON du nom de package.json en y indiquant
+les dépendances en terme de version.
+
+Ce fichier doit comporter :
+
+{
+	"name":"nom_de_lappli",
+	"version":"1.0.0",
+	"dependencies":{
+		"nom_module":"version_module"...
+	}
+}
+
+Indiquer les dépendances permet notamment d'empêcher la mise à jour de certains modules. 
+Mettre un ~ devant la version d'un module pour accepter la mise à jour de patch mais pas de changement mineur ni majeur. Si la version du patch n'est pas précisé
+alors c'est la version mineure qui sera prise en compte et à ne pas dépasser.
 
 Un module très utilisé est celui des évènements : EventEmitter
 
@@ -38,12 +61,51 @@ const http = require('http');
 
 const server = http.createServer((req,res) => {
 	if(req.url === "lien"){
+		res.writeHead(200, {"Content-Type":"type MIME du résultat"});
 		res.write(JSON.stringify());
 		res.end();
 	}
 });
 
 server.listen(numeroPort);
+
+========== Express.js ==========
+
+Il s'agit d'un micro-framework pour Nodejs permettant d'écrire du code moins bas niveau. Facilitant notamment le routing et permettant l'utilisation de templates.
+
+Installation : npm install express
+
+var express = require('express');
+var app = express();
+
+app.get('/', function(req,res){
+	res.setHeader('Content-Type', 'type mime');
+	res.send();
+});
+
+app.get('/posts/:id', function(req, res){
+	res.setHeader('Content-Type', 'type mime');
+	res.end('Post numéro' + req.params.id);
+});
+
+app.get('/posts/:id', function(req, res){
+	res.render('nom_fichier_template.extension', {nomVariableATransmettre: req.params.id});
+});
+
+app.listen(numero_port)
+
+Pour récupérer des données de formulaire en post, il faut utiliser le middleware body-parser :
+
+npm install body-parser
+
+var bodyParser = require('body-parser');
+var urlEncoded = bodyParser.urlencoded({extended:false});
+
+et dans la route : app.post('path', urlEncoded, function(req, res){
+	// variable post obtenue comme ceci : req.body.nomVariable
+});
+
+On peut faire une redirection avec res.redirect('path');
 
 Vidéo tuto : https://www.youtube.com/watch?v=TlB_eWDSMt4
 Pour le framework Express : https://www.youtube.com/watch?v=pKd0Rpw7O48

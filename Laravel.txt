@@ -29,7 +29,7 @@ Route::get('/nomDeLaRoute', 'NomController@nomFonctionAExecuter');
 
 Les controllers se situent dans le dossier app/Http/Controllers
 
-Pour générer un controller, il faut utiliser la commande php artisan make:controller NomController
+Pour générer un controller, il faut utiliser la commande php artisan make:controller NomDuController
 
 Dans la class représentant le controller, y insérer des méthodes publiques qui seront appelées par le système de routing et qui renverront les vues adéquates.
 
@@ -47,7 +47,48 @@ contenant un @yield('nom-contenu') qui sera remplacé par le contenu des vues.
 
 Les vues devront comprendre un @extends('layout/app') pour importer le layout puis un @section('nom-contenu') @endsection pour remplir le contenu du layout.
 
+On peut aussi importer un fichier de vue dans un autre avec @include('cheminVersVue')
+
 On peut inclure bootstrap fourni directement avec Laravel en incluant la balise <link rel="stylesheet" href="{{asset('css/app.css')}}"> dans le layout.
 
 Le dossier public contient les fichiers css et js compilés de notre application. Si on veut y apporter des modifications, il est préférable de modifier les fichiers
 se situant dans le dissier resources/assets
+
+Pour la connexion à une BDD, il faut modifier le fichier .env afin d'indiquer le nom de la base, l'utilisateur et le mot de passe.
+
+Créer un modèle avec php artisan make:model NomDuModel -m
+
+Pour l'utilisation des migrations, penser à ajouter les lignes dans AppServiceProvider.php :
+-use Illuminate\Support\Facades/Schema à mettre en haut du fichier sous le premier use
+-Schema::defaultStringLength(191); à mettre dans la fonction boot()
+
+Utiliser la commande php artisan migrate pour lancer les migrations.
+
+On peut insérer des données dans la base en utilisant la commande php artisan tinker et en utilisant la POO de PHP comme ceci :
+
+$article = new App\Post();
+$article->title = 'Premier article';
+$article->body = 'Exemple de texte';
+$article->save();
+
+Pour ajouter le controller lié au modèle dans le routing, il faut inclure la ligne :
+
+Route:resource('NomDuModele','NomDuController'); // le controller doit être de type resource
+
+En blade on peut utiliser ces notations :
+@if @else @endif
+@foreach @endforeach
+
+et utiliser des variables PHP situées dans la fonction appelée par le controller et passer à la vue comme ceci :
+
+return view('nomVue')->with('nonVariable', $nomVariableDansController);
+
+On peut récupérer les données du modèle dans le controller en faisant :
+
+$recup = NomModele::all() // Récupère toutes les entrées
+	::find($id) // Récupère l'entrée d'id $id
+	::orderBy('attribut', 'desc')->paginate(x) // x à remplacer par le nombre d'éléments
+
+Puis on accède aux propriétés de l'objet :
+
+$recup->title...

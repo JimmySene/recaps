@@ -171,3 +171,7 @@ Intranet : Réseau local ou privé.
 
 Composer : Gestionnaire de paquets pour PHP.
 
+Websocket : API Javascript permettant à un client et un serveur de s'échanger des données de manière synchrone sans avoir besoin de recharger la page. 
+Le serveur est ici capable d'envoyer des informations au client sans que le client ne le sollicite (ne pas confondre avec Ajax qui lui nécessite toujours une action de
+la part du client).
+
